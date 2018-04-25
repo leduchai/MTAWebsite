@@ -1,0 +1,256 @@
+.progress{margin-bottom: 0px;}
+.bx-wrapper {
+		-webkit-box-shadow:none;
+		box-shadow:none;
+		border:0px;
+		background:none;
+		margin:0;
+		padding:0;
+		z-index:500;
+	}
+	.bx-viewport{
+		-webkit-transform:translateZ(0);
+	}
+	.slider-wrap {
+		width:100%;
+		margin:0 auto;
+		position: relative;
+	}
+	.slider-wrap:after {
+		display:none;
+	}
+	.slider-wrap img {
+		display:block;
+		margin:0;
+		padding:0;
+		background:none;
+		border:3px solid #eeeeee;
+		width: 100%;
+	}
+	.slider-controls {
+		width:100%;
+		left:0px;
+		bottom:auto;
+		top:55%;
+		-webkit-transform:translateY(-55%);
+		transform:translateY(-55%);
+	}
+	ul.constructionSlider {
+		margin:0;
+		padding:0;
+	}
+	ul.constructionSlider li {
+		display:block;
+		padding:0;
+	}
+	ul.constructionSlider li:before,
+	ul.constructionSlider li:after,
+	.bx-pager ul li:before,
+	.bx-pager ul li:after	{
+		display:none;
+	}
+	#slider-next a:hover,
+	#slider-prev a:hover {
+		text-decoration:none;
+	}
+	.bx-pager {
+		width:100%;
+		border:1px solid transparent;
+	}
+	.bx-pager ul {
+		width:100%;
+		margin:35px 0 10px 0;
+		padding:0;		
+	}
+	.bx-controls{display: none;}
+	.slider-wrap .progress {
+		display:block;
+		width:100%;
+		height:2px;
+		background:#eeeeee;
+		content:"";
+		top:0;
+		left:0;
+		right:0;
+		overflow:hidden;
+	}
+	
+	.slider-controls
+	{
+		position: absolute;
+
+		top: 50%;
+
+	
+		left: 18px;
+		font-size: 60px
+	}
+	.slider-wrap .progress span {
+		display:block;
+		max-width:16.8%;
+		height:25px;
+		background:#f6dd29;
+		margin-right:-15px;
+		border-top:25px solid #f6dd29;
+		border-right:15px solid #eeeeee;
+		-webkit-transition:all 0.75s ease-in-out;
+		-moz-transition:all 0.75s ease-in-out;
+		-ms-transition:all 0.75s ease-in-out;
+		transition:all 0.75s ease-in-out;
+	}	
+	.bx-pager ul li {
+		display:block;
+		float:left;
+		padding:0 !important;
+		width:16.66%;
+	}
+	.bx-pager ul li a {
+		display:block;
+		padding:3px 0;
+		background:#fff;
+		font-size:0.813rem;
+		font-weight:300 !important;
+		color:#1f1f1f;	
+		text-align:center;
+		-webkit-transition:all 0.75s ease-in-out;
+		-moz-transition:all 0.75s ease-in-out;
+		-ms-transition:all 0.75s ease-in-out;
+		transition:all 0.75s ease-in-out;
+		border:3px solid #eeeeee;
+		margin-right:7px;
+	}
+	.bx-pager ul li:last-child a {
+		margin-right:0px;
+	}
+	.bx-pager ul li a:hover,
+	.bx-pager ul li a.active {
+		background:#f6dd29;
+		text-decoration:none;
+	}
+	#slider-next
+	{
+		margin-left: 1040px;
+	}
+	.bx-next,.bx-prev
+	{
+		color: white;
+	}
+.anhlienhe img{
+	max-width: 100%;
+}
+#sp-main-body{padding-top: 20px;}
+.item{margin-bottom: 20px;}
+.block-item {margin-bottom: 10px;}
+.infor{font-size: 16px;}
+.infor h4{margin-top: 0px;}
+#bando{border-bottom: 1px solid #ccc;}
+.note{margin: 30px 0 20px 0;}
+.form-lienhe textarea{height: 90px;}
+.form-lienhe button{
+	width: 100px;
+	background: #ad0000;
+	color: #fff;
+	border-color: #ad0000;
+}
+.form-lienhe input:focus,.form-lienhe textarea:focus
+{
+	border-color: #ad0000;
+  	outline: 0;
+  	-webkit-box-shadow: inset 0 1px 1px #ad0000, 0 0 8px #ad0000;
+          box-shadow: inset 0 1px 1px #ad0000, 0 0 8px #ad0000;
+}
+.icon
+{
+	font-size: 35px;
+}
+.modal-body
+{
+	max-height: 400px;
+	overflow-y: scroll;
+}
+.block-item{
+	text-align: center;
+}
+.block-item a{
+	color: black;
+	text-decoration: none;
+
+}
+.block-item a:hover{
+	
+	text-decoration: none;
+
+}
+.icon a:hover
+{
+	color: red;
+	
+}
+.header h2
+{
+	text-align: center;
+    margin: 30px 0;
+}
+img{max-width: 100%;}
+h3.title
+{
+	font-size: 20px;
+	font-weight: bold;
+	margin: 7px 0 3px;
+}
+h1.page-title
+{
+	font-size: 30px;
+}
+.sliders img
+{
+	max-height: 450px;
+	width: 100%;
+}
+#breadcrumb
+{
+	margin-top: 20px;
+}
+.breadcrumb
+{
+	background: none;
+	border-bottom: 1px solid #ccc;
+	border-radius: 0px;
+}
+.breadcrumb li a
+{
+	color: #005e34;
+}
+.breadcrumb > li + li::before
+{
+	color: black;
+}
+.read-more
+{
+	color: #005e34;
+	margin-top: 6px;
+}
+.read-more:hover
+{
+	text-decoration: underline;
+}
+.box
+{
+	padding: 90px 0 90px 160px;
+}
+.box-2
+{
+	background: #f4f4f4;
+}
+.large-12
+{position: relative;}
+.owl-carousel .owl-prev{position: absolute;top: 47px;left: -30px;background: none;}
+.owl-carousel .owl-next{position: absolute;top: 47px;right: -30px;background: none;}
+.owl-theme .owl-nav [class*="owl-"]
+{
+	padding: 18px 7px;
+}
+.owl-dots
+{
+	display: none;
+}

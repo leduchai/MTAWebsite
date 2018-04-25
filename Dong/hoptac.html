@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Mta</title>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+
+    <link rel="stylesheet" href="../assets/css/docs.theme.min.css">
+    <link rel="stylesheet" href="../assets/owlcarousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="../assets/owlcarousel/assets/owl.theme.default.min.css">
+    <script src="../assets/vendors/jquery.min.js"></script>
+    <script src="../assets/owlcarousel/owl.carousel.js"></script>
+    <script src="../assets/vendors/jquery.mousewheel.min.js"></script>
+
+</head>
+<body>
+    <section id="demos">
+        <div class="row">
+            <div class="large-12 columns">
+                <div class="owl-carousel owl-theme">
+                    <div class="item">
+                        <h4>1</h4>
+                    </div>
+                    <div class="item">
+                        <h4>2</h4>
+                    </div>
+                    <div class="item">
+                        <h4>3</h4>
+                    </div>
+                    <div class="item">
+                        <h4>4</h4>
+                    </div>
+                    <div class="item">
+                        <h4>5</h4>
+                    </div>
+                    <div class="item">
+                        <h4>6</h4>
+                    </div>
+                    <div class="item">
+                        <h4>7</h4>
+                    </div>
+                    <div class="item">
+                        <h4>8</h4>
+                    </div>
+                    <div class="item">
+                        <h4>9</h4>
+                    </div>
+                    <div class="item">
+                        <h4>10</h4>
+                    </div>
+                    <div class="item">
+                        <h4>11</h4>
+                    </div>
+                    <div class="item">
+                        <h4>12</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        var owl = $('.owl-carousel');
+        owl.owlCarousel({
+            loop: false,
+            nav: true,
+            margin: 10,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 3
+                },
+                960: {
+                    items: 5
+                },
+                1200: {
+                    items: 6
+                }
+            }
+        });
+        owl.on('mousewheel', '.owl-stage', function (e) {
+            if (e.deltaY > 0) {
+                owl.trigger('next.owl');
+            } else {
+                owl.trigger('prev.owl');
+            }
+            e.preventDefault();
+        });
+    </script>
+</body>
+</html>
