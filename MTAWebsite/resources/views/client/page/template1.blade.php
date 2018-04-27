@@ -1,100 +1,9 @@
-﻿<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Giới thiệu</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="/MTA-Website/MTAWebsite/Script/jquery.devrama.slider.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="/MTA-Website/MTAWebsite/Content/asset/css/mta.website.css">
-    <link rel="stylesheet" type="text/css" href="/MTA-Website/MTAWebsite/Content/asset/css/slider.all.css">
-    <script type="text/javascript" src="/MTA-Website/MTAWebsite/Script/mta.website.js"></script>
-    <script type="text/javascript" src="/MTA-Website/MTAWebsite/Script/slider.all.js"></script>
-    <link rel="stylesheet" href="/MTA-Website/MTAWebsite/Content/asset/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="/MTA-Website/MTAWebsite/Content/asset/css/owl.theme.default.min.css">
-    <script src="/MTA-Website/MTAWebsite/Script/owl.carousel.min.js"></script>
-    <script src="/MTA-Website/MTAWebsite/Script/jquery.mousewheel.min.js"></script>
-</head>
-<body>
-    <div class="container">
-        <main>
-            <section>
-                <div class="row">
-                    <div class="col-lg-8 col-md-8">
-                        <figure>
-                            <a href=""><img src="/MTA-Website/MTAWebsite/Content/asset/image/logo.png" class="img-responsive"></a>
-                        </figure>
-                    </div>
-                    <div class="col-lg-4 col-md-4">
-                        <div class="row">
-                            <div class="col-lg-12 col-md-12">
-                                <div class="contact">
-                                    <button id="btn-contact"><a href="/MTA-Website/MTAWebsite/Views/Contact/Contact.html">Liên Hệ</a></button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12 col-md-12">
-                                <div class="search">
-                                    <input type="search" id="search" name="Search">
-                                    <a href="#" id="tag-a-search" title="Tìm kiếm"><span class="glyphicon glyphicon-search"></span></a>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-            </section>
-
-            <section>
-                <div class="topnav" id="myTopnav">
-                    <a href="/MTA-Website/MTAWebsite/Views/Home/Home.html" class="active">Trang Chủ</a>
-                    <a href="/MTA-Website/MTAWebsite/Views/About/About.html">Giới Thiệu</a>
-                    <a href="/MTA-Website/MTAWebsite/Views/News/News.html">Tin Tức</a>
-                    <a href="/MTA-Website/MTAWebsite/Views/Admission/Admission.html">Tuyển Sinh</a>
-                    <a href="/MTA-Website/MTAWebsite/Views/Student/Student.html">Sinh Viên</a>
-                    <a href="/MTA-Website/MTAWebsite/Views/Education/Education.html">Đào Tạo</a>
-                    <a href="/MTA-Website/MTAWebsite/Views/Research/Research.html">Nghiên Cứu</a>
-                    <a href="/MTA-Website/MTAWebsite/Views/Contract/Contract.html">Hợp Tác</a>
-
-                    <!--<div class="dropdown">
-                      <button class="dropbtn">Sinh Viên
-                        <i class="fa fa-caret-down"></i>
-                      </button>
-                      <div class="dropdown-content">
-                        <a href="#">Link 1</a>
-                        <a href="#">Link 2</a>
-                        <a href="#">Link 3</a>
-                      </div>
-                    </div>  -->
-
-
-
-                    <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
-                </div>
-            </section>
-
-            <section>
-                <div class="example-using-css">
-                    <img data-lazy-src="/MTA-Website/MTAWebsite/Content/asset/image/big-image-10.jpg" />
-                    <img data-lazy-src="/MTA-Website/MTAWebsite/Content/asset/image/big-image-4.jpg" />
-                    <img data-lazy-src="/MTA-Website/MTAWebsite/Content/asset/image/big-image-11.jpg" />
-                </div>
-            </section>
-
-            <section>
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 path">
-                        <a>Trang Chủ</a><span> / </span><a>Giới Thiệu</a>
-                    </div>
-                </div>
-            </section>
-
-            <section>
+@extends('layouts.client')
+@section('slider')
+    @include('layouts.slider')
+@endsection
+@section('content')
+<section>
                 <div class="row title-single">
                     <div class="col-lg-12 col-md-12">
                         <h2 class="title-single">Sứ Mạng</h2>
@@ -112,7 +21,7 @@
                             <a href="" class="view-more">Xem thêm<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a>
                         </header>
                         <figure class="figure">
-                            <img src="/MTA-Website/MTAWebsite/Content/asset/image/big-image-9.jpg" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                            <img src="{{ asset('client-assets/images/big-image-9.jpg') }}" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
                         </figure>
                     </div>
                 </div>
@@ -137,7 +46,7 @@
                         <a href="" class="view-more">Xem thêm<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a>
                     </div>
                     <div class="col-lg-6 col-md-6">
-                        <a href=""><img alt="" src="/MTA-Website/MTAWebsite/Content/asset/image/medium-image-2.png" class="img-responsive"> </a>
+                        <a href=""><img alt="" src="{{ asset('client-assets/images/medium-image-2.png') }}" class="img-responsive"> </a>
                     </div>
 
                 </div>
@@ -161,7 +70,7 @@
                             <a href="" class="view-more">Xem thêm<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a>
                         </header>
                         <figure class="figure">
-                            <img src="/MTA-Website/MTAWebsite/Content/asset/image/big-image-2.jpg" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                            <img src="{{ asset('client-assets/images/big-image-2.jpg') }}" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
                         </figure>
                     </div>
                 </div>
@@ -176,7 +85,7 @@
                 <div class="row">
                     <div class="col-lg-3 col-md-3 col-sm-6">
                         <figure class="figure">
-                            <img src="/MTA-Website/MTAWebsite/Content/asset/image/medium-image-detail-1.jpg" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                            <img src="{{ asset('client-assets/images/medium-image-2.png') }}medium-image-detail-1.jpg" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
                             <figcaption class="figure-caption-category">Đội ngũ giảng viên</figcaption>
                         </figure>
                         <header>
@@ -185,7 +94,7 @@
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-6">
                         <figure class="figure">
-                            <img src="/MTA-Website/MTAWebsite/Content/asset/image/medium-image-detail-2.jpg" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                            <img src="{{ asset('client-assets/images/medium-image-2.png') }}medium-image-detail-2.jpg" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
                             <figcaption class="figure-caption-category">Nhà khoa học</figcaption>
                         </figure>
                         <header>
@@ -195,7 +104,7 @@
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-6">
                         <figure class="figure">
-                            <img src="/MTA-Website/MTAWebsite/Content/asset/image/medium-image-detail-1.jpg" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                            <img src="{{ asset('client-assets/images/medium-image-detail-1.jpg') }}" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
                             <figcaption class="figure-caption-category">Cơ sở vật chất</figcaption>
                         </figure>
                         <header>
@@ -205,7 +114,7 @@
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-6">
                         <figure class="figure">
-                            <img src="/MTA-Website/MTAWebsite/Content/asset/image/medium-image-9.jpg" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                            <img src="{{ asset('client-assets/images/medium-image-9.jpg') }}" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
                             <figcaption class="figure-caption-category">Truyền thống</figcaption>
                         </figure>
                         <header>
@@ -234,7 +143,7 @@
                         <div class="row">
                             <div class="col-lg-12 col-md-12">
                                 <figure class="figure">
-                                    <img src="/MTA-Website/MTAWebsite/Content/asset/image/medium-image-detail-1.jpg" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                                    <img src="{{ asset('client-assets/images/medium-image-detail-1.jpg') }}" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
                                     <figcaption class="figure-caption-category">Thông tin cơ cấu tổ chức</figcaption>
                                 </figure>
                                 <header>
@@ -253,7 +162,7 @@
                         <div class="row">
                             <div class="col-lg-12 col-md-12">
                                 <figure class="figure">
-                                    <img src="/MTA-Website/MTAWebsite/Content/asset/image/medium-image-10.jpg" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                                    <img src="{{ asset('client-assets/images/medium-image-10.jpg') }}" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
                                     <figcaption class="figure-caption-category">Hình ảnh, video tiêu biểu</figcaption>
                                 </figure>
                                 <header>
@@ -265,8 +174,4 @@
                     </div>
                 </div>
             </section>
-
-        </main>
-    </div>
-</body>
-</html>
+            @endsection

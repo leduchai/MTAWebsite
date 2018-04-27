@@ -3,18 +3,22 @@
     @section('title','Quản lí trang')
     @section('section')
     <section class="content">
-    	<h2 class="entry-title text-left">
-    		@if(empty($model->id))
-                      Thêm mới
-                      @else
-                     Cập nhật
-                      @endif</h2>
+    	
         <div class="col-md-2"></div>
       <div class="col-md-8 thumbnail">
             <form action="{{route('setting.save')}}" method="post" novalidate enctype="multipart/form-data">
 				{{csrf_field()}}
 				<input type="hidden" name="id" value="{{old('id', $model->id)}}">
-				
+				<div class="row group">
+
+				    <div class="control-label col-md-3 col-sm-3 col-xs-12 text-right">
+				    	<label for="title">logo</label>
+				    </div>
+				    <div class="col-md-9 col-sm-9 col-xs-12">
+						<input id="logo" type="file" 
+							value="{{old('logo', $model->logo)}}" name="img_logo" class="form-control" placeholder="Logo">
+					</div>
+				</div>
 				<div class="row group">
 
 				    <div class="control-label col-md-3 col-sm-3 col-xs-12 text-right">
@@ -85,18 +89,6 @@
 							value="{{old('facebook', $model->facebook)}}" name="facebook" class="form-control" placeholder="Facebook">
 						@if (count($errors) > 0)
 							<span class="text-danger">{{$errors->first('facebook')}}</span>
-						@endif
-					</div>
-				</div>
-				<div class="row group">
-					<div class="control-label col-md-3 col-sm-3 col-xs-12 text-right">
-						<label for="description">Support</label>
-					</div>
-					<div class="col-md-9 col-sm-9 col-xs-12">
-						<input id="support" type="text" 
-							value="{{old('support', $model->support)}}" name="support" class="form-control" placeholder="Support">
-						@if (count($errors) > 0)
-							<span class="text-danger">{{$errors->first('support')}}</span>
 						@endif
 					</div>
 				</div>

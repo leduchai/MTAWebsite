@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="/MTA-Website/MTAWebsite/Script/jquery.devrama.slider.min.js"></script>
+    <script type="text/javascript" src="{{ asset('client-assets/js/jquery.devrama.slider.min.js') }}"></script>
     <link rel="stylesheet" type="text/css" href="{{ asset('client-assets/css/mta.website.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('client-assets/css/slider.all.css') }}">
     <script type="text/javascript" src="{{ asset('client-assets/js/mta.website.js') }}"></script>
@@ -27,7 +27,7 @@
                 <div class="row">
                     <div class="col-lg-8 col-md-8">
                         <figure>
-                            <a href=""><img src="{{ asset('client-assets/images/logo.png') }}" class="img-responsive"></a>
+                            <a href=""><img src="{{ asset('uploads/'.setting()->logo) }}" class="img-responsive"></a>
                         </figure>
                     </div>
                     <div class="col-lg-4 col-md-4">
@@ -54,23 +54,26 @@
 
             <section>
                 <div class="topnav" id="myTopnav">
-                    <a href="/MTA-Website/MTAWebsite/Views/Home/Home.html" class="active">Trang Chủ</a>
-                    <a href="/MTA-Website/MTAWebsite/Views/About/About.html">Giới Thiệu</a>
-                    <a href="/MTA-Website/MTAWebsite/Views/News/News.html">Tin Tức</a>
-                    <a href="/MTA-Website/MTAWebsite/Views/Admission/Admission.html">Tuyển Sinh</a>
-                    <a href="/MTA-Website/MTAWebsite/Views/Student/Student.html">Sinh Viên</a>
-                    <a href="/MTA-Website/MTAWebsite/Views/Education/Education.html">Đào Tạo</a>
-                    <a href="/MTA-Website/MTAWebsite/Views/Research/Research.html">Nghiên Cứu</a>
-                    <a href="/MTA-Website/MTAWebsite/Views/Contract/Contract.html">Hợp Tác</a>
+                    <a href="{{ route('home.page') }}" class="active">Trang Chủ</a>
+                    @if(isset($menu))
+                    @foreach($menu as $k => $v)
+                        <a href="{{ $v['url'] }}">{{ $v['title'] }}</a>
+                        @if(isset($v['lstCat']))
+                        @foreach($$v['lstCat'] as $k1 => $v1)
+                            @if(isset($v1['ltsSubCat']))
+                            @foreach($v1['ltsSubCat'] as $k2 => $v2)
+
+                            @endforeach
+                            @endif
+                        @endforeach
+                        @endif
+                    @endforeach
+                    @endif
                     <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
                 </div>
             </section>
             @yield('slider')
             @yield('content')
-
-
-
-
         </main>
     </div>
 </body>

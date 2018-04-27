@@ -50,13 +50,6 @@
     @endsection
     @section('js')
     <script>
-    $('#example2').DataTable({
-      'paging'      : true,
-      'lengthChange': true,
-      'searching'   : true,
-      'ordering'    : true,
-      'info'        : false,
-      'autoWidth'   : true,   
-    });
+
     </script>
     @endsection

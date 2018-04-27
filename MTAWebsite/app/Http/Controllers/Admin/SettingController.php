@@ -40,6 +40,12 @@ class SettingController extends Controller
 			$model = Setting::find($request->id);
 			
 	        $model->fill($request->all());
+	        if($request->hasFile('img_logo')){
+                $image = $request->file('img_logo');
+                $filename = 'image-' . uniqid() . '.' . $image->getClientOriginalExtension();
+				$request->img_logo->storeAs('uploads', $filename);    
+                $model->logo =$filename;
+            }
 	        $model->save();
 	        
 

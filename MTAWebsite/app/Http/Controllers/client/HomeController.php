@@ -19,7 +19,7 @@ class HomeController extends Controller
     public function index()
     {   
         
-        return View('client.index');
+        return View('client.page.template1');
     }
     public function getContent($slug1,$slug2 = '')
     {   
