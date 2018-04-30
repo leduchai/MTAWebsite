@@ -560,6 +560,37 @@ span.date-for-new {
     text-align: center;
 }
 
+/*.........detail.............*/
+ul.same-category > li{
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+div.area-same-category > h3{
+    margin-top: 30px;
+}
+
+div.area-relative figure{
+    margin-top: 30px;
+}
+
+div.area-relative h3{
+    margin-bottom: -5px;
+    margin-top:  72px;
+}
+
+div.area-relative figure figcaption{
+    font-weight: normal;
+}
+
+
+div.info-date-view{
+    margin-bottom: 20px;
+}
+
+span#date, span#view {
+    padding-left: 5px;
+}
 
 
 
