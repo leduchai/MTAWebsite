@@ -20,8 +20,8 @@ class CatePost extends Model
     	   return $parent->title;
         return null;
     }
-    public function getTopPost($limit){
-        $posts = Post::where('cate_id', $this->id)->limit($limit)->get();
+    public function getTopPost(){
+        $posts = CTPost::where('category_id', $this->id)->get();
         return $posts;
     }
 

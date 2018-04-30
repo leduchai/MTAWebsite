@@ -18,8 +18,8 @@ class HomeController extends Controller
     //
     public function index()
     {   
-        
-        return View('client.page.template1');
+
+        return View('client.index');
     }
     public function getContent($slug1,$slug2 = '')
     {   
@@ -43,21 +43,50 @@ class HomeController extends Controller
         
         return view('client.post.single', compact('post','cateP','posts'));
         case ENTITY_TYPE_PAGE: // Slug dai dien cho 1 bai viet
-            $pages = Page::find($model->entity_id);
-            if (!$pages) {
-             return redirect()->route('404.error');
-         }
-         return View('client.page',compact('pages'));
-         case ENTITY_TYPE_PRODUCT:
-         $product = Product::find($model->entity_id);
-         $cate = Category::find($product->cate_id);
-         $productrls =  Product::where([['cate_id',$cate->id],['id','!=',$product->id]])->limit(6)->get();
-         return View('client.product.single',compact('product','cate','productrls'));
-         case ENTITY_TYPE_CATE_PRODUCT:
-         $cate  = Category::find($model->entity_id);
+        $pages = Page::find($model->entity_id);
+        if (!$pages) {
+           return redirect()->route('404.error');
+       }
+       return View($pages->view,compact('pages'));
+       case ENTITY_TYPE_PRODUCT:
+       $product = Product::find($model->entity_id);
+       $cate = Category::find($product->cate_id);
+       $productrls =  Product::where([['cate_id',$cate->id],['id','!=',$product->id]])->limit(6)->get();
+       return View('client.product.single',compact('product','cate','productrls'));
+       case ENTITY_TYPE_CATE_PRODUCT:
+       $cate  = Category::find($model->entity_id);
 
-         if($cate->parent_id == 0){
-            $sub = Category::where('parent_id',$cate->id)->get();
+       if($cate->parent_id == 0){
+        $sub = Category::where('parent_id',$cate->id)->get();
+        if(count($sub) > 0){
+            $array = '';
+            foreach ($sub as $term){
+                $array .= $term->id . ',';
+            }
+            $array = rtrim($array, ',');
+
+            $array = explode(',', $array);
+                        //dd($array);
+            $products = Product::whereIn('cate_id', $array)->paginate(10);
+                        //dd($product);
+        }else{
+            $products = Product::where('cate_id', $cate->id)->paginate(10);
+
+        }
+    }else{
+        $products = Product::where('cate_id', $cate->id)->paginate(10);
+    }
+
+    $cateP = Category::all();
+    return View('client.product.category',compact('products','cateP','cate'));
+    case ENTITY_TYPE_CATE_POSTS:
+    $cate  = CatePost::find($model->entity_id);
+    $catePost = CatePost::find($cate->id);
+
+    if($catePost)
+    {
+        if($catePost->parent_id == 0){
+            $sub = CatePost::where('parent_id', $cate->id)->get();
             if(count($sub) > 0){
                 $array = '';
                 foreach ($sub as $term){
@@ -67,26 +96,19 @@ class HomeController extends Controller
 
                 $array = explode(',', $array);
                         //dd($array);
-                $products = Product::whereIn('cate_id', $array)->paginate(10);
+                $ctposts = CTPost::whereIn('category_id', $array)->paginate(10);
                         //dd($product);
             }else{
-                $products = Product::where('cate_id', $cate->id)->paginate(10);
-
+                $ctposts = CTPost::where('category_id', $cate->id)->paginate(10);
             }
         }else{
-            $products = Product::where('cate_id', $cate->id)->paginate(10);
+
+            $ctposts = CTPost::where('category_id',$cate->id)->paginate(10);
+
         }
+    }
 
-        $cateP = Category::all();
-        return View('client.product.category',compact('products','cateP','cate'));
-        case ENTITY_TYPE_CATE_POSTS:
-        $cate  = CatePost::find($model->entity_id);
-
-
-        $ctpost = showpost($cate->id);
-
-        $cateP = Category::all();
-        return View('client.post.category',compact('ctpost','cateP','cate'));
+        return View('client.post.category',compact('ctposts','cate'));
         default:
         return view('forbidden');
         break;

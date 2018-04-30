@@ -73,22 +73,52 @@ class PostController extends Controller
         }
     }
 
-    public function remove($id){
-    	Log::info("BEGIN " . get_class() . " => " . __FUNCTION__ ."()");
-        $model = Post::find($id);
-        if(!$model){
+     public function remove(Request $rq){
+        Log::info("BEGIN " . get_class() . " => " . __FUNCTION__ ."()");
+        foreach ($rq->id as $key => $value) {
+           $model = Post::find($value);
+           if(!$model){
             Log::info('END ' 
-            . get_class() . ' => ' . __FUNCTION__ . '()');
+                . get_class() . ' => ' . __FUNCTION__ . '()');
             return redirect()->route('404.error');
         }
-        $result = PostRepository::Destroy($id);
-        
-        Log::info("END " . get_class() . " => " . __FUNCTION__ ."()");
-        
-        if($result){
-            return redirect(route('post.list'));
-        }else{
-            return 'Error';
+        $result = PostRepository::Destroy($value);
+    }
+    Log::info("END " . get_class() . " => " . __FUNCTION__ ."()");
+
+    if($result){
+        return redirect(route('post.list'));
+    }else{
+        return 'Error';
+    }
+}
+    public function delete($id){
+       
+       
+           $model = Post::find($id);
+           if(!$model){
+            Log::info('END ' 
+                . get_class() . ' => ' . __FUNCTION__ . '()');
+            return redirect()->route('404.error');
         }
+        DB::beginTransaction();
+        // try
+        try{
+                DB::table('slugs')->where([
+                    ['entity_id', '=', $model->id],
+                    ['entity_type', '=', $model->entityType]
+                ])->delete();
+            $model->delete();
+            DB::commit();
+            return redirect()->route('post.list');
+
+        // catch     
+        }catch(\Exception $ex){
+            
+            DB::rollback();
+            return 'Error';
+        }   
+
+  
     }
 }

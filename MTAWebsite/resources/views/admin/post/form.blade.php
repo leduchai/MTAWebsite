@@ -111,7 +111,7 @@
       $key = str_replace("x", "", $key);
       $checked = in_array($key, $data)  ? "checked" : null;
       @endphp
-      <input type="checkbox" name="category_id[]" value="{{ $key }}" {{ $checked }}> {{ $value }}<br>
+        <input type="checkbox" name="category_id[]" value="{{ $key }}" {{ $checked }}> {{ $value }}<br>
       @endforeach
   </div>
   <a href="javascript:void(0);" data-toggle="modal" data-target="#myModal" style="text-decoration: underline;">Thêm chuyên mục</a>

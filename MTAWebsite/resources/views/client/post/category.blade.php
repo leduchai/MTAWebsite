@@ -1,50 +1,56 @@
 @extends('layouts.client')
+@section('slider')
+  @include('layouts.slider')
+@endsection
 @section('content')
-     <div class="right">
-<div class="content">
-    <div class="tieude_phai"><div>{{ $cate->title }}</div><span></span></div>
-    <div class="wap_box_new">
-      @foreach($ctpost as $post)
-                    <div class="box_news">
-                <a href="{{ $post->getpost->getSlug() }}" title="{{ $post->getpost->title }}"><img src="{{ asset(UPLOAD_IMAGE_POST.$post->getpost->images) }}" alt="{{ $post->getpost->title }}" /></a>      
-                <a href="{{ $post->getpost->getSlug() }}" title="{{ $post->getpost->title }}"><h3>{{ $post->getpost->title }}</h3></a>
-                <div class="mota"><h2>{{ $post->getpost->Seodesc }}</h2>
-                </div>  
-                <div class="clear"></div>         
-            </div><!---END .box_new-->
-    @endforeach
-            </div><!---END .wap_box_new-->
-    <div class="clear"></div>
-    <div class="phantrang">{{ $ctpost->links() }}</div>
-</div><!---END .box_container--> 
-<div class="right_content2">
- <!--jcau-->    
- <link rel="stylesheet" type="text/css" href="{{ asset('client-assets/css/jcarousel.css') }}" media="screen" />
- <script type="text/javascript" src="{{ asset('client-assets/js/jquery.jcarousel.js') }}"></script><!--jquery ch?y hình ngan t?ng nhít m?t-->
- <script type="text/javascript">
-  jQuery(document).ready(function() {
-    jQuery('#mycarousel').jcarousel({<!--th? ul id="mycarousel" s? du?c th?c thi-->
-      wrap: 'circular',
-      auto:1,
-      scroll: 1
-    });    
-  });
-</script>
-<!--jcau--> 
-<div class="tieude_phai">
-  <div>ĐỐI TÁC</div>
-</div>
-<div class="right_doitac">
-  <ul id="mycarousel" class="jcarousel-skin-tango" style="overflow:hidden;">
-    @foreach($customer as $customer)
-   <li>
-    <div class="pic"><a href="" title="" target="_blank"><img src="{{ asset('uploads/192x125-'.$customer->images) }}"  style="height:123px; width:190px; border:1px #ccc solid;" /></a></div>
-  </li>
-  @endforeach
-  </ul>
+                           <section>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 path">
+                        <a href="{{ route('home.page') }}">Trang Chủ</a><span> / </span><a>{{ $cate->title }}</a>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div class="row">
 
-
-</div>  
-</div>
-</div><!--end right-->
+                    <div class="col-lg-9 col-md-9">
+                      @foreach($ctposts as $p2)
+                        @if($p2->status != "on")
+                        <div class="row post-item">
+                            <div class="col-lg-3 col-md-3 ">
+                                
+                             <a href="{{ $p2->getpost->getSlug() }}"><img src="{{ asset(UPLOAD_IMAGE_POST.$p2->getpost->images) }}" class="img-responsive figure-img img-fluid rounded" alt="{{ $p2->getpost->title }}"></a>
+                    
+                            </div>
+                            <div class="col-lg-9 col-md-9 ">
+                              <figure class="figure">
+                                    
+                                 <h3 class="post-title"><a href="{{ $p2->getpost->getSlug() }}">{{ $p2->getpost->title }}</a></h3>
+                                    <p class="note-category">{{ $p2->getpost->seo_content }}</p>
+                                    <span class="date">{{ $p2->getpost->created_at }}</span>
+                                </figure>
+                            </div>
+                        </div>
+                        @else
+                        <div class="row post-item">
+                             <figure class="figure">
+                                    
+                                <h3 class="post-title"><a href="{{ $p2->getpost->getSlug() }}">{{ $p2->getpost->title }}</a></h3>
+                                </figure>
+                        </div>
+                        @endif
+                      @endforeach
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12" id="paging">
+                                <nav aria-label="Page navigation example">
+                                    {{ $ctposts->links() }}
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3">
+                        @include('layouts.sidebar')
+                    </div>
+                </div>
+            </section>
 @endsection

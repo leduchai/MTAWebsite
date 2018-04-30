@@ -20,4 +20,9 @@ class Page extends Model
 		}
 		return null;
 	}
+	public function childss()
+	{
+		$page = Page::where('parent_id',$this->id)->orderBy('index')->get();
+		return $page;
+	}
 }

@@ -58,13 +58,18 @@ p.note{
     text-align: justify;
 }
 
-figcaption.figure-caption-category{
+figcaption.figure-caption-category {
     font-weight: bold;
     font-size: 20px;
     margin-top: 10px;
     margin-bottom: 10px;
+    height: 60px;
+    overflow-y: hidden;
 }
-
+figcaption.figure-caption-category a
+{
+    color: #333;
+}
 p.note-category{
     padding-bottom: 10px;
     text-align: justify;
@@ -142,7 +147,10 @@ ul.highlight-news{
     text-align: justify;
 
 }
-
+ul.highlight-news li a
+{
+    color: #333;
+}
 ul.highlight-news > li{
     
     padding-bottom: 20px;
@@ -642,5 +650,23 @@ p.title-description{
 
 p.detail-description{
     margin-bottom: 15px;
+}
+.post-item
+{
+    margin-bottom: 25px;
+}
+.post-item .note-category
+{
+    padding-bottom: 0px;
+    margin-bottom: 3px;
+}
+h3.post-title
+{
+    margin-top: 0px;
+    font-size: 17px;
+} 
+h3.post-title a
+{
+    color: #333;
 }
 /*.......................*/

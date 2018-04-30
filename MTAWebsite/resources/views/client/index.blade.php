@@ -13,23 +13,33 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-6 col-md-6">
-                        <figure class="figure">
-                            <img src="{{ asset('client-assets/images/medium-image-10.jpg') }}" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
-                            <figcaption class="figure-caption-category">Hình ảnh, video tiêu biểu</figcaption>
-                        </figure>
-                        <header>
-                            <p class="note-category">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo beatae sunt obcaecati, dolorum nisi, autem!</p>
-                        </header>
-
-                    </div>
+                    <?php $i =1; ?>
+                    @foreach(showpost(7) as $p)
+                        @if($i < 2)
+                        <div class="col-lg-6 col-md-6">
+                           
+                                <figure class="figure">
+                                 <a href="{{ $p->getpost->getSlug() }}"><img src="{{ asset(UPLOAD_IMAGE_POST.$p->getpost->images) }}" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure."></a>
+                                <figcaption class="figure-caption-category"> <a href="{{ $p->getpost->getSlug() }}">{{ $p->getpost->title }} </a></figcaption>
+                                </figure>
+                         
+                            <header>
+                                <p class="note-category">{{ $p->getpost->seo_content }}</p>
+                            </header>
+                        </div>
+                        @endif
+                        <?php $i++; ?>
+                    @endforeach
                     <div class="col-lg-6 col-md-6">
                         <ul class="highlight-news">
-                            <li>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est, cumque? </li>
-                            <li>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat, magni.</li>
-                            <li>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, inventore!</li>
-                            <li>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, cumque.</li>
-                            <li class="last-new">Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, cumque.</li>
+                            <?php $j = 1; ?>
+                    @foreach(showpost(7) as $p1)
+                        @if($j >= 2 && $j < 7)
+                            <li><a href="{{ $p1->getpost->getSlug() }}">{{ $p1->getpost->title }}</a> </li>
+                         @endif
+                        <?php $j++; ?>
+                    @endforeach
+                           
                         </ul>
                         <a href="" class="view-more-right">Xem thêm<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a>
                     </div>
@@ -43,42 +53,21 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-3 col-md-3 col-sm-6">
-                        <figure class="figure">
-                            <img src="/MTA-Website/MTAWebsite/Content/asset/image/medium-image-10.jpg" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
-                            <figcaption class="figure-caption-category">Hình ảnh, video tiêu biểu</figcaption>
-                        </figure>
-                        <header>
-                            <p class="note-category">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo beatae sunt obcaecati, dolorum nisi, autem!</p>
-                        </header>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-6">
-                        <figure class="figure">
-                            <img src="/MTA-Website/MTAWebsite/Content/asset/image/medium-image-10.jpg" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
-                            <figcaption class="figure-caption-category">Hình ảnh, video tiêu biểu</figcaption>
-                        </figure>
-                        <header>
-                            <p class="note-category">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo beatae sunt obcaecati, dolorum nisi, autem!</p>
-                        </header>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-6">
-                        <figure class="figure">
-                            <img src="/MTA-Website/MTAWebsite/Content/asset/image/medium-image-10.jpg" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
-                            <figcaption class="figure-caption-category">Hình ảnh, video tiêu biểu</figcaption>
-                        </figure>
-                        <header>
-                            <p class="note-category">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo beatae sunt obcaecati, dolorum nisi, autem!</p>
-                        </header>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-6">
-                        <figure class="figure">
-                            <img src="/MTA-Website/MTAWebsite/Content/asset/image/medium-image-10.jpg" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
-                            <figcaption class="figure-caption-category">Hình ảnh, video tiêu biểu</figcaption>
-                        </figure>
-                        <header>
-                            <p class="note-category">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo beatae sunt obcaecati, dolorum nisi, autem!</p>
-                        </header>
-                    </div>
+                    <?php $k = 1; ?>
+                    @foreach(showpost(1) as $p2)
+                    @if($k<5)
+                        <div class="col-lg-3 col-md-3 col-sm-6">
+                            <figure class="figure">
+                                <a href="{{ $p2->getpost->getSlug() }}"><img src="{{ asset(UPLOAD_IMAGE_POST.$p2->getpost->images) }}" class="img-responsive figure-img img-fluid rounded" alt="{{ $p2->getpost->title }}"></a>
+                                <figcaption class="figure-caption-category"><a href="{{ $p2->getpost->getSlug() }}">{{ $p2->getpost->title }}</a></figcaption>
+                            </figure>
+                            <header>
+                                <p class="note-category">{{ $p2->getpost->seo_content }}</p>
+                            </header>
+                        </div>
+                    @endif
+                         <?php $j++; ?>
+                    @endforeach
                 </div>
                 <div class="row view-more-area">
                     <div class="col-lg-11 col-md-11 a-line">
@@ -89,38 +78,6 @@
                     </div>
                 </div>
             </section>
-
-
-            <section>
-                <div class="row title-single">
-                    <div class="col-lg-12 col-md-12">
-                        <h2 class="title-single">Thông Báo</h2>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-6 col-md-6">
-                        <figure class="figure">
-                            <img src="/MTA-Website/MTAWebsite/Content/asset/image/medium-image-10.jpg" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
-                            <figcaption class="figure-caption-category">Hình ảnh, video tiêu biểu</figcaption>
-                        </figure>
-                        <header>
-                            <p class="note-category">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo beatae sunt obcaecati, dolorum nisi, autem!</p>
-                        </header>
-
-                    </div>
-                    <div class="col-lg-6 col-md-6">
-                        <ul class="highlight-news">
-                            <li>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est, cumque? </li>
-                            <li>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat, magni.</li>
-                            <li>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, inventore!</li>
-                            <li>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, cumque.</li>
-                            <li class="last-new">Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, cumque.</li>
-                        </ul>
-                        <a href="" class="view-more-right">Xem thêm<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a>
-                    </div>
-                </div>
-            </section>
-
             <section>
                 <div class="row title-single">
                     <div class="col-lg-12 col-md-12">
@@ -139,7 +96,7 @@
                             <a href="" class="view-more">Xem thêm<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a>
                         </header>
                         <figure class="figure">
-                            <img src="/MTA-Website/MTAWebsite/Content/asset/image/big-image-9.jpg" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                            <img src="{{ asset('client-assets/images/big-image-9.jpg') }}" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
                         </figure>
                     </div>
                 </div>
@@ -156,7 +113,7 @@
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-sm-4">
                                 <figure class="figure">
-                                    <img src="/MTA-Website/MTAWebsite/Content/asset/image/medium-image-10.jpg" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                                    <img src="{{ asset('client-assets/images/medium-image-10.jpg') }}" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
                                     <figcaption class="figure-caption-category">Hình ảnh, video tiêu biểu</figcaption>
                                 </figure>
                                 <header>
@@ -165,7 +122,7 @@
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-4">
                                 <figure class="figure">
-                                    <img src="/MTA-Website/MTAWebsite/Content/asset/image/medium-image-10.jpg" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                                    <img src="{{ asset('client-assets/images/medium-image-10.jpg') }}" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
                                     <figcaption class="figure-caption-category">Hình ảnh, video tiêu biểu</figcaption>
                                 </figure>
                                 <header>
@@ -174,7 +131,7 @@
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-4">
                                 <figure class="figure">
-                                    <img src="/MTA-Website/MTAWebsite/Content/asset/image/medium-image-10.jpg" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                                    <img src="{{ asset('client-assets/images/medium-image-10.jpg') }}" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
                                     <figcaption class="figure-caption-category">Hình ảnh, video tiêu biểu</figcaption>
                                 </figure>
                                 <header>

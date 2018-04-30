@@ -53,7 +53,6 @@ class PageController extends Controller
     }
      public function save(SavePageRequest $request){
         
-
 		// begin transaction
 		DB::beginTransaction();
 		// try
@@ -66,14 +65,14 @@ class PageController extends Controller
 			}
 	        $model->fill($request->all());
 	       	if($request->hasFile('upload_image')){
-				$image_path = UPLOAD_IMAGE_POST.$model->images; 
+				$image_path = UPLOAD_IMAGE_PAGE.$model->images; 
 					if(File::exists($image_path)) {
 					    File::delete($image_path);
 					}
                 $image = $request->file('upload_image');
                 $filename = 'image-' . uniqid() . '.' . $image->getClientOriginalExtension();
-                    $path_1 = public_path(UPLOAD_IMAGE_POST . $filename);
-                    Image::make($image->getRealPath())->fit(170, 130)->save($path_1);
+                    $path_1 = public_path(UPLOAD_IMAGE_PAGE . $filename);
+                    Image::make($image->getRealPath())->fit(1140, 428)->save($path_1);
                     
                 $model->images =$filename;
             }
@@ -103,7 +102,7 @@ class PageController extends Controller
 			return 'Error';
 		}	
     }
-    public function remove($id){
+    public function remove(Request $rq){
        
         foreach ($rq->id as $key => $value) {
            $model = Page::find($value);
@@ -130,6 +129,35 @@ class PageController extends Controller
 			return 'Error';
 		}	
    	}
+  
+    }
+        public function delete($id){
+       
+        foreach ($rq->id as $key => $value) {
+           $model = Page::find($value);
+           if(!$model){
+            Log::info('END ' 
+                . get_class() . ' => ' . __FUNCTION__ . '()');
+            return redirect()->route('404.error');
+        }
+        DB::beginTransaction();
+        // try
+        try{
+                DB::table('slugs')->where([
+                    ['entity_id', '=', $model->id],
+                    ['entity_type', '=', $model->entityType]
+                ])->delete();
+            $model->delete();
+            DB::commit();
+            return redirect()->route('page.list');
+
+        // catch     
+        }catch(\Exception $ex){
+            
+            DB::rollback();
+            return 'Error';
+        }   
+    }
   
     }
 }

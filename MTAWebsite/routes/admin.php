@@ -18,7 +18,7 @@ Route::get('/generate-slug-category', function(Request $request){
 Route::get('/page-generate-slug', function(Request $request){
 	$slug = str_slug(trim($request->title), '-');
 	$date = date('i');
-	$slug1 =$slug.".html";
+	$slug1 ='/'.$slug.".html";
 	$result = App\Models\Slug::checkSlugExisted($slug1);
 	if($result)
 	{
@@ -81,7 +81,7 @@ Route::group(['middleware' => 'auth'], function(){
 		Route::group(['prefix'=>'post'],function(){
 			Route::get('list', 
 				'Admin\PostController@index')->name('post.list');
-			Route::get('/remove/{id}', 
+			Route::get('/remove', 
 				'Admin\PostController@remove')->name('post.remove');
 			Route::get('post/create', 
 				'Admin\PostController@create')->name('post.create');
@@ -100,7 +100,8 @@ Route::group(['middleware' => 'auth'], function(){
 			Route::get('/edit/{id}', 
 				'Admin\PageController@update')->name('page.update');
 			Route::post('/save','Admin\PageController@save')->name('page.save');
-			Route::post('/remove','Admin\PageController@remove')->name('page.remove');	
+			Route::post('/remove','Admin\PageController@remove')->name('page.remove');
+			Route::get('/delete/{id}','Admin\PageController@delete')->name('page.delete');	
 		});
 
 		Route::group(['prefix'=>'banner'],function(){

@@ -5,8 +5,9 @@ use App\Models\CTPost;
 use App\Models\Setting;
 use App\Models\Category;
 use App\Models\Product;
-define('UPLOAD_IMAGE_POST','uploads/170x130-');
+define('UPLOAD_IMAGE_POST','uploads/555x312-');
 define('UPLOAD_IMAGE_PRODUCT','uploads/410x230-');
+define('UPLOAD_IMAGE_PAGE','uploads/410x230-');
 define('ROLE_MODERATOR', 500);
 define('ROLE_ADMIN', 900);
 define('ROLE_UPLOADER', 100);
@@ -120,13 +121,13 @@ if(!function_exists('showpost')){
                         
                         $array = explode(',', $array);
                         //dd($array);
-                        $ctposts = CTPost::whereIn('cate_id', $array)->paginate(10);
+                        $ctposts = CTPost::whereIn('category_id', $array)->get();
                         //dd($product);
                     }else{
-                        $ctposts = CTPost::where('cate_id', $id)->paginate(10);
+                        $ctposts = CTPost::where('category_id', $id)->get();
                     }
                 }else{
-                    $ctposts = CTPost::where('cate_id', $id)->paginate(10);
+                    $ctposts = CTPost::where('category_id', $id)->get();
                 }
     return $ctposts;
   }

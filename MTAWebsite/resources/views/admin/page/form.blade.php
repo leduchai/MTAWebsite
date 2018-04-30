@@ -83,7 +83,7 @@
    <div class="panel-footer">
     @if(!empty($model->id))
     <div class="col-md-6">
-       <a href="{{route('page.remove', ['id' => $model->id])}}" >Bỏ vào thùng rác</a>
+       <a href="{{route('page.delete', ['id' => $model->id])}}" >Bỏ vào thùng rác</a>
    </div>
    @endif
    <div class="col-md-6 ">
@@ -108,9 +108,10 @@
                   <optgroup label="Chọn Cha">
                    @foreach ($listPage as $key => $value)
                    @php
-                   $key = str_replace("x", "", $key);
+                    $key = str_replace("x", "", $key);
+                    $selected = $key==$model->parent_id ? "selected" : '';
                    @endphp
-                   <option value="{{$key}}" >{{$value}}</option>
+                   <option value="{{$key}}" {{ $selected }}>{{$value}}</option>
                    @endforeach
                  </optgroup>
                </select>
@@ -121,9 +122,10 @@
              		@php 
              			$data = array(
              			'client.page.template' => 'Giao diện mặc định',
-             			'client.page.template1' => 'template1',
-             			'client.page.template2' => 'template2',
-             			'client.page.template3' => 'template3',
+             			'client.page.template1' => 'Giới thiệu',
+             			'client.page.template2' => 'Đào tạo',
+             			'client.page.template3' => 'Tuyển sinh',
+                  'client.page.template4' => 'Ngiên cứu',
              			);
              		@endphp
              		@foreach($data as $key=>$value)
@@ -139,7 +141,7 @@
              </div>
              <div class="form-group">
              	<label class="control-label">Thứ tự</label>
-             	<input type="text" name="index" value="0" class="form-control">
+             	<input type="text" name="index" value="{{ $model->index }}" class="form-control">
              	<p class="description">Thứ tự xuất hiện trên trang cha</p>
              </div>
    </div>
@@ -149,7 +151,7 @@
   <div class="panel-body collapse" id="demo" >
     <input id="file" type="file" name="upload_image" accept="image/x-png,image/gif,image/jpeg" class="form-control" value="{{ $model->images }}" onchange="file_change(this)" >
     @if(isset($model->id))
-        <img src="{{ asset(UPLOAD_IMAGE_POST.$model->images) }}" id="img" class="img-post" />
+        <img src="{{ asset(UPLOAD_IMAGE_PAGE.$model->images) }}" id="img" class="img-post" />
     @else
         <img  id="img" class="img-post" />
     @endif

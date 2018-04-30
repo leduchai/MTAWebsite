@@ -3,7 +3,8 @@
     @include('layouts.slider')
 @endsection
 @section('content')
-            <section>
+            
+                   <section>
                 <div class="row">
                     <div class="col-lg-12 col-md-12 path">
                         <a>Trang Chủ</a><span> / </span><a>{{ $pages->title }}</a>
@@ -17,7 +18,7 @@
             <section>
             <div class="row title-single">
                     <div class="col-lg-12 col-md-12">
-                        <h2 class="title-single">{{ $page->title }}</h2>
+                         <h2 class="title-single"><a href="{{ $page->getSlug() }}">{{ $page->title }}</a></h2>
                     </div>
                 </div>
                 <div class="row">
@@ -41,7 +42,7 @@
             <section>
                 <div class="row title-single">
                     <div class="col-lg-12 col-md-12">
-                        <h2 class="title-single">{{ $page->title }}</h2>
+                         <h2 class="title-single"><a href="{{ $page->getSlug() }}">{{ $page->title }}</a></h2>
                     </div>
                 </div>
                 <div class="row">
@@ -66,7 +67,7 @@
             <section>
                 <div class="row title-single">
                     <div class="col-lg-12 col-md-12">
-                        <h2 class="title-single">{{ $page->title }}</h2>
+                        <h2 class="title-single"><a href="{{ $page->getSlug() }}">{{ $page->title }}</a></h2>
                     </div>
                 </div>
                 <div class="row">
@@ -86,11 +87,11 @@
                     </div>
                 </div>
             </section>
-            @elseif($i==4)
+            @elseif($i>=4 && $i <=5)
             <section>
                 <div class="row title-single">
                     <div class="col-lg-12 col-md-12">
-                        <h2 class="title-single">{{ $page->title }}</h2>
+                         <h2 class="title-single"><a href="{{ $page->getSlug() }}">{{ $page->title }}</a></h2>
                     </div>
                 </div>
                 <div class="row">
@@ -98,7 +99,7 @@
                     <div class="col-lg-3 col-md-3 col-sm-6">
                         <figure class="figure">
                             <img src="{{ asset(UPLOAD_IMAGE_PAGE.$pa->images) }}" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
-                            <figcaption class="figure-caption-category">{{ $pa->title }}</figcaption>
+                            <figcaption class="figure-caption caption-product"><a href="{{ $pa->getSlug() }}">{{ $pa->title }}</a></figcaption>
                         </figure>
                         <header>
                             <p class="note">{{ $pa->seo_content }}</p>
@@ -115,37 +116,31 @@
                     </div>
                 </div>
             </section>
+            @else
+                            
+            <section class="background-gray">
+                <div class="row title-single">
+                    <div class="col-lg-12 col-md-12">
+                    <h2 class="title-single"><a href="{{ $page->getSlug() }}">{{ $page->title }}</a></h2>
+                    </div>
+                </div>
+                <div class="row" id="slide-contract">
+
+                    <div class="owl-carousel owl-theme">
+                        @foreach($page->childss() as $pa)
+                        <div class="item">
+                           <img src="{{ asset(UPLOAD_IMAGE_PAGE.$pa->images) }}" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                            <figcaption class="figure-caption caption-product"><a href="{{ $pa->getSlug() }}">{{ $pa->title }}</a></figcaption>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+            </section>
             @endif
             <?php $i++; ?>
             @endforeach
-            <section class="background-gray">
-                <div class="row">
-                     <?php $j = 1;?> 
-            @foreach($pages->childss() as $p1)
-            @if($j>4)
-                    <div class="col-lg-6 col-md-6">
-                        <div class="row title-single">
-                            <div class="col-lg-12 col-md-12">
-                                <h2 class="title-single">Cơ Cấu Tổ Chức</h2>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12 col-md-12">
-                                <figure class="figure">
-                                    <img src="{{ asset(UPLOAD_IMAGE_PAGE.$p1->images) }}" class="img-responsive figure-img img-fluid rounded" alt="{{ $p1->title }}">
-                                    <figcaption class="figure-caption-category">{{ $p1->title }}</figcaption>
-                                </figure>
-                                <header>
-                                    <p class="note-category">{{ $p1->seo_ttile }}</p>
-                                </header>
-                                <a href="{{ $p1->getSlug() }}" class="view-more">Xem thêm<span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span></a>
-                            </div>
-                        </div>
-                    </div>
-                     @endif
-            <?php $j++; ?>
-            @endforeach
+            
 
-                </div>
-            </section>
+
+            
             @endsection

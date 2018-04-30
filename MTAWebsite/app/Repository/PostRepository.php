@@ -36,7 +36,7 @@ class PostRepository
                 $image = $request->file('upload_image');
                 $filename = 'image-' . uniqid() . '.' . $image->getClientOriginalExtension();
                     $path_1 = public_path(UPLOAD_IMAGE_POST . $filename);
-                    Image::make($image->getRealPath())->fit(170, 130)->save($path_1);
+                    Image::make($image->getRealPath())->fit(555, 312)->save($path_1);
                     
                 $model->images =$filename;
             }
@@ -54,9 +54,9 @@ class PostRepository
 	        DB::table('chitiet')->where([
                     ['post_id', '=', $model->id]
                 ])->delete();
-	        if($request->cate_id > 0)
+	        if($request->category_id > 0)
 	        {
-			foreach ($request->cate_id as $key => $value) {
+			foreach ($request->category_id as $key => $value) {
 				$CTPost = new CTPost();
 				$CTPost->post_id = $model->id;
 				$CTPost->category_id = $value;
