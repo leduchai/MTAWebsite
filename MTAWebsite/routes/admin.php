@@ -114,6 +114,26 @@ Route::group(['middleware' => 'auth'], function(){
 			Route::post('/save','Admin\BannerController@save')->name('banner.save');
 			Route::get('/remove/{id}','Admin\BannerController@remove')->name('banner.remove');	
 		});
+				Route::group(['prefix'=>'faculty'],function(){
+			Route::get('list', 
+				'Admin\FacultyController@index')->name('faculty.list');
+			Route::get('/create', 
+				'Admin\FacultyController@create')->name('faculty.create');
+			Route::get('/edit/{id}', 
+				'Admin\FacultyController@update')->name('faculty.update');
+			Route::post('/save','Admin\FacultyController@save')->name('faculty.save');
+			Route::get('/remove/{id}','Admin\FacultyController@remove')->name('faculty.remove');	
+		});
+			Route::group(['prefix'=>'contract'],function(){
+			Route::get('list', 
+				'Admin\ContractController@index')->name('contract.list');
+			Route::get('/create', 
+				'Admin\ContractController@create')->name('contract.create');
+			Route::get('/edit/{id}', 
+				'Admin\ContractController@update')->name('contract.update');
+			Route::post('/save','Admin\ContractController@save')->name('contract.save');
+			Route::get('/remove/{id}','Admin\ContractController@remove')->name('contract.remove');	
+		});
 		Route::group(['prefix'=>'setting'],function(){
 
 			Route::get('/', 

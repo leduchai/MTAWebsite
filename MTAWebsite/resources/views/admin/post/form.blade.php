@@ -74,7 +74,7 @@
      <div class="panel-heading">Đăng bài viết</div>
      <div class="panel-body">
         <div class="text-left col-md-6 col-xs-6 col-sm-6">
-           <a href="{{route('post.list')}}" class="btn btn-default">Xem trước</a>
+           <button value="0" name="subject" formtarget="_blank" class="btn btn-default">Xem trước</button>
        </div>
        <div class="text-right col-md-6 col-xs-6 col-sm-6">
            <a href="{{ route('post.list') }}" class="btn btn-default">Trở lại</a>
@@ -87,7 +87,7 @@
    </div>
    @endif
    <div class="col-md-6 ">
-       <button type="submit" class="btn btn-info">
+       <button type="submit" class="btn btn-info" value="1" name="subject">
           @if(empty($model->id))
             Đăng bài viết
           @else

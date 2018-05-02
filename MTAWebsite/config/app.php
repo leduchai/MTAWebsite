@@ -166,6 +166,7 @@ return [
         Yajra\DataTables\DataTablesServiceProvider::class,
         Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
+        CyrildeWit\PageViewCounter\PageViewCounterServiceProvider::class,
         /*
          * Package Service Providers...
          */

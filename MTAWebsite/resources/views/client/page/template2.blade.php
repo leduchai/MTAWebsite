@@ -20,13 +20,15 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-12 col-md-12">
-                        <p class="text-description">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
+                        <p class="text-description">
+                            {!! $pages->Content !!}
+                        </p>
                     </div>
                 </div>
             </section>
             <?php $i = 1;?> 
             @foreach($pages->childss() as $page)
-            @if($i==1)
+            @if($page->index==1)
             <section>
                 <div class="row title-single">
                     <div class="col-lg-12 col-md-12">
@@ -61,8 +63,8 @@
                 </div>
                 <div class="row">
                     <?php $j = 1;?> 
-            @foreach($pages->childss() as $pa)
-            @if($j>1)
+                    @foreach($pages->childss() as $pa)
+                    @if($j>1)
                     <div class="col-lg-6 col-md-6 col-sm-6">
                         <figure class="figure">
                             <a href="{{ $pa->getSlug() }}"><img src="{{ asset(UPLOAD_IMAGE_PAGE.$pa->images) }}" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure."></a>

@@ -15,15 +15,16 @@
               <table class="table table-bordered table-striped table-hover" id="example2">
                 <thead>
                   <tr>
-                    <th><input type="checkbox" id="checkall" />Tiêu đề</th>
-                    <th>Thời gian</th>
+                    <th><input type="checkbox" class="checkall" />Tiêu đề</th>
                   </tr>
                 </thead>
                 <tbody>
-                 @foreach ($page as $element)
+                 @foreach ($page as $key => $element)
+                  @php
+                    $key = str_replace("x", "", $key);
+                   @endphp
                  <tr>
-                  <td><input type="checkbox" class="idcheck"  value="{{ $element->id }}" name="id[]" /><a href="{{route('page.update', ['id' => $element->id])}}">{{$element->title}}</a></td>
-                  <td>{{ $element->created_at }}</td>
+                  <td><input type="checkbox" class="idcheck"  value="{{ $key }}" name="id[]" /><a href="{{route('page.update', ['id' => $key])}}">{{$element}}</a></td>
                 </tr>
                 @endforeach 
 
@@ -54,6 +55,66 @@
   @endsection
   @section('js')
   <script>
-    
+     $('.checkall').click(function () {
+  if (this.checked) {
+    var checkbox = $('.idcheck');
+    for (var i = 0; i < checkbox.length; i++) {
+      checkbox[i].checked = true;
+    }
+  }
+  else {
+    var checkbox = $('.idcheck');
+    for (var i = 0; i < checkbox.length; i++) {
+      checkbox[i].checked = false;
+    }
+  }
+});
+$("#FormDelete").click(function (event) {
+  var tacvu = $('#tavu').val();
+  if(tacvu==0)
+  {
+    event.preventDefault();
+    return false;
+  }
+  else
+  {
+    var x = confirm("Bạn có muốn xóa tất cả các mục được chọn không?");
+    if(x)
+    {
+      var checkbox = $('.idcheck');
+      var result = "";
+                    // Lặp qua từng checkbox để lấy giá trị
+                    for (var i = 0; i < checkbox.length; i++) {
+                      if (checkbox[i].checked === true) {
+                        result += ' [' + checkbox[i].value + ']';
+                      }
+                    }
+                    if (result != "")
+                    {
+                      return true;
+                    }
+                    else
+                    {
+                      alert("Bạn chưa chọn mục để xóa");
+                      return false;
+                    }
+                    if (x) {
+                      return true;
+                    }
+                    else {
+
+                      event.preventDefault();
+                      return false;
+                    }
+                }
+                else
+                {
+                  event.preventDefault();
+                  return false;
+                }
+                
+            }
+
+        });
   </script>
   @endsection

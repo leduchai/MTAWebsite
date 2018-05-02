@@ -20,7 +20,6 @@
                   <th>Tiêu đề</th>
                   <th>Link</th>
                   <th><a href="{{route('banner.create')}}" class="btn btn-xs btn-success">Create</a></th>
-                  
                 </tr>
                 </thead>
                 <tbody>
@@ -31,8 +30,9 @@
                   <td>{{$element->location}}</td>
                   <td>{{$element->title}}</td>
                   <td>{{$element->url}}</td>
-                  <td><a href="{{route('banner.update', ['id' => $element->id])}}" class="btn btn-xs btn-info">Edit</a>
-                      <a href="{{route('banner.remove', ['id' => $element->id])}}" class="btn btn-xs btn-danger">Remove</a></td>
+                  <td>
+                  <a href="{{route('banner.update', ['id' => $element->id])}}" ><i class="glyphicon glyphicon-edit"></i></a>
+                  <a href="{{route('banner.remove', ['id' => $element->id])}}" ><i class="glyphicon glyphicon-trash"></i></a></td>
                 </tr>
                   @endforeach
                 </tbody>

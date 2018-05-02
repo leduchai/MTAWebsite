@@ -73,9 +73,6 @@
   <div class="panel panel-default">
      <div class="panel-heading">Đăng bài viết</div>
      <div class="panel-body">
-        <div class="text-left col-md-6 col-xs-6 col-sm-6">
-           <a href="{{route('page.list')}}" class="btn btn-default">Xem trước</a>
-       </div>
        <div class="text-right col-md-6 col-xs-6 col-sm-6">
            <a href="{{ route('page.list') }}" class="btn btn-default">Trở lại</a>
        </div>
@@ -126,6 +123,8 @@
              			'client.page.template2' => 'Đào tạo',
              			'client.page.template3' => 'Tuyển sinh',
                   'client.page.template4' => 'Ngiên cứu',
+                  'client.page.template5' => 'Hợp tác',
+                  'client.page.template6' => 'Sinh Viên',
              			);
              		@endphp
              		@foreach($data as $key=>$value)
@@ -135,7 +134,6 @@
              				@endphp
              			<option value="{{ $key }}" {{ $selected1 }}>{{ $value }}</option>
              		}
-             		
              		@endforeach
              	</select>
              </div>

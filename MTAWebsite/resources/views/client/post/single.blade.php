@@ -1,40 +1,44 @@
 @extends('layouts.client')
 @section('content')
-     <div class="right">
-<div class="box_container">
-    <div class="content">   
-      <div class="tieude_phai"><div>{{ $post->title }}</div><span></span></div>
-        {!! $post->content !!}             
-    </div><!--.content-->
-</div><!--.box_container-->
-<div class="right_content2">
- <!--jcau-->    
- <link rel="stylesheet" type="text/css" href="{{ asset('client-assets/css/jcarousel.css') }}" media="screen" />
- <script type="text/javascript" src="{{ asset('client-assets/js/jquery.jcarousel.js') }}"></script><!--jquery ch?y hình ngan t?ng nhít m?t-->
- <script type="text/javascript">
-  jQuery(document).ready(function() {
-    jQuery('#mycarousel').jcarousel({<!--th? ul id="mycarousel" s? du?c th?c thi-->
-      wrap: 'circular',
-      auto:1,
-      scroll: 1
-    });    
-  });
-</script>
-<!--jcau--> 
-<div class="tieude_phai">
-  <div>ĐỐI TÁC</div>
-</div>
-<div class="right_doitac">
-  <ul id="mycarousel" class="jcarousel-skin-tango" style="overflow:hidden;">
-    @foreach($customer as $customer)
-   <li>
-    <div class="pic"><a href="" title="" target="_blank"><img src="{{ asset('uploads/192x125-'.$customer->images) }}"  style="height:123px; width:190px; border:1px #ccc solid;" /></a></div>
-  </li>
-  @endforeach
-  </ul>
-
-
-</div>  
-</div>
-</div><!--end right-->
+<section>
+  <div class="row">
+    <div class="col-lg-3 col-md-3">
+      <p> menu clapse đang hoàn thiện nốt</p>
+    </div>
+    <div class="col-lg-9 col-md-9">
+      <div class="row">
+        <div class="col-lg-12 col-md-12">
+          <h3 id="title-post">{{ $post['title'] }}</h3>
+        </div>
+      </div>
+      <div class="row info-date-view">
+        <div class="col-lg-5 col-md-5">
+          <span class="glyphicon glyphicon-calendar"><span id="date">{{ $date }}<span></span>
+        </div>
+        <div class="col-lg-3 col-md-3">
+          <span class="glyphicon glyphicon-eye-open"><span id="view">{{ $view }}<span></span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12 col-md-12">
+          {!! $post['content'] !!}
+        </div>
+      </div>
+        <div class="row">
+    <div class="col-lg-8 col-md-8 area-same-category">
+      <h3>Cùng chuyên mục</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12 col-md-12">
+      <ul class="same-category">
+        @foreach($postrl as $rl)
+        <li><a href="{{ $rl->getpost->getSlug() }}">{{ $rl->getpost->title }}</a></li>
+        @endforeach
+      </ul>
+    </div>
+  </div>
+    </div>
+  </div>
+</section>
 @endsection

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "d04e76451f38f5308886d9f656cea8d5",
+    "content-hash": "3d3614717c1ca9accd07e064ad19d50d",
     "packages": [
         {
             "name": "chencha/share",
@@ -63,6 +63,64 @@
                 "share"
             ],
             "time": "2016-03-24T08:05:57+00:00"
+        },
+        {
+            "name": "cyrildewit/laravel-page-view-counter",
+            "version": "v1.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cyrildewit/laravel-page-view-counter.git",
+                "reference": "ffe9527b54bdb6b0005ed5f3b0537fbe34997c9c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cyrildewit/laravel-page-view-counter/zipball/ffe9527b54bdb6b0005ed5f3b0537fbe34997c9c",
+                "reference": "ffe9527b54bdb6b0005ed5f3b0537fbe34997c9c",
+                "shasum": ""
+            },
+            "require": {
+                "nesbot/carbon": "^1.22"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^3.4",
+                "phpunit/phpunit": "~5.7.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "CyrildeWit\\PageViewCounter\\PageViewCounterServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "CyrildeWit\\PageViewCounter\\": "src/PageViewCounter"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Cyril de Wit",
+                    "email": "info@cyrildewit.nl",
+                    "homepage": "http://cyrildewit.nl",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Simple package for storing page views of Eloquent models into the database",
+            "homepage": "https://github.com/cyrildewit/laravel-page-view-counter",
+            "keywords": [
+                "cyrildewit",
+                "hits",
+                "laravel",
+                "model",
+                "pageviews",
+                "visits"
+            ],
+            "time": "2018-03-15T07:09:12+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",

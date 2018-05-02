@@ -65,13 +65,12 @@
         <div class="box-header">
           <h3 class="box-title">Chuyên mục</h3>
         </div>
-        <!-- /.box-header -->
         <div class="box-body">
           <form action="{{ route('cate.post.remove') }}" method="post">
           <table id="example2" class="table table-bordered table-hover">
             <thead>
               <tr>
-                <th class="text-left"><input type="checkbox" id="checkall" />Tiêu đề</th>
+                <th class="text-left"><input type="checkbox" class="checkall" />Tiêu đề</th>
                 <th>Chuỗi cho đường dẫn tĩnh</th>
                 
               </tr>

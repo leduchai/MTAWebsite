@@ -11,34 +11,45 @@
                     </div>
                 </div>
             </section>
-
-            <?php $i = 1;?> 
-            @foreach($pages->childss() as $page)
-            @if($i==1)
+            
             <section>
-            <div class="row title-single">
+                <div class="row title-single">
                     <div class="col-lg-12 col-md-12">
-                         <h2 class="title-single"><a href="{{ $page->getSlug() }}">{{ $page->title }}</a></h2>
+                        <h2 class="title-single">{{ $pages->title }}</h2>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-12 col-md-12 background-over">
+                    <div class="col-lg-12 col-md-12">
+                        <p class="text-description">{{ $pages->content }}</p>
+                    </div>
+                </div>
+            </section>
+            @foreach($pages->childss() as $page)
+            @if($page->index==1)
+            <section>
+                <div class="row title-single">
+                    <div class="col-lg-12 col-md-12">
+                        <h2 class="title-single">{{ $page->title }}</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <a href=""><img alt="" src="{{ asset(UPLOAD_IMAGE_PAGE1.$page->images) }}" class="img-responsive"> </a>
+                    </div>
+                    <div class="col-lg-6 col-md-6 description-area">
                         <header class="description-header">
                             <h3 class="title-description">
                                 {{ $page->title }}
                             </h3>
                             <p class="detail-description">
-                               {{ $page->seo_content }}
+                                {{ $page->seo_content }}
                             </p>
-                            <a href="{{ $page->getSlug() }}" class="view-more">Xem thêm<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a>
                         </header>
-                        <figure class="figure">
-                            <img src="{{ asset(UPLOAD_IMAGE_PAGE.$page->images) }}" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
-                        </figure>
+                        <a href=" {{ $page->getSlug() }}" class="view-more">Xem thêm<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a>
                     </div>
                 </div>
             </section>
-            @elseif($i==2)
+            @elseif($page->index==2)
             <section>
                 <div class="row title-single">
                     <div class="col-lg-12 col-md-12">
@@ -58,36 +69,11 @@
                         <a href="{{ $page->getSlug() }}" class="view-more">Xem thêm<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a>
                     </div>
                     <div class="col-lg-6 col-md-6">
-                        <a href=""><img alt="" src="{{ asset('client-assets/images/medium-image-2.png') }}" class="img-responsive"> </a>
-                    </div>
-
-                </div>
-            </section>
-            @elseif($i==3)
-            <section>
-                <div class="row title-single">
-                    <div class="col-lg-12 col-md-12">
-                        <h2 class="title-single"><a href="{{ $page->getSlug() }}">{{ $page->title }}</a></h2>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 background-over">
-                        <header class="description-header" id="color-black">
-                            <h3 class="title-description">
-                                {{ $page->title }}
-                            </h3>
-                            <p class="detail-description">
-                                 {{ $page->seo_content }}
-                            </p>
-                            <a href="{{ $page->getSlug() }}" class="view-more">Xem thêm<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a>
-                        </header>
-                        <figure class="figure">
-                            <img src="{{ asset(UPLOAD_IMAGE_PAGE.$page->images) }}" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
-                        </figure>
+                        <a href=""><img alt="" src="{{ asset(UPLOAD_IMAGE_PAGE1.$page->images) }}" class="img-responsive"> </a>
                     </div>
                 </div>
             </section>
-            @elseif($i>=4 && $i <=5)
+            @elseif($page->index==3)
             <section>
                 <div class="row title-single">
                     <div class="col-lg-12 col-md-12">
@@ -129,7 +115,7 @@
                     <div class="owl-carousel owl-theme">
                         @foreach($page->childss() as $pa)
                         <div class="item">
-                           <img src="{{ asset(UPLOAD_IMAGE_PAGE.$pa->images) }}" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                           <img src="{{ asset(UPLOAD_IMAGE_PAGE1.$pa->images) }}" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
                             <figcaption class="figure-caption caption-product"><a href="{{ $pa->getSlug() }}">{{ $pa->title }}</a></figcaption>
                         </div>
                         @endforeach
@@ -137,10 +123,5 @@
                 </div>
             </section>
             @endif
-            <?php $i++; ?>
             @endforeach
-            
-
-
-            
             @endsection

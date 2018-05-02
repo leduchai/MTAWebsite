@@ -24,9 +24,6 @@ class SavePageRequest extends FormRequest
     public function rules()
     {
        return [
-            'title' => ['required',
-            Rule::unique('page')->ignore($this->get('id'))
-              ],
             'slug' => [
                 'required', 
                 Rule::unique("slugs")->ignore($this->get('id'), 'entity_id')->where(function ($query) {

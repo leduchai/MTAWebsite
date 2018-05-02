@@ -3,12 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
+use CyrildeWit\PageViewCounter\Traits\HasPageViewCounter;
 class Post extends Model
-{
+{	
+	use HasPageViewCounter;
     protected $table = 'post';
     public $entityType = ENTITY_TYPE_POST;
-    public $fillable = ['title', 'content','seo_title','seo_content','status'];
+    public $fillable = ['title', 'content','seo_title','seo_content','status','post_type'];
 
     public function category()
 	{

@@ -22,7 +22,7 @@ $('#example2').DataTable({
       'info'        : false,
       'autoWidth'   : true,   
     });
-$('#checkall').click(function () {
+$('.checkall').click(function () {
 	if (this.checked) {
 		var checkbox = $('.idcheck');
 		for (var i = 0; i < checkbox.length; i++) {

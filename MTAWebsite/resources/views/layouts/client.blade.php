@@ -34,7 +34,7 @@
                         <div class="row">
                             <div class="col-lg-12 col-md-12">
                                 <div class="contact">
-                                    <button id="btn-contact"><a href="/MTA-Website/MTAWebsite/Views/Contact/Contact.html">Liên Hệ</a></button>
+                                    <button id="btn-contact"><a href="{{ route('contact') }}">Liên Hệ</a></button>
                                 </div>
                             </div>
                         </div>

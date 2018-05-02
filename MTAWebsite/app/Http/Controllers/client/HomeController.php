@@ -12,6 +12,7 @@ use App\Models\Slug;
 use App\Models\Page;
 use App\Models\CTPost;
 use App\Models\Customer;
+use App\Models\Contract;
 use DB;
 class HomeController extends Controller
 {
@@ -38,16 +39,23 @@ class HomeController extends Controller
       switch ($model->entity_type) {
         case ENTITY_TYPE_POST: 
         $post = Post::find($model->entity_id);
-        $cateP = Category::all();
-
-        
-        return view('client.post.single', compact('post','cateP','posts'));
+        $post->addPageView();
+        $rl = CTPost::where('post_id',$post->id)->get();
+        foreach ($rl as $key => $value) {
+            $postrl = CTPost::where('category_id',$value->category_id)->get();
+        }
+        $view = $post->getPageViews();
+        $date = $post->created_at;
+        return view('client.post.single', compact('post','cateP','postrl','view','date'));
         case ENTITY_TYPE_PAGE: // Slug dai dien cho 1 bai viet
         $pages = Page::find($model->entity_id);
         if (!$pages) {
            return redirect()->route('404.error');
        }
-       return View($pages->view,compact('pages'));
+       $contracts =Contract::all();
+        $view = $pages->getPageViews();
+        $date = $pages->created_at;
+       return View($pages->view,compact('pages','contracts','view','date'));
        case ENTITY_TYPE_PRODUCT:
        $product = Product::find($model->entity_id);
        $cate = Category::find($product->cate_id);

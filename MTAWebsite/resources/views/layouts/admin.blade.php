@@ -103,7 +103,7 @@
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
         </li>
-          <li class="treeview">
+        <li class="treeview">
           <a href="#">
             <i class="fa fa-file-word-o"></i>
             <span>Bài Viết</span>
@@ -115,7 +115,6 @@
             <li><a href="{{ route('post.list') }}"><i class="fa fa-list-ul"></i>Tất cả bài viết</a></li>
             <li><a href="{{ route('post.create') }}"><i class="glyphicon glyphicon-plus"></i> Thêm mới</a></li>
             <li><a href="{{ route('cate.post.list') }}"><i class="glyphicon glyphicon-plus"></i> Chuyên mục</a></li>
-         
           </ul>
         </li>
         <li class="treeview">
@@ -189,7 +188,8 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="{{ route('setting') }}"><i ></i>Xem</a></li>
-           
+            <li><a href="{{ route('faculty.list') }}"><i ></i>Khoa</a></li>
+            <li><a href="{{ route('contract.list') }}"><i ></i>Hợp tác</a></li>
           </ul>
         </li>
       </ul>

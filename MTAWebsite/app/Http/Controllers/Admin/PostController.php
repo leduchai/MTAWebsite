@@ -9,6 +9,11 @@ use App\Repository\PostRepository;
 use App\Models\Post;
 use App\Models\CatePost;
 use App\Models\Slug;
+use App\Models\CTPost;
+use DB;
+use Image;
+use File;
+use Illuminate\Support\Facades\Auth;
 class PostController extends Controller
 {
     public function index(){
@@ -39,15 +44,15 @@ class PostController extends Controller
         $model = Post::find($id);
         if(!$model){
             Log::info('END ' 
-            . get_class() . ' => ' . __FUNCTION__ . '()');
+                . get_class() . ' => ' . __FUNCTION__ . '()');
             return redirect()->route('404.error');
         }
         // lấy ra model mẫu
         
         $modelSlug = Slug::where([
-                        'entity_type'=> $model->entityType,
-                        'entity_id'=> $model->id
-                                ])->first();
+            'entity_type'=> $model->entityType,
+            'entity_id'=> $model->id
+        ])->first();
         if(!$modelSlug){
             $modelSlug = new Slug();
             $modelSlug->entity_type = $model->entityType;
@@ -61,64 +66,76 @@ class PostController extends Controller
     }
 
     public function save(SavePostRequest $rq){
-
-        Log::info("BEGIN " . get_class() . " => " . __FUNCTION__ ."()");
+        if($rq->subject == 0)
+        {
+            $post = $rq->all();
+            $rl = CTPost::where('post_id',$rq->id)->get();
+            foreach ($rl as $key => $value) {
+            $postrl = CTPost::where('category_id',$value->category_id)->get();
+            }
+            $view = 1;
+            $date = date('Y-m-d');
+            return View('client.post.single',compact('post','view','date','postrl'));
+        }
+        else
+        {                
         $result = PostRepository::Save($rq);
-        
         Log::info("END " . get_class() . " => " . __FUNCTION__ ."()");
         if($result){
             return redirect(route('post.list'));
         }else{
-            return 'Error';
+            return 'Lỗi vui lòng thử lại';
         }
     }
 
-     public function remove(Request $rq){
-        Log::info("BEGIN " . get_class() . " => " . __FUNCTION__ ."()");
-        foreach ($rq->id as $key => $value) {
-           $model = Post::find($value);
-           if(!$model){
-            Log::info('END ' 
-                . get_class() . ' => ' . __FUNCTION__ . '()');
-            return redirect()->route('404.error');
-        }
-        $result = PostRepository::Destroy($value);
-    }
-    Log::info("END " . get_class() . " => " . __FUNCTION__ ."()");
-
-    if($result){
-        return redirect(route('post.list'));
-    }else{
-        return 'Error';
-    }
 }
-    public function delete($id){
-       
-       
-           $model = Post::find($id);
-           if(!$model){
-            Log::info('END ' 
-                . get_class() . ' => ' . __FUNCTION__ . '()');
-            return redirect()->route('404.error');
-        }
-        DB::beginTransaction();
+
+public function remove(Request $rq){
+    Log::info("BEGIN " . get_class() . " => " . __FUNCTION__ ."()");
+    foreach ($rq->id as $key => $value) {
+     $model = Post::find($value);
+     if(!$model){
+        Log::info('END ' 
+            . get_class() . ' => ' . __FUNCTION__ . '()');
+        return redirect()->route('404.error');
+    }
+    $result = PostRepository::Destroy($value);
+}
+Log::info("END " . get_class() . " => " . __FUNCTION__ ."()");
+
+if($result){
+    return redirect(route('post.list'));
+}else{
+    return 'Error';
+}
+}
+public function delete($id){
+
+
+ $model = Post::find($id);
+ if(!$model){
+    Log::info('END ' 
+        . get_class() . ' => ' . __FUNCTION__ . '()');
+    return redirect()->route('404.error');
+}
+DB::beginTransaction();
         // try
-        try{
-                DB::table('slugs')->where([
-                    ['entity_id', '=', $model->id],
-                    ['entity_type', '=', $model->entityType]
-                ])->delete();
-            $model->delete();
-            DB::commit();
-            return redirect()->route('post.list');
+try{
+    DB::table('slugs')->where([
+        ['entity_id', '=', $model->id],
+        ['entity_type', '=', $model->entityType]
+    ])->delete();
+    $model->delete();
+    DB::commit();
+    return redirect()->route('post.list');
 
         // catch     
-        }catch(\Exception $ex){
-            
-            DB::rollback();
-            return 'Error';
-        }   
+}catch(\Exception $ex){
 
-  
-    }
+    DB::rollback();
+    return 'Error';
+}   
+
+
+}
 }

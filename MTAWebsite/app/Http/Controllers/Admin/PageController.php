@@ -17,6 +17,7 @@ class PageController extends Controller
     public function index()
     {
     	$page =  Page::all();
+        $page = get_options($page);
     	return View('admin.page.list',compact('page'));
     }
     public function create()
@@ -72,8 +73,9 @@ class PageController extends Controller
                 $image = $request->file('upload_image');
                 $filename = 'image-' . uniqid() . '.' . $image->getClientOriginalExtension();
                     $path_1 = public_path(UPLOAD_IMAGE_PAGE . $filename);
-                    Image::make($image->getRealPath())->fit(1140, 428)->save($path_1);
-                    
+                    $path_2 = public_path(UPLOAD_IMAGE_PAGE1. $filename);
+                    Image::make($image->getRealPath())->fit(1140, 428)->save($path_1);    
+                    Image::make($image->getRealPath())->fit(555, 416)->save($path_2);  
                 $model->images =$filename;
             }
 	        // upload image
@@ -131,10 +133,10 @@ class PageController extends Controller
    	}
   
     }
-        public function delete($id){
+    public function delete($id){
        
-        foreach ($rq->id as $key => $value) {
-           $model = Page::find($value);
+       
+           $model = Page::find($id);
            if(!$model){
             Log::info('END ' 
                 . get_class() . ' => ' . __FUNCTION__ . '()');
@@ -157,7 +159,7 @@ class PageController extends Controller
             DB::rollback();
             return 'Error';
         }   
-    }
+
   
     }
 }
