@@ -137,6 +137,28 @@ $( document ).ready(function() {
 
     //...............................end js btn liên hệ
 
+    // start js icon go to top page
+    // ===== Scroll to Top ==== 
+    $(window).scroll(function () {
+        if ($(this).scrollTop() >= 50) {        // If page is scrolled more than 50px
+            $('#return-to-top').fadeIn(200);    // Fade in the arrow
+        } else {
+            $('#return-to-top').fadeOut(200);   // Else fade out the arrow
+        }
+    });
+    $('#return-to-top').click(function () {      // When arrow is clicked
+        $('body,html').animate({
+            scrollTop: 0                       // Scroll to top of body
+        }, 500);
+    });
 
+    //end js icon go to top page
+});
+
+//paste this code under head tag or in a seperate js file.
+// Wait for window load
+$(window).on('load', function () {
+    // Animate loader off screen
+    $(".se-pre-con").fadeOut("slow");;
 });
 

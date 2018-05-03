@@ -19,16 +19,16 @@
     <link rel="stylesheet" href="{{ asset('client-assets/css/owl.theme.default.min.css') }}">
     <script src="{{ asset('client-assets/js/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('client-assets/js/jquery.mousewheel.min.js') }}"></script>
-     <div id="fb-root"></div>
+    <div id="fb-root"></div>
     <script>(function (d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id))
-                return;
-            js = d.createElement(s);
-            js.id = id;
-            js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.5&appId=608950069232934";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id))
+            return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.5&appId=608950069232934";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
 </head>
 <body>
     <div class="container">
@@ -90,58 +90,63 @@
     </div>
     <footer>
         <div class="container">
-            <div class="row">
-                <div class="col-md-4 sp-item">
-                    <div id="slides">
-                      <div class="item ft-item text-center">
-                        <strong>Học Viện Kĩ thuật quân sự</strong><br>
-                        <p>Khu A - Hà Nội</p>
-                        <p>Địa chỉ :  236 Hoàng Quốc Việt, Bắc Từ Liêm, Hà Nội</p>
-                        <p>Điện thoại : {{ setting()->phone }}</p>
-                        <p>Email : {{ setting()->email }}</p>
-                    </div>
-                    <div class="item ft-item text-center">
-                        <strong>Học Viện Kĩ thuật quân sự</strong><br>
-                        <p>Cơ sở Xuân Phương - Hà Nội</p>
-                        <p>Địa chỉ :  Hồng Mai, Phúc Diễn, Từ Liêm, Hà Nội</p>
-                        <p>Điện thoại : {{ setting()->phone }}</p>
-                        <p>Email : {{ setting()->email }}</p>
-                    </div>
-                    <div class="item ft-item text-center">
-                        <strong>Học Viện Kĩ thuật quân sự</strong><br>
-                        <p>Trung tâm 125 - Vĩnh Phúc</p>
-                        <p>Địa chỉ :  Nguyễn Văn Linh, Liên Bảo, Vĩnh Yên, Vĩnh Phúc</p>
-                        <p>Điện thoại : {{ setting()->phone }}</p>
-                        <p>Email : {{ setting()->email }}</p>
-                    </div>
-                    <div class="item ft-item text-center">
-                        <strong>Học Viện Kĩ thuật quân sự</strong><br>
-                        <p>Cơ sở 2 - TP. Hồ Chí Minh</p>
-                        <p>Địa chỉ :  71 Cộng Hòa, Phường 4, Tân Bình, Hồ Chí Minh</p>
-                        <p>Điện thoại : {{ setting()->phone }}</p>
-                        <p>Email : {{ setting()->email }}</p>
-                    </div>
-                    <a href="#" class="slidesjs-previous slidesjs-navigation"><i class="icon-chevron-left icon-large"></i></a>
-                    <a href="#" class="slidesjs-next slidesjs-navigation"><i class="icon-chevron-right icon-large"></i></a>
-                </div>
-            </div>
-            <div class="col-md-8 sp-item">
+            <section>
                 <div class="row">
-                    <div class="col-md-8">
-                        <strong>Liên kết website</strong><br>
-                        <div class="row">
-                            <div class="col-md-6">Khoa Hóa lý kỹ thuật</div>
-                            <div class="col-md-6">Khoa Hóa lý kỹ thuật</div>
+                    <div class="col-md-4 sp-item">
+                        <div id="slides">
+                          <div class="item ft-item text-center">
+                            <strong>Học Viện Kĩ thuật quân sự</strong><br>
+                            <p>Khu A - Hà Nội</p>
+                            <p>Địa chỉ :  236 Hoàng Quốc Việt, Bắc Từ Liêm, Hà Nội</p>
+                            <p>Điện thoại : {{ setting()->phone }}</p>
+                            <p>Email : {{ setting()->email }}</p>
                         </div>
-                        
+                        <div class="item ft-item text-center">
+                            <strong>Học Viện Kĩ thuật quân sự</strong><br>
+                            <p>Cơ sở Xuân Phương - Hà Nội</p>
+                            <p>Địa chỉ :  Hồng Mai, Phúc Diễn, Từ Liêm, Hà Nội</p>
+                            <p>Điện thoại : {{ setting()->phone }}</p>
+                            <p>Email : {{ setting()->email }}</p>
+                        </div>
+                        <div class="item ft-item text-center">
+                            <strong>Học Viện Kĩ thuật quân sự</strong><br>
+                            <p>Trung tâm 125 - Vĩnh Phúc</p>
+                            <p>Địa chỉ :  Nguyễn Văn Linh, Liên Bảo, Vĩnh Yên, Vĩnh Phúc</p>
+                            <p>Điện thoại : {{ setting()->phone }}</p>
+                            <p>Email : {{ setting()->email }}</p>
+                        </div>
+                        <div class="item ft-item text-center">
+                            <strong>Học Viện Kĩ thuật quân sự</strong><br>
+                            <p>Cơ sở 2 - TP. Hồ Chí Minh</p>
+                            <p>Địa chỉ :  71 Cộng Hòa, Phường 4, Tân Bình, Hồ Chí Minh</p>
+                            <p>Điện thoại : {{ setting()->phone }}</p>
+                            <p>Email : {{ setting()->email }}</p>
+                        </div>
+                        <a href="#" class="slidesjs-previous slidesjs-navigation"><i class="icon-chevron-left icon-large"></i></a>
+                        <a href="#" class="slidesjs-next slidesjs-navigation"><i class="icon-chevron-right icon-large"></i></a>
                     </div>
-                    <div class="col-md-4">
-                        <strong>Facebook</strong><br>
-                    <div class="fb-page" data-href="{{ setting()->facebook }}" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="{{ setting()->facebook }}" class="fb-xfbml-parse-ignore"><a href="{{ setting()->facebook }}">Học Viện Kĩ Thuật Quân Sự</a></blockquote></div>
+                </div>
+                <div class="col-md-8 sp-item">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <strong>Liên kết website</strong><br>
+                            <div class="row">
+                                <div class="col-md-6">Khoa Hóa lý kỹ thuật</div>
+                                <div class="col-md-6">Khoa Hóa lý kỹ thuật</div>
+                            </div>
+                            
+                        </div>
+                        <div class="col-md-4">
+                            <strong>Facebook</strong><br>
+                            <div class="fb-page" data-href="{{ setting()->facebook }}" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="{{ setting()->facebook }}" class="fb-xfbml-parse-ignore"><a href="{{ setting()->facebook }}">Học Viện Kĩ Thuật Quân Sự</a></blockquote></div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
+        <section>
+            <a href="javascript:" id="return-to-top"><i class="fa fa-chevron-up"></i></a>
+        </section>
     </div>
     <script src="{{ asset('client-assets/js/jquery.slides.min.js') }}"></script>
     <script>

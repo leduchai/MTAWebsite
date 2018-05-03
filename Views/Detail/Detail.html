@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Trang chủ</title>
+    <title>Chi tiết</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="/MTA-Website/MTAWebsite/Content/asset/css/owl.theme.default.min.css">
     <script src="/MTA-Website/MTAWebsite/Script/owl.carousel.min.js"></script>
     <script src="/MTA-Website/MTAWebsite/Script/jquery.mousewheel.min.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
 </head>
 <body>
@@ -68,70 +69,111 @@
 
             <section>
                 <div class="row">
-                        <div class="col-lg-3 col-md-3">
-                                <p> menu clapse đang hoàn thiện nốt</p>
+                    <div class="col-lg-3 col-md-3 collapse width show" id="sidebar">
+
+                        <p id="category-name">Nghiên Cứu</p>
+
+                        <div class="list-group">
+
+                            <a href="#menu1" class="list-group-item collapsed first-item" data-toggle="collapse" aria-expanded="false"><span>Menu 1</span> </a>
+                            <!-- menu con -->
+                            <div class="collapse" id="menu1" data-parent="#sidebar">
+                                <a href="#menu1sub1" class="list-group-item" data-toggle="collapse" aria-expanded="false"><i class="fa fa-angle-right"></i>Con của Menu 1 - A</a>
+                                <!-- menu cháu -->
+                                <div class="collapse" id="menu1sub1" data-parent="#menu1">
+                                    <a href="#" class="list-group-item" data-parent="#menu1sub1"><i class="fa fa-angle-double-right"></i>Con thứ nhất của A</a>
+                                    <a href="#" class="list-group-item" data-parent="#menu1sub1"><i class="fa fa-angle-double-right"></i>Con thứ hai của A</a>
+                                    <a href="#menu1sub1sub1" class="list-group-item" data-toggle="collapse" aria-expanded="false"><i class="fa fa-angle-double-right"></i>Con thứ ba của A</a>
+                                    <!-- menu chắt-->
+                                    <div class="collapse" id="menu1sub1sub1">
+                                        <a href="#" class="list-group-item" data-parent="#menu1sub1sub1">Con của con thứ 3</a>
+                                        <a href="#" class="list-group-item" data-parent="#menu1sub1sub1">Con của con thứ 3</a>
+                                    </div>
+                                    <!-- end-->
+                                </div>
+                                <!--end-->
+                                <a href="#" class="list-group-item"><i class="fa fa-angle-right"></i>Con của Menu 1 - B</a>
+                                <a href="#" class="list-group-item"><i class="fa fa-angle-right"></i>Con của Menu 1 - C</a>
+                            </div>
+                            <!--end-->
+
+                            <a href="#" class="list-group-item"><span>Menu 2</span></a>
+
+                            <a href="#" class="list-group-item"><span>Menu 3</span></a>
+
+
                         </div>
-                        <div class="col-lg-6 col-md-6">
-                            <div class="row">
-                                <div class="col-lg-12 col-md-12">
-                                    <h3 id="title-post">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, blanditiis.</h3>
-                                </div>
-                            </div>
-                            <div class="row info-date-view">
-                                <div class="col-lg-3 col-md-3">
-                                    <span class="glyphicon glyphicon-calendar"><span id="date">30/04/2018<span></span>
-                                </div>
-                                <div class="col-lg-3 col-md-3">
-                                    <span class="glyphicon glyphicon-eye-open"><span id="view">2305<span></span>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-12 col-md-12">
-                                    <p>nội dung bài viết ở đây </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-3 area-relative">
-                            <div class="row">
-                                <div class="col-lg-12 col-md-12">
-                                    <h3>Có thể bạn quan tâm</h3>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-12 col-md-12 col-sm-6">
-                                    <figure class="figure">
-                                        <img src="/MTA-Website/MTAWebsite/Content/asset/image/small-image-3.png" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
-                                        <figcaption class="figure-caption">A caption for the above image.</figcaption>
-                                    </figure>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-12 col-md-12 col-sm-6">
-                                    <figure class="figure">
-                                        <img src="/MTA-Website/MTAWebsite/Content/asset/image/small-image-5.png" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
-                                        <figcaption class="figure-caption">A caption for the above image.</figcaption>
-                                    </figure>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-12 col-md-12 col-sm-6">
-                                    <figure class="figure">
-                                        <img src="/MTA-Website/MTAWebsite/Content/asset/image/small-image-6.png" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
-                                        <figcaption class="figure-caption">A caption for the above image.</figcaption>
-                                    </figure>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-12 col-md-12 col-sm-6">
-                                    <figure class="figure">
-                                        <img src="/MTA-Website/MTAWebsite/Content/asset/image/small-image-7.png" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
-                                        <figcaption class="figure-caption">A caption for the above image.</figcaption>
-                                    </figure>
-                                </div>
+                    </div>
+                    <div class="col-lg-9 col-md-9">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12">
+                                <h3 id="title-post">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, blanditiis.</h3>
                             </div>
                         </div>
+                        <div class="row info-date-view">
+                            <div class="col-lg-3 col-md-3">
+                                <span class="glyphicon glyphicon-calendar"><span id="date">30/04/2018<span></span>
+                            </div>
+                            <div class="col-lg-3 col-md-3">
+                                <span class="glyphicon glyphicon-eye-open"><span id="view">2305<span></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12">
+                                <p>nội dung bài viết ở đây </p>
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
+
+            <section>
+                <div class="row title-single">
+                    <div class="col-lg-12 col-md-12">
+                        <h2 class="title-single">Có thể bạn quan tâm</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+                        <figure class="figure">
+                            <img src="/MTA-Website/MTAWebsite/Content/asset/image/medium-image-9.jpg" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                            <figcaption class="figure-caption">A caption for the above image.</figcaption>
+                        </figure>
+                        <header>
+                            <p class="note">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis aliquid nostrum ex perferendis laborum eius alias dolorum magni voluptatum et?</p>
+                        </header>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+                        <figure class="figure">
+                            <img src="/MTA-Website/MTAWebsite/Content/asset/image/medium-image-8.jpg" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                            <figcaption class="figure-caption">A caption for the above image.</figcaption>
+                        </figure>
+                        <header>
+                            <p class="note">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis aliquid nostrum ex perferendis laborum eius alias dolorum magni voluptatum et?</p>
+                        </header>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+                        <figure class="figure">
+                            <img src="/MTA-Website/MTAWebsite/Content/asset/image/medium-image-9.jpg" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                            <figcaption class="figure-caption">A caption for the above image.</figcaption>
+                        </figure>
+                        <header>
+                            <p class="note">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis aliquid nostrum ex perferendis laborum eius alias dolorum magni voluptatum et?</p>
+                        </header>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+                        <figure class="figure">
+                            <img src="/MTA-Website/MTAWebsite/Content/asset/image/medium-image-8.jpg" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                            <figcaption class="figure-caption">A caption for the above image.</figcaption>
+                        </figure>
+                        <header>
+                            <p class="note">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis aliquid nostrum ex perferendis laborum eius alias dolorum magni voluptatum et?</p>
+                        </header>
+                    </div>
+                </div>
+            </section>
+
 
             <section>
                 <div class="row">
