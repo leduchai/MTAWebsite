@@ -1,62 +1,67 @@
 @extends('layouts.client')
+@section('slider')
+		<section>
+                {!! setting()->map !!}
+         </section>
+@endsection
 @section('content')
-<div class="container">
-      <div class="main-site">
-              <div class="tab-chuan">Liên Hệ</div>
-                  <div class="bg-ct-right">
-                  <div class="contact-l">         
-                   <p><strong>{{ setting()->slogan }}</strong></p>
-                  <p>{{ setting()->Description }}<br />Địa chỉ: {{ setting()->slogan }}<br />Điện thoại: {{ setting()->phone }}<br />Email: {{ setting()->email }} </p><br />
-                     <div class="contact-form">
-        <div class="tab-chuan2">GỬI THÔNG TIN</div>          
-                     <form method="post" name="frm" action="{{ route('contact.save') }}">
-                       @if(session('message'))
-                    <script type="text/javascript">
-                      alert('Cảm ơn bạn đã liên hệ với chúng tôi');
-                    </script>
-                @endif
-                                <ul id="form-inner">
-                                    <li>
-                                        <div class="columnright">
-                                          <input required type="text" class="maxchar"  name="name" placeholder="Họ và tên..." />
-                                        </div>
-                                      <div class="clearb"></div>
-                                    </li>
-                                    <li>
-                                      <div class="columnright"><input required type="text" class="maxchar"  name="address" placeholder="Địa chỉ..."/>
-                                      </div>
-                                        <div class="clearb"></div>
-                                    </li>
-                                    <li>
-                                        <div class="columnright"><input required type="email" class="maxchar" name="email" placeholder="Nhập email..." /></div>
-                                        <div class="clearb"></div>
-                                    </li>
-                                    <li>
-                                        <div class="columnright"><input required type="text" class="maxchar"  name="phone" placeholder="Nhập số điện thoại..." /></div>
-                                        <div class="clearb"></div>
-                                    </li>
-                            
-                                    <li>
-                                        <div class="columnright"><textarea name="content" rows="3" class="maxchar textarea"  placeholder="Nhập nội dung yêu cầu..."></textarea>
-                                        </div><div class="clearb"></div>    
-                                    </li>
-                                    
-                                    
-                                     <li>
-                                        <input type="submit" class="button" value="Gửi">
-                                
-                                      </li>
-                                </ul>
-                                
-                                
-                            </form>
-                        </div>  
-                    <div class="clearb"></div>
-                  </div>
-                  <div class="contact-r"><div class="googlemap">
-                    {!! setting()->map !!}
-                </div></div>
-             </div>
-      </div>
-  </div>
+
+
+            <section>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 path">
+                        <a href="{{ route('home.page') }}">Trang Chủ</a><span> / </span><a>Liên Hệ</a>
+                    </div>
+                </div>
+            </section>
+			 @if(session('message'))
+              <script type="text/javascript">
+              	alert('Cảm ơn bạn đã liên hệ với chúng tôi');
+              </script>      
+              @endif
+            <section>
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                    	@foreach($faculty as $c)
+                        <div class="row contact-department">
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <figure>
+                                    <a href=""><img src="{{ asset('uploads/'.$c->images) }}"></a>
+                                </figure>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <header class="department-detail">
+                                    <h3 class="department-name">
+                                      {{ $c->title }}
+                                    </h3>
+                                    <p><span class="glyphicon glyphicon-home"></span>{{ $c->address }}</p>
+                                    <p><span class="glyphicon glyphicon-phone-alt"></span>{{ $c->phone }}</p>
+                                    <p><span class="glyphicon glyphicon-envelope"></span>{{ $c->email }}</p>
+                                </header>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <form class="form-message" action="{{ route('contact.save') }}" method="post">
+                            <div class="form-group">
+                                <p>Nếu bạn cần hỗ trợ, hãy gửi thông tin vào biểu mẫu dưới đây. Chúng tôi sẽ cố gắng phản hồi sớm nhất!</p>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="name" id="Name" required="required" placeholder="Họ tên (*)" value="">
+                            </div>
+                            <div class="form-group">
+                                <input type="email" name="email" id="Email" required="required" placeholder="Email (*)" value="">
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" name="phone" id="PhoneNumber" placeholder="Số điện thoại" value="">
+                            </div>
+                            <div class="form-group">
+                                <textarea id="Message" name="Message" required="required" placeholder="Thông điệp (*)" rows="4"></textarea>
+                            </div>
+                            <button type="submit" id="Send">Gửi</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
 @endsection

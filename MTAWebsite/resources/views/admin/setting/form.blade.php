@@ -123,9 +123,7 @@
 					     <label for="map">Map</label>
 					</div>
 					<div class="col-md-9 col-sm-9 col-xs-12">
-						<textarea name="map" class="form-control"  >
-							{{old('map', $model->map)}}
-						</textarea>
+						<input type="text" name="map" value="{{ $model->map }}" class="form-control">
 						@if (count($errors) > 0)
 						<span class="text-danger">{{$errors->first('map')}}</span>
 						@endif

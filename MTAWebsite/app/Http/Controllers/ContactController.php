@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Contact;
+use App\Models\Faculty;
 class ContactController extends Controller
 {
     //
@@ -14,7 +15,8 @@ class ContactController extends Controller
     }
     public function contact()
     {
-        return View('client.contact');
+        $faculty = Faculty::limit(4)->get();
+        return View('client.contact',compact('faculty'));
     }
     public function save(Request $rq)
     {

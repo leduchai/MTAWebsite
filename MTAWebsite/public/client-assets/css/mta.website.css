@@ -2,7 +2,7 @@ a{
     text-decoration: none !important;
     cursor: pointer;
 }
-
+img{max-width: 100%;}
 h2{
     margin-top: 10px;
 }
@@ -701,3 +701,42 @@ h3.post-title a
     color: #333;
 }
 /*.......................*/
+/*footer*/
+footer
+{
+   background: #f2f2f2;
+    margin-top: 48px;
+}
+.sp-item
+{
+    margin-top: 20px;
+}
+.ft-item
+{
+    padding: 20px 0;
+    background: #fff;
+}
+#slides
+{
+    position: relative;
+}
+ul.slidesjs-pagination
+{
+    display: none;
+}
+.slidesjs-previous
+{
+    position: absolute;
+bottom: 24px;
+right: 20px;
+z-index: 200;
+color: black;
+}
+.slidesjs-next
+{
+    position: absolute;
+    bottom: 24px;
+    right: 5px;
+    z-index: 200;
+    color: black;
+}

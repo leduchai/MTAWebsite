@@ -114,7 +114,7 @@ Route::group(['middleware' => 'auth'], function(){
 			Route::post('/save','Admin\BannerController@save')->name('banner.save');
 			Route::get('/remove/{id}','Admin\BannerController@remove')->name('banner.remove');	
 		});
-				Route::group(['prefix'=>'faculty'],function(){
+		Route::group(['prefix'=>'faculty'],function(){
 			Route::get('list', 
 				'Admin\FacultyController@index')->name('faculty.list');
 			Route::get('/create', 
