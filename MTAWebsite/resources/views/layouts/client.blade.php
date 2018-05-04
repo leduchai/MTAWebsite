@@ -16,8 +16,13 @@
 	<script type="text/javascript" src="{{ asset('client-assets/js/slider.all.js') }}"></script>
 	<link rel="stylesheet" href="{{ asset('client-assets/css/owl.carousel.min.css') }}">
 	<link rel="stylesheet" href="{{ asset('client-assets/css/owl.theme.default.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('client-assets/css/menu.home.css') }}">
+	<script type="text/javascript" src=""></script>
 	<script src="{{ asset('client-assets/js/owl.carousel.min.js') }}"></script>
 	<script src="{{ asset('client-assets/js/jquery.mousewheel.min.js') }}"></script>
+	<script src="{{ asset('client-assets/js/menu.home.js') }}"></script>
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
 	<div id="fb-root"></div>
 	<script>(function (d, s, id) {
 		var js, fjs = d.getElementsByTagName(s)[0];
@@ -66,147 +71,26 @@
 			<section>
 				<div id='cssmenu'>
 					<ul>
-						<li><a href='#'>Trang Chủ</a></li>
+						<li><a href="{{ route('home.page') }}">Trang Chủ</a></li>
+						@if(isset($menu))
+						@foreach($menu as $k => $v)
 						<li class='active'>
-							<a href='#'>Giới Thiệu</a>
+							<a href="{{ $v['url'] }}">{{ $v['title'] }}</a>
+							@if(isset($v['lstCat']))
 							<ul class="has-children">
+
+								@foreach($v['lstCat'] as $k1 => $v1)
 								<li>
-									<a href='#'>Tổng Quan</a>
+									<a href="{{ $v1['url'] }}">{{ $v1['title'] }}</a>
 								</li>
-								<li>
-									<a href='#'>Cơ Cấu Tổ Chức</a>
-								</li>
-								<li>
-									<a href='#'>Hình Ảnh Tiêu Biểu</a>
-								</li>
+								@endforeach
+								
+								
 							</ul>
+							@endif
 						</li>
-						<li class='active'>
-							<a href='#'>Tin Tức</a>
-							<ul class="has-children">
-								<li>
-									<a href='#'>Hoạt Động Chung</a>
-								</li>
-								<li>
-									<a href='#'>Đào Tạo</a>
-								</li>
-								<li>
-									<a href='#'>Nghiên Cứu Khoa Học</a>
-								</li>
-								<li>
-									<a href='#'>Hợp Tác - Đối Ngoại</a>
-								</li>
-							</ul>
-						</li>
-						<li class='active'>
-							<a href='#'>Tuyển Sinh</a>
-							<ul class="has-children">
-								<li>
-									<a href='#'>Thông Tin Chung</a>
-								</li>
-								<li>
-									<a href='#'>Đại Học</a>
-								</li>
-								<li>
-									<a href='#'>Sau Đại Học</a>
-								</li>
-								<li>
-									<a href='#'>Liên Thông</a>
-								</li>
-								<li>
-									<a href='#'>Bổ Túc, Bồi Dưỡng</a>
-								</li>
-								<li>
-									<a href='#'>Câu Hỏi Thường Gặp</a>
-								</li>
-							</ul>
-						</li>
-						<li class='active'>
-							<a href='#'>Sinh Viên</a>
-							<ul class="has-children">
-								<li>
-									<a href='#'>Hoạt Động Đoàn TN</a>
-								</li>
-								<li>
-									<a href='#'>Nghiên Cứu Khoa Học</a>
-								</li>
-								<li>
-									<a href='#'>Học Bổng</a>
-								</li>
-								<li>
-									<a href='#'>Ký Túc Xá</a>
-								</li>
-								<li>
-									<a href='#'>Văn Bản, Biểu Mẫu</a>
-								</li>
-							</ul>
-						</li>
-						<li class='active'>
-							<a href='#'>Đào Tạo</a>
-							<ul class="has-children">
-								<li>
-									<a href='#'>Thông Tin Chung</a>
-								</li>
-								<li>
-									<a href='#'>Đại Học</a>
-								</li>
-								<li>
-									<a href='#'>Sau Đại Học</a>
-								</li>
-								<li>
-									<a href='#'>Liên Thông</a>
-								</li>
-								<li>
-									<a href='#'>Bổ Túc, Bồi Dưỡng</a>
-								</li>
-							</ul>
-						</li>
-						<li class='active'>
-							<a href='#'>Nghiên Cứu</a>
-							<ul class="has-children">
-								<li>
-									<a href='#'>Thông Tin Chung</a>
-								</li>
-								<li>
-									<a href='#'>Hội Đồng Khoa Học</a>
-								</li>
-								<li>
-									<a href='#'>Chương Trình, Đề Tài</a>
-								</li>
-								<li>
-									<a href='#'>Nhóm Nghiên Cứu</a>
-								</li>
-								<li>
-									<a href='#'>Sản Phẩm KHCN</a>
-								</li>
-								<li>
-									<a href='#'>Thành Tựu</a>
-								</li>
-							</ul>
-						</li>
-						<li class='active'>
-							<a href='#'>Hợp Tác</a>
-							<ul class="has-children">
-								<li>
-									<a href='#'>Thông Tin Chung</a>
-								</li>
-								<li>
-									<a href='#'>Hoạt Động Hợp Tác</a>
-								</li>
-								<li>
-									<a href='#'>Chương trình Hợp Tác</a>
-								</li>
-								<li>
-									<a href='#'>Đào Tạo Tại Nước Ngoài</a>
-								</li>
-								<li>
-									<a href='#'>Liên Kết</a>
-								</li>
-								<li>
-									<a href='#'>Câu Hỏi Thường Gặp</a>
-								</li>
-							</ul>
-						</li>
+						@endforeach
+						@endif
 						<li><a href='#' data-toggle="modal" data-target="#websiteLinkPopup">Liên Kết</a></li>
 						<!-- Modal -->
 						<div class="modal fade" id="websiteLinkPopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -219,104 +103,62 @@
 									<div class="modal-body">
 										<div class="row">
 											<div class="col-md-3">
-												<a href="#"><img class="icon" src="/MTA-Website/MTAWebsite/Content/asset/image/aeroplane32.png" /></a>
-												<p><a href="#">Khoa Công Nghệ Thông Tin</a></p>
+												<a href="#"><img class="icon" src="{{ asset('client-assets/images/68867072_n.png') }}" /></a>
+												<p><a href="http://dangkyhoc.mta.edu.vn/dkmh/login.asp">Đăng kí tín chỉ</a></p>
 											</div>
 											<div class="col-md-3">
-												<a href="#"><img class="icon" src="/MTA-Website/MTAWebsite/Content/asset/image/aeroplane32.png" /></a>
-												<p><a href="#">Khoa Công Nghệ Thông Tin</a></p>
+												<a href="#"><img class="icon" src="{{ asset('client-assets/images/007-settings.png') }}" /></a>
+												<p><a href="#">Trung Tâm Công Nghệ</a></p>
+											</div>
+
+											<div class="col-md-3">
+												<a href="#"><img class="icon" src="{{ asset('client-assets/images/002-hello-speech-bubble-handmade-chatting-symbol.png') }}" /></a>
+												<p><a href="#">Trung Tâm Ngoại Ngữ</a></p>
 											</div>
 											<div class="col-md-3">
-												<a href="#"><img class="icon" src="/MTA-Website/MTAWebsite/Content/asset/image/aeroplane32.png" /></a>
-												<p><a href="#">Khoa Công Nghệ Thông Tin</a></p>
-											</div>
-											<div class="col-md-3">
-												<a href="#"><img class="icon" src="/MTA-Website/MTAWebsite/Content/asset/image/aeroplane32.png" /></a>
-												<p><a href="#">Khoa Công Nghệ Thông Tin</a></p>
+												<a href="#"><img class="icon" src="{{ asset('client-assets/images/001-books-stack-of-three.png') }}" /></a>
+												<p><a href="#">Thư Viện</a></p>
 											</div>
 										</div>
 										<div class="row">
 											<div class="col-md-3">
-												<a href="#"><img class="icon" src="/MTA-Website/MTAWebsite/Content/asset/image/aeroplane32.png" /></a>
+												<a href="http://fit.mta.edu.vn/"><img class="icon" src="{{ asset('client-assets/images/009-computer.png') }}" /></a>
 												<p><a href="#">Khoa Công Nghệ Thông Tin</a></p>
 											</div>
 											<div class="col-md-3">
-												<a href="#"><img class="icon" src="/MTA-Website/MTAWebsite/Content/asset/image/aeroplane32.png" /></a>
-												<p><a href="#">Khoa Công Nghệ Thông Tin</a></p>
+												<a href="#"><img class="icon" src="{{ asset('client-assets/images/005-flask.png') }}" /></a>
+												<p><a href="http://hoalykythuat.mta.edu.vn/">Khoa Hóa Lí Kĩ Thuật</a></p>
 											</div>
 											<div class="col-md-3">
-												<a href="#"><img class="icon" src="/MTA-Website/MTAWebsite/Content/asset/image/aeroplane32.png" /></a>
-												<p><a href="#">Khoa Công Nghệ Thông Tin</a></p>
+												<a href="http://sdh.mta.edu.vn/"><img class="icon" src="{{ asset('client-assets/images/004-sprout.png') }}" /></a>
+												<p><a href="#">Phòng Sau Đại Học</a></p>
 											</div>
 											<div class="col-md-3">
-												<a href="#"><img class="icon" src="/MTA-Website/MTAWebsite/Content/asset/image/aeroplane32.png" /></a>
-												<p><a href="#">Khoa Công Nghệ Thông Tin</a></p>
+												<a href="#"><img class="icon" src="{{ asset('client-assets/images/008-conveyor.png') }}" /></a>
+												<p><a href="#">Khoa cơ Khí</a></p>
 											</div>
 										</div>
 										<div class="row">
 											<div class="col-md-3">
-												<a href="#"><img class="icon" src="/MTA-Website/MTAWebsite/Content/asset/image/aeroplane32.png" /></a>
-												<p><a href="#">Khoa Công Nghệ Thông Tin</a></p>
+												<a href="#"><img class="icon" src="{{ asset('client-assets/images/8036224_n.png') }}" /></a>
+												<p><a href="http://itse.mta.edu.vn/">Viện Kĩ Thuật Công Trình Đặc Biệt</a></p>
 											</div>
 											<div class="col-md-3">
-												<a href="#"><img class="icon" src="/MTA-Website/MTAWebsite/Content/asset/image/aeroplane32.png" /></a>
-												<p><a href="#">Khoa Công Nghệ Thông Tin</a></p>
+												<a href="#"><img class="icon" src="{{ asset('client-assets/images/003-television.png') }}" /></a>
+												<p><a href="http://fre.mta.edu.vn/">Khoa Vô Tuyến Điện Tử</a></p>
 											</div>
 											<div class="col-md-3">
-												<a href="#"><img class="icon" src="/MTA-Website/MTAWebsite/Content/asset/image/aeroplane32.png" /></a>
-												<p><a href="#">Khoa Công Nghệ Thông Tin</a></p>
-											</div>
-											<div class="col-md-3">
-												<a href="#"><img class="icon" src="/MTA-Website/MTAWebsite/Content/asset/image/aeroplane32.png" /></a>
-												<p><a href="#">Khoa Công Nghệ Thông Tin</a></p>
+												<a href="#"><img class="icon" src="{{ asset('client-assets/images/aeroplane32.png') }}" /></a>
+												<p><a href="#">Khoa Động Lực</a></p>
 											</div>
 										</div>
-										<div class="row">
-											<div class="col-md-3">
-												<a href="#"><img class="icon" src="/MTA-Website/MTAWebsite/Content/asset/image/aeroplane32.png" /></a>
-												<p><a href="#">Khoa Công Nghệ Thông Tin</a></p>
-											</div>
-											<div class="col-md-3">
-												<a href="#"><img class="icon" src="/MTA-Website/MTAWebsite/Content/asset/image/aeroplane32.png" /></a>
-												<p><a href="#">Khoa Công Nghệ Thông Tin</a></p>
-											</div>
-											<div class="col-md-3">
-												<a href="#"><img class="icon" src="/MTA-Website/MTAWebsite/Content/asset/image/aeroplane32.png" /></a>
-												<p><a href="#">Khoa Công Nghệ Thông Tin</a></p>
-											</div>
-											<div class="col-md-3">
-												<a href="#"><img class="icon" src="/MTA-Website/MTAWebsite/Content/asset/image/aeroplane32.png" /></a>
-												<p><a href="#">Khoa Công Nghệ Thông Tin</a></p>
-											</div>
-										</div>
+
+
 									</div>
 								</div>
 							</div>
 						</div>
 					</ul>
-				</div>
-			</section>
-
-
-			<section>
-				<div class="topnav" id="myTopnav">
-					<a href="{{ route('home.page') }}" class="active">Trang Chủ</a>
-					@if(isset($menu))
-					@foreach($menu as $k => $v)
-					<a href="{{ $v['url'] }}">{{ $v['title'] }}</a>
-					@if(isset($v['lstCat']))
-					@foreach($$v['lstCat'] as $k1 => $v1)
-					@if(isset($v1['ltsSubCat']))
-					@foreach($v1['ltsSubCat'] as $k2 => $v2)
-
-					@endforeach
-					@endif
-					@endforeach
-					@endif
-					@endforeach
-					@endif
-					
-					<a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
 				</div>
 			</section>
 			@yield('slider')

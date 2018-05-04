@@ -100,7 +100,7 @@
         <div class="col-lg-3 col-md-3 col-sm-6">
             <figure class="figure">
                 <a href="{{ $pa->getSLug() }}"><img src="{{ asset(UPLOAD_IMAGE_PAGE1.$pa->images) }}" class="img-responsive figure-img img-fluid rounded" alt="{{ $pa->title }}"></a>
-                <figcaption class="figure-caption-category"><a href="{{ $pa->getSLug() }}">{{ $pa->title }}</figcaption>
+                <figcaption class="figure-caption-category"><a href="{{ $pa->getSLug() }}">{{ $pa->title }}</a></figcaption>
             </figure>
             <header>
                 <p class="note-category">{{ $pa->seo_content }}</p>

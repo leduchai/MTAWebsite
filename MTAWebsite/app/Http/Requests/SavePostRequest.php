@@ -27,8 +27,7 @@ class SavePostRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => ['required',
-            Rule::unique('post')->ignore($this->get('id'))
+            'title' => ['required','max:255'
               ],
             'upload_image' => 'file|image',
             'slug' => [
