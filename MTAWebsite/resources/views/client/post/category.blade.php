@@ -14,7 +14,7 @@
                 <div class="row">
 
                     <div class="col-lg-9 col-md-9">
-                      @foreach($ctposts as $p2)
+                      @foreach($cate->getpost() as $p2)
                         @if($p2->status != "on")
                         <div class="row post-item">
                             <div class="col-lg-3 col-md-3 ">
@@ -35,7 +35,7 @@
                         <div class="row post-item">
                              <figure class="figure">
                                     
-                                <h3 class="post-title"><a href="{{ $p2->getpost->getSlug() }}">{{ $p2->title }}</a></h3>
+                                <h3 class="post-title"><a href="{{ $p2->link() }}">{{ $p2->title }}</a></h3>
                                 </figure>
                         </div>
                         @endif

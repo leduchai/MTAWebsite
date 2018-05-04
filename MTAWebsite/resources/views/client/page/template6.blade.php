@@ -71,8 +71,8 @@
                     @foreach($page->childss() as $pa)
                     <div class="col-lg-3 col-md-3 col-sm-6">
                         <figure class="figure">
-                            <img src="{{ asset(UPLOAD_IMAGE_PAGE.$pa->images) }}" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
-                            <figcaption class="figure-caption"><a href="{{ $pa->getSlug() }}">{{ $pa->title }}</a></figcaption>
+                            <img src="{{ asset(UPLOAD_IMAGE_PAGE2.$pa->images) }}" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                            <figcaption class="figure-caption-category"><a href="{{ $pa->getSlug() }}">{{ $pa->title }}</a></figcaption>
                         </figure>
                         <header>
                             <p class="note">{{ $pa->seo_content }}</p>
@@ -101,13 +101,13 @@
                     @foreach($page->childss() as $pa)
                     <div class="col-lg-4 col-md-4">
                         <figure class="figure">
-                            <img src="{{ asset(UPLOAD_IMAGE_PAGE.$pa->images) }}" class="img-responsive figure-img img-fluid rounded" alt="{{ $pa->title }}">
+                            <img src="{{ asset(UPLOAD_IMAGE_PAGE2.$pa->images) }}" class="img-responsive figure-img img-fluid rounded" alt="{{ $pa->title }}">
                             <figcaption class="figure-caption-category"><a href="{{ $pa->getSlug() }}">{{ $pa->title }}</a></figcaption>
                         </figure>
                         <header>
                             <p class="note-category">{{ $pa->seo_content }}</p>
                         </header>
-                        <a href="{{ $page->getSlug() }}" class="view-more">Xem thêm<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a>
+                        <a href="{{ $pa->getSlug() }}" class="view-more">Xem thêm<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a>
                     </div>
                     @endforeach
                 </div>

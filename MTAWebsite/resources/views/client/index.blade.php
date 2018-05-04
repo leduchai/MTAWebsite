@@ -17,7 +17,7 @@
 	</div>
 	<div class="row">
 		<?php $i =1; ?>
-		@foreach($new->getTopPost(10) as $p)
+		@foreach($new->getTopPost(8) as $p)
 		@if($i < 2)
 		<div class="col-lg-6 col-md-6">
 
@@ -36,8 +36,8 @@
 		<div class="col-lg-6 col-md-6">
 			<ul class="highlight-news">
 				<?php $j = 1; ?>
-				@foreach($new->getTopPost(10) as $p1)
-				@if($j >= 2 && $j < 7)
+				@foreach($new->getTopPost(8) as $p1)
+				@if($j >= 2 )
 				<li><a href="{{ $p1->getSlug() }}">{{ $p1->title }}</a> </li>
 				@endif
 				<?php $j++; ?>
@@ -88,7 +88,7 @@
 	</div>
 	<div class="row">
 		<?php $i =1; ?>
-		@foreach($noti->getTopPost(10) as $p)
+		@foreach($noti->getTopPost(8) as $p)
 		@if($i < 2)
 		<div class="col-lg-6 col-md-6">
 
@@ -107,14 +107,14 @@
 		<div class="col-lg-6 col-md-6">
 			<ul class="highlight-news">
 				<?php $j = 1; ?>
-				@foreach($noti->getTopPost(10) as $p1)
-				@if($j >= 2 && $j < 7)
+				@foreach($noti->getTopPost(8) as $p1)
+				@if($j >= 2)
 				<li><a href="{{ $p->link() }}">{{ $p1->title }}</a> </li>
 				@endif
 				<?php $j++; ?>
 				@endforeach
 			</ul>
-			<a href="" class="view-more-right">Xem thêm<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a>
+			<a href="{{ $noti->getSlug() }}" class="view-more-right">Xem thêm<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a>
 		</div>
 	</div>
 </section>

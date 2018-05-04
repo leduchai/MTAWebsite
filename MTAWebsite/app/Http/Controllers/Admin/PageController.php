@@ -82,8 +82,11 @@ class PageController extends Controller
            $filename = 'image-' . uniqid() . '.' . $image->getClientOriginalExtension();
            $path_1 = public_path(UPLOAD_IMAGE_PAGE . $filename);
            $path_2 = public_path(UPLOAD_IMAGE_PAGE1. $filename);
+           $path_3 = public_path(UPLOAD_IMAGE_PAGE2. $filename);
            Image::make($image->getRealPath())->fit(1140, 428)->save($path_1);    
-           Image::make($image->getRealPath())->fit(555, 416)->save($path_2);  
+           Image::make($image->getRealPath())->fit(555, 416)->save($path_2);
+           Image::make($image->getRealPath())->fit(555, 312)->save($path_3);  
+
            $model->images =$filename;
        }
        $model->save();
