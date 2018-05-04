@@ -19,15 +19,15 @@
                         <div class="row post-item">
                             <div class="col-lg-3 col-md-3 ">
                                 
-                             <a href="{{ $p2->getpost->getSlug() }}"><img src="{{ asset(UPLOAD_IMAGE_POST.$p2->getpost->images) }}" class="img-responsive figure-img img-fluid rounded" alt="{{ $p2->getpost->title }}"></a>
+                             <a href="{{ $p2->getSlug() }}"><img src="{{ asset(UPLOAD_IMAGE_POST.$p2->images) }}" class="img-responsive figure-img img-fluid rounded" alt="{{ $p2->title }}"></a>
                     
                             </div>
                             <div class="col-lg-9 col-md-9 ">
                               <figure class="figure">
                                     
-                                 <h3 class="post-title"><a href="{{ $p2->getpost->getSlug() }}">{{ $p2->getpost->title }}</a></h3>
-                                    <p class="note-category">{{ $p2->getpost->seo_content }}</p>
-                                    <span class="date">{{ $p2->getpost->created_at }}</span>
+                                 <h3 class="post-title"><a href="{{ $p2->getSlug() }}">{{ $p2->title }}</a></h3>
+                                    <p class="note-category">{{ $p2->seo_content }}</p>
+                                    <span class="date">{{ $p2->created_at }}</span>
                                 </figure>
                             </div>
                         </div>
@@ -35,7 +35,7 @@
                         <div class="row post-item">
                              <figure class="figure">
                                     
-                                <h3 class="post-title"><a href="{{ $p2->getpost->getSlug() }}">{{ $p2->getpost->title }}</a></h3>
+                                <h3 class="post-title"><a href="{{ $p2->getpost->getSlug() }}">{{ $p2->title }}</a></h3>
                                 </figure>
                         </div>
                         @endif

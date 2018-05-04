@@ -17,17 +17,17 @@
 	</div>
 	<div class="row">
 		<?php $i =1; ?>
-		@foreach(showpost(7) as $p)
+		@foreach($new->getTopPost(10) as $p)
 		@if($i < 2)
 		<div class="col-lg-6 col-md-6">
 
 			<figure class="figure">
-				<a href="{{ $p->getpost->getSlug() }}"><img src="{{ asset(UPLOAD_IMAGE_POST.$p->getpost->images) }}" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure."></a>
-				<figcaption class="figure-caption-category"> <a href="{{ $p->getpost->getSlug() }}">{{ $p->getpost->title }} </a></figcaption>
+				<a href="{{ $p->getSlug() }}"><img src="{{ asset(UPLOAD_IMAGE_POST.$p->images) }}" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure."></a>
+				<figcaption class="figure-caption-category"> <a href="{{ $p->getSlug() }}">{{ $p->title }} </a></figcaption>
 			</figure>
 
 			<header>
-				<p class="note-category">{{ $p->getpost->seo_content }}</p>
+				<p class="note-category">{{ $p->seo_content }}</p>
 			</header>
 		</div>
 		@endif
@@ -36,15 +36,14 @@
 		<div class="col-lg-6 col-md-6">
 			<ul class="highlight-news">
 				<?php $j = 1; ?>
-				@foreach(showpost(7) as $p1)
+				@foreach($new->getTopPost(10) as $p1)
 				@if($j >= 2 && $j < 7)
-				<li><a href="{{ $p1->getpost->getSlug() }}">{{ $p1->getpost->title }}</a> </li>
+				<li><a href="{{ $p1->getSlug() }}">{{ $p1->title }}</a> </li>
 				@endif
 				<?php $j++; ?>
 				@endforeach
-
 			</ul>
-			<a href="" class="view-more-right">Xem thêm<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a>
+			<a href="{{ $new->getSlug() }}" class="view-more-right">Xem thêm<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a>
 		</div>
 	</div>
 </section>
@@ -57,19 +56,19 @@
 	</div>
 	<div class="row">
 		<?php $k = 1; ?>
-		@foreach(showpost(1) as $p2)
+		@foreach(showpost(1)->getpost() as $p2)
 		@if($k<5)
 		<div class="col-lg-3 col-md-3 col-sm-6">
 			<figure class="figure">
-				<a href="{{ $p2->getpost->getSlug() }}"><img src="{{ asset(UPLOAD_IMAGE_POST.$p2->getpost->images) }}" class="img-responsive figure-img img-fluid rounded" alt="{{ $p2->getpost->title }}"></a>
-				<figcaption class="figure-caption-category"><a href="{{ $p2->getpost->getSlug() }}">{{ $p2->getpost->title }}</a></figcaption>
+				<a href="{{ $p2->getSlug() }}"><img src="{{ asset(UPLOAD_IMAGE_POST.$p2->images) }}" class="img-responsive figure-img img-fluid rounded" alt="{{ $p2->title }}"></a>
+				<figcaption class="figure-caption-category"><a href="{{ $p2->getSlug() }}">{{ $p2->title }}</a></figcaption>
 			</figure>
 			<header>
-				<p class="note-category">{{ $p2->getpost->seo_content }}</p>
+				<p class="note-category">{{ $p2->seo_content }}</p>
 			</header>
 		</div>
 		@endif
-		<?php $j++; ?>
+		<?php $k++; ?>
 		@endforeach
 	</div>
 	<div class="row view-more-area">
@@ -78,6 +77,44 @@
 		</div>
 		<div class="col-lg-1 col-md-1 view-more">
 			<a href="" class="view-more">Xem thêm<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a>
+		</div>
+	</div>
+</section>
+<section>
+	<div class="row title-single">
+		<div class="col-lg-12 col-md-12">
+			<h2 class="title-single">Thông báo</h2>
+		</div>
+	</div>
+	<div class="row">
+		<?php $i =1; ?>
+		@foreach($noti->getTopPost(10) as $p)
+		@if($i < 2)
+		<div class="col-lg-6 col-md-6">
+
+			<figure class="figure">
+				<a href="{{ $p->link() }}"><img src="{{ asset(UPLOAD_IMAGE_POST.$p->images) }}" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure."></a>
+				<figcaption class="figure-caption-category"> <a href="{{ $p->link() }}">{{ $p->title }} </a></figcaption>
+			</figure>
+
+			<header>
+				<p class="note-category">{{ $p->seo_content }}</p>
+			</header>
+		</div>
+		@endif
+		<?php $i++; ?>
+		@endforeach
+		<div class="col-lg-6 col-md-6">
+			<ul class="highlight-news">
+				<?php $j = 1; ?>
+				@foreach($noti->getTopPost(10) as $p1)
+				@if($j >= 2 && $j < 7)
+				<li><a href="{{ $p->link() }}">{{ $p1->title }}</a> </li>
+				@endif
+				<?php $j++; ?>
+				@endforeach
+			</ul>
+			<a href="" class="view-more-right">Xem thêm<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a>
 		</div>
 	</div>
 </section>

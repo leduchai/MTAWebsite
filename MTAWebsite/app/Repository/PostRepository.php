@@ -5,7 +5,6 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use DB;
 use Illuminate\Support\Facades\Auth;
-use App\Models\CTPost;
 use Image;
 use File;
 class PostRepository
@@ -50,19 +49,23 @@ class PostRepository
 				$request->upload_file->storeAs('uploads', $filename1);    
                 $model->file = $filename1;
             }
+            if(isset($request->top))
+            {
+            	$model->top = $request->top;
+            }
+            else
+            {
+            	$model->top = "off";
+            }
+            if(isset($request->status))
+            {
+            	$model->status = $request->status;
+            }
+            else
+            {
+            	$model->status = "off";
+            }
 	        $model->save();
-	        DB::table('chitiet')->where([
-                    ['post_id', '=', $model->id]
-                ])->delete();
-	        if($request->category_id > 0)
-	        {
-			foreach ($request->category_id as $key => $value) {
-				$CTPost = new CTPost();
-				$CTPost->post_id = $model->id;
-				$CTPost->category_id = $value;
-				$CTPost->save();
-			}
-			}
 	        DB::table('slugs')->where([
                     ['entity_id', '=', $model->id],
                     ['entity_type', '=', $model->entityType]

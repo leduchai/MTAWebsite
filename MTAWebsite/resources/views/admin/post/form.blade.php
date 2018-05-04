@@ -16,7 +16,6 @@
       </div>
       <form action="{{route('post.save')}}" method="post"  enctype="multipart/form-data">
        <div class="col-md-9">
-
           {{csrf_field()}}
           <input type="hidden" name="id" value="{{old('id', $model->id)}}">
           <input type="hidden" name="entity_type" value="{{$modelSlug->entity_type}}">
@@ -58,10 +57,8 @@
                 <p class="description">Tốt cho seo bài viết này</p>
             </div>
             <div class="form-group">
-
                 <input id="seo_content" class="form-control" name="seo_content" value="{{old('seo_content', $model->seo_content)}}" placeholder="Seo Mô tả">
                 <p class="description">Tốt cho seo bài viết này</p>
-
             </div>
         </div>
     </div>
@@ -104,15 +101,15 @@
     <div id="prd_group_id">
        @foreach ($listCate as $key => $value)
        @php
-       $data = array();
-       foreach ($model->category as $k => $v) {
-          $data[] = $v->category_id;
-      }
       $key = str_replace("x", "", $key);
-      $checked = in_array($key, $data)  ? "checked" : null;
+      $checked = $model->category_id == $key ? 'checked' : '';
       @endphp
-        <input type="checkbox" name="category_id[]" value="{{ $key }}" {{ $checked }}> {{ $value }}<br>
+        <input type="radio" name="category_id" value="{{ $key }}" {{ $checked }}> {{ $value }}<br>
       @endforeach
+      @php 
+        $checked1 = $model->top == "on" ? 'checked' : '';
+      @endphp
+      <input type="checkbox" name="top" {{ $checked1 }}> Nổi bật<br>
   </div>
   <a href="javascript:void(0);" data-toggle="modal" data-target="#myModal" style="text-decoration: underline;">Thêm chuyên mục</a>
   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -270,7 +267,7 @@
 				success: function(rp){
           if(rp.data != '1')
           {
-            $('#prd_group_id').append('<input type="checkbox" name="category_id[]" value="'+rp.data.id+'">'+rp.data.title+'<br>');
+            $('#prd_group_id').append('<input type="radio" name="category_id" value="'+rp.data.id+'">'+rp.data.title+'<br>');
             $('.ajax-success-ct').html('Tạo danh mục thành công').parent().fadeIn().delay(1000).fadeOut('slow');
             $('#prd_group_name').val('');
             $('#parentid').val('');

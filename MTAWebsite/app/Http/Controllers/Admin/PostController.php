@@ -48,7 +48,6 @@ class PostController extends Controller
             return redirect()->route('404.error');
         }
         // lấy ra model mẫu
-        
         $modelSlug = Slug::where([
             'entity_type'=> $model->entityType,
             'entity_id'=> $model->id

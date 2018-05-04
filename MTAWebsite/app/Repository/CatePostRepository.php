@@ -7,15 +7,16 @@ use DB;
 use App\Models\Slug;
 use App\Models\Post;
 use App\Models\CTPost;
+use App\Models\Menu;
 class CatePostRepository
 {
 	public static function GetAll(){
 		Log::info('BEGIN ' 
 			. get_class() . ' => ' . __FUNCTION__ . '()');
-            $cateList = CatePost::all();
-			Log::info('END ' 
+		$cateList = CatePost::all();
+		Log::info('END ' 
 			. get_class() . ' => ' . __FUNCTION__ . '()');
-			return $cateList;	
+		return $cateList;	
 	}
 	public static function Save(Request $request){
 		
@@ -25,31 +26,41 @@ class CatePostRepository
 		try{
 			if($request->id > 0){
 				$model = CatePost::find($request->id);
+				$menu = Menu::where('category_id',$model->id)->get();
+				if(count($menu)>0)
+				{
+					foreach ($menu as $key => $value) {
+						$m = Menu::find($value->id);
+						$m->url = $request->slug;
+						$m->title = $request->title;
+						$m->save();
+					}
+				}
 			}else{
 				$model = new CatePost();
 			}
-	        $model->fill($request->all());
-	        $model->save();
-	        DB::table('slugs')->where([
-                    ['entity_id', '=', $model->id],
-                    ['entity_type', '=', $model->entityType]
-                ])->delete();
+			$model->fill($request->all());
+			$model->save();
+			DB::table('slugs')->where([
+				['entity_id', '=', $model->id],
+				['entity_type', '=', $model->entityType]
+			])->delete();
 
-	        DB::table('slugs')->insert(
-	        	[
-	        		'entity_type' => $model->entityType,
-	        		'entity_id' => $model->id,
-	        		'slug' => $request->slug
-	        	]
-        	);
-	        DB::commit();
-	        Log::info('END ' 
-			. get_class() . ' => ' . __FUNCTION__ . '()');
-	        return true;
+			DB::table('slugs')->insert(
+				[
+					'entity_type' => $model->entityType,
+					'entity_id' => $model->id,
+					'slug' => $request->slug
+				]
+			);
+			DB::commit();
+			Log::info('END ' 
+				. get_class() . ' => ' . __FUNCTION__ . '()');
+			return true;
 		}catch(\Exception $ex){
 
 			Log::error('END ' 
-			. get_class() . ' => ' . __FUNCTION__ . '() - ' . $ex->getMessage());
+				. get_class() . ' => ' . __FUNCTION__ . '() - ' . $ex->getMessage());
 			DB::rollback();
 			return false;
 		}	
@@ -63,26 +74,26 @@ class CatePostRepository
 		DB::beginTransaction();
 
 		try{
-            DB::table('slugs')->where([
-                    ['entity_id', '=', $model->id],
-                    ['entity_type', '=', $model->entityType]
-                ])->delete();
-	        $model->delete();
-	        DB::commit();
-	       
-	        Log::info('END ' 
-			. get_class() . ' => ' . __FUNCTION__ . '()');
-	        return true;
+			DB::table('slugs')->where([
+				['entity_id', '=', $model->id],
+				['entity_type', '=', $model->entityType]
+			])->delete();
+			$model->delete();
+			DB::commit();
+
+			Log::info('END ' 
+				. get_class() . ' => ' . __FUNCTION__ . '()');
+			return true;
 
 	    // catch     
 		}catch(\Exception $ex){
 			
 			Log::error('END ' 
-			. get_class() . ' => ' . __FUNCTION__ . '() - ' . $ex->getMessage());
+				. get_class() . ' => ' . __FUNCTION__ . '() - ' . $ex->getMessage());
 			DB::rollback();
 			return false;
 		}	
 	}
 	
 }
- ?>
+?>

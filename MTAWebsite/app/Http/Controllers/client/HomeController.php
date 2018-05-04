@@ -10,7 +10,6 @@ use App\Models\Product;
 use App\Models\CatePost;
 use App\Models\Slug;
 use App\Models\Page;
-use App\Models\CTPost;
 use App\Models\Customer;
 use App\Models\Contract;
 use DB;
@@ -19,8 +18,9 @@ class HomeController extends Controller
     //
     public function index()
     {   
-
-        return View('client.index');
+        $new = CatePost::find(1);
+        $noti = CatePost::find(8);
+        return View('client.index',compact('new','noti'));
     }
     public function getContent($slug1,$slug2 = '')
     {   
@@ -40,34 +40,100 @@ class HomeController extends Controller
         case ENTITY_TYPE_POST: 
         $post = Post::find($model->entity_id);
         $post->addPageView();
-        $rl = CTPost::where('post_id',$post->id)->get();
-        foreach ($rl as $key => $value) {
-            $postrl = CTPost::where('category_id',$value->category_id)->get();
-        }
+
+        $postrl = Post::where([['category_id',$post->category_id],['id','!=',$post->id]])->orderBy('top')->limit(9)->get();
+        
         $view = $post->getPageViews();
         $date = $post->created_at;
-        return view('client.post.single', compact('post','cateP','postrl','view','date'));
+        $cateP = CatePost::find($post->category_id);
+        $sub = CatePost::where('parent_id',$cateP->id)->get();
+        if(count($sub) > 0)
+        {
+            if($cateP->parent_id != 0)
+            {
+
+                $listCate = CatePost::find($cateP->parent_id);
+                if($listCate->parent_id != 0)
+                {
+                   $listCate = CatePost::find($cateP->parent_id);
+               }
+
+           }
+           else
+           {
+            $listCate = $cateP;
+        }
+    }
+    else
+    {
+        if($cateP->parent_id != 0)
+        {
+            $listCate = CatePost::find($cateP->parent_id);
+
+            if($listCate->parent_id != 0)
+            {
+               $listCate = CatePost::find($listCate->parent_id);
+           }
+       }
+       else
+       {
+        $listCate = $cateP;
+    }
+}
+return view('client.post.single', compact('post','postrl','view','date','listCate'));
         case ENTITY_TYPE_PAGE: // Slug dai dien cho 1 bai viet
         $pages = Page::find($model->entity_id);
+        $pages->addPageView();
         if (!$pages) {
            return redirect()->route('404.error');
        }
        $contracts =Contract::all();
-        $view = $pages->getPageViews();
-        $date = $pages->created_at;
-       return View($pages->view,compact('pages','contracts','view','date'));
-       case ENTITY_TYPE_PRODUCT:
-       $product = Product::find($model->entity_id);
-       $cate = Category::find($product->cate_id);
-       $productrls =  Product::where([['cate_id',$cate->id],['id','!=',$product->id]])->limit(6)->get();
-       return View('client.product.single',compact('product','cate','productrls'));
-       case ENTITY_TYPE_CATE_PRODUCT:
-       $cate  = Category::find($model->entity_id);
+       $view = $pages->getPageViews();
+       $date = $pages->created_at;
+       $sub = Page::where('parent_id',$pages->id)->get();
+       if(count($sub) > 0)
+       {
+        if($pages->parent_id != 0)
+        {
 
-       if($cate->parent_id == 0){
-        $sub = Category::where('parent_id',$cate->id)->get();
+            $listPage = Page::find($pages->parent_id);
+            if($listPage->parent_id != 0)
+            {
+               $listPage = Page::find($pages->parent_id);
+           }
+
+       }
+       else
+       {
+        $listPage = $pages;
+    }
+}
+else
+{
+    if($pages->parent_id != 0)
+    {
+        $listPage = Page::find($pages->parent_id);
+
+        if($listPage->parent_id != 0)
+        {
+           $listPage = Page::find($listPage->parent_id);
+       }
+   }
+   else
+   {
+    $listPage = $pages;
+}
+}
+return View($pages->view,compact('pages','contracts','view','date','listPage'));
+case ENTITY_TYPE_CATE_POSTS:
+$cate  = CatePost::find($model->entity_id);
+$catePost = CatePost::find($cate->id);
+if($catePost)
+{
+    if($catePost->parent_id == 0){
+        $sub = CatePost::where('parent_id', $cate->id)->get();
         if(count($sub) > 0){
-            $array = '';
+            $array = $cate->id.',';
             foreach ($sub as $term){
                 $array .= $term->id . ',';
             }
@@ -75,52 +141,21 @@ class HomeController extends Controller
 
             $array = explode(',', $array);
                         //dd($array);
-            $products = Product::whereIn('cate_id', $array)->paginate(10);
+            $ctposts = Post::whereIn('category_id', $array)->paginate(10);
                         //dd($product);
         }else{
-            $products = Product::where('cate_id', $cate->id)->paginate(10);
+            $ctposts = Post::where('category_id', $cate->id)->paginate(10);
 
         }
     }else{
-        $products = Product::where('cate_id', $cate->id)->paginate(10);
+        $ctposts = Post::where('category_id',$cate->id)->paginate(10);
     }
-
-    $cateP = Category::all();
-    return View('client.product.category',compact('products','cateP','cate'));
-    case ENTITY_TYPE_CATE_POSTS:
-    $cate  = CatePost::find($model->entity_id);
-    $catePost = CatePost::find($cate->id);
-
-    if($catePost)
-    {
-        if($catePost->parent_id == 0){
-            $sub = CatePost::where('parent_id', $cate->id)->get();
-            if(count($sub) > 0){
-                $array = '';
-                foreach ($sub as $term){
-                    $array .= $term->id . ',';
-                }
-                $array = rtrim($array, ',');
-
-                $array = explode(',', $array);
-                        //dd($array);
-                $ctposts = CTPost::whereIn('category_id', $array)->paginate(10);
-                        //dd($product);
-            }else{
-                $ctposts = CTPost::where('category_id', $cate->id)->paginate(10);
-            }
-        }else{
-
-            $ctposts = CTPost::where('category_id',$cate->id)->paginate(10);
-
-        }
-    }
-
-        return View('client.post.category',compact('ctposts','cate'));
-        default:
-        return view('forbidden');
-        break;
-    }
+}
+return View('client.post.category',compact('ctposts','cate'));
+default:
+return view('forbidden');
+break;
+}
 }
 public function search(Request $rq)
 {   
@@ -128,24 +163,6 @@ public function search(Request $rq)
     $product = Product::where('name','LIKE','%'.$keywords.'%')->get();
     $post = Post::where('title','LIKE','%'.$keywords.'%')->get();
     return View('client.search',compact('keywords','product','post'));
-}
-public function category()
-{
-    $products = Product::paginate(12);
-    $cateP = Category::all();
-    return View('client.product.category',compact('products','cateP'));
-}
-public function customer()
-{
-    $customers = Customer::paginate(12);
-    $cateP = Category::all();
-    return View('client.customer',compact('customers','cateP'));
-}
-public function post()
-{
-    $posts = Post::paginate(12);
-    $cateP = Category::all();
-    return View('client.post.category',compact('posts','cateP'));
 }
 
 }

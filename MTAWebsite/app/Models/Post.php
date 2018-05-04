@@ -9,7 +9,7 @@ class Post extends Model
 	use HasPageViewCounter;
     protected $table = 'post';
     public $entityType = ENTITY_TYPE_POST;
-    public $fillable = ['title', 'content','seo_title','seo_content','status','post_type'];
+    public $fillable = ['title', 'content','seo_title','seo_content','category_id'];
 
     public function category()
 	{
@@ -28,5 +28,17 @@ class Post extends Model
 			return $slug->slug;
 		}
 		return null;
+	}
+	public function link()
+	{
+		if($this->status == "off")
+		{
+			return $this->getSlug();
+		}
+		else
+		{
+			$link = 'uploads/'.$this->file;
+			return $link;
+		}
 	}
 }

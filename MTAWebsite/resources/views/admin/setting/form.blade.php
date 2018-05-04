@@ -10,7 +10,6 @@
 				{{csrf_field()}}
 				<input type="hidden" name="id" value="{{old('id', $model->id)}}">
 				<div class="row group">
-
 				    <div class="control-label col-md-3 col-sm-3 col-xs-12 text-right">
 				    	<label for="title">logo</label>
 				    </div>
@@ -91,32 +90,6 @@
 							<span class="text-danger">{{$errors->first('facebook')}}</span>
 						@endif
 					</div>
-				</div>
-				<div class="row group">
-					<div class="control-label col-md-3 col-sm-3 col-xs-12 text-right">
-						<label for="description">Skype</label>
-					</div>
-					<div class="col-md-9 col-sm-9 col-xs-12">
-						<input id="skype" type="text" 
-							value="{{old('skype', $model->skype)}}" name="skype" class="form-control" placeholder="Skype">
-						@if (count($errors) > 0)
-							<span class="text-danger">{{$errors->first('skype')}}</span>
-						@endif
-					</div>
-				</div>
-				<div class="row group">
-					<div class="control-label col-md-3 col-sm-3 col-xs-12 text-right">
-					     <label for="footer">Footer</label>
-					</div>
-					<div class="col-md-9 col-sm-9 col-xs-12">
-						<textarea name="footer" class="form-control"  >
-							{{old('footer', $model->footer)}}
-						</textarea>
-						@if (count($errors) > 0)
-						<span class="text-danger">{{$errors->first('footer')}}</span>
-						@endif
-					</div>
-					
 				</div>
 				<div class="row group">
 					<div class="control-label col-md-3 col-sm-3 col-xs-12 text-right">

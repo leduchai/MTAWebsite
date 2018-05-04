@@ -9,7 +9,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="{{ asset('client-assets/js/jquery.devrama.slider.min.js') }}"></script>
-    {{--       <link rel="stylesheet" href="{{ asset('client-assets/css/example.css') }}"> --}}
     <link rel="stylesheet" type="text/css" href="{{ asset('client-assets/css/font-awesome.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('client-assets/css/mta.website.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('client-assets/css/slider.all.css') }}">
@@ -131,8 +130,13 @@
                         <div class="col-md-8">
                             <strong>Liên kết website</strong><br>
                             <div class="row">
-                                <div class="col-md-6">Khoa Hóa lý kỹ thuật</div>
-                                <div class="col-md-6">Khoa Hóa lý kỹ thuật</div>
+                                <?php $k=1;?>
+                                @foreach($faculty as $f)
+                                @if($k<11)
+                                <div class="col-md-6"><p><a href="{{ $f->url }}">{{ $f->title }}</a></p></div>
+                                @endif
+                                <?php $k++;?>
+                                @endforeach
                             </div>
                             
                         </div>

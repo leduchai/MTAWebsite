@@ -26,7 +26,7 @@
                     </div>
                 </div>
             </section>
-            <?php $i = 1;?> 
+
             @foreach($pages->childss() as $page)
             @if($page->index==1)
             <section>
@@ -37,7 +37,7 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-6 col-md-6">
-                        <a href=""><img alt="" src="{{ asset(UPLOAD_IMAGE_PAGE.$page->images) }}" class="img-responsive"> </a>
+                        <a href=""><img alt="" src="{{ asset(UPLOAD_IMAGE_PAGE1.$page->images) }}" class="img-responsive"> </a>
                     </div>
                     <div class="col-lg-6 col-md-6 description-area">
                         <header class="description-header">
@@ -52,22 +52,21 @@
                     </div>
                 </div>
             </section>
-             @endif
-            <?php $i++; ?>
-            @endforeach
+             @else
+            
             <section class="background-gray">
                 <div class="row title-single">
                     <div class="col-lg-12 col-md-12">
-                        <h2 class="title-single">Các Bậc Học</h2>
+                        <h2 class="title-single">{{ $pages->title }}</h2>
                     </div>
                 </div>
                 <div class="row">
                     <?php $j = 1;?> 
-                    @foreach($pages->childss() as $pa)
+                    @foreach($page->childss() as $pa)
                     @if($j>1)
                     <div class="col-lg-6 col-md-6 col-sm-6">
                         <figure class="figure">
-                            <a href="{{ $pa->getSlug() }}"><img src="{{ asset(UPLOAD_IMAGE_PAGE.$pa->images) }}" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure."></a>
+                            <a href="{{ $pa->getSlug() }}"><img src="{{ asset(UPLOAD_IMAGE_PAGE1.$pa->images) }}" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure."></a>
                             <figcaption class="figure-caption-category"><a href="{{ $pa->getSlug() }}">{{ $pa->title }}</a></figcaption>
                         </figure>
                         <header>
@@ -80,5 +79,6 @@
             @endforeach
                 </div>
             </section>
-            
+            @endif
+             @endforeach
             @endsection

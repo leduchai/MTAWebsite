@@ -132,7 +132,7 @@
         </li>
         <li class="treeview">
           <a href="#">
-            <i class="glyphicon glyphicon-apple"></i>
+            <i class="glyphicon glyphicon-film"></i>
             <span>Banner</span>
             <span class="pull-right-container">
                   <i class="fa fa-angle-left pull-right"></i>
@@ -168,7 +168,7 @@
         </li> 
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-file-o "></i><span>Liên hệ</span>
+            <i class="glyphicon glyphicon-envelope"></i><span>Liên hệ</span>
             <span class="pull-right-container">
                   <i class="fa fa-angle-left pull-right"></i>
                 </span>
@@ -214,8 +214,6 @@
     </div>
     @yield('section');
   </div>
-
-
   <div class="control-sidebar-bg"></div>
 </div>
 

@@ -1,10 +1,10 @@
 <?php 
 use App\Models\Banner;
 use App\Models\CatePost;
-use App\Models\CTPost;
 use App\Models\Setting;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Post;
 define('UPLOAD_IMAGE_POST','uploads/post-');
 define('UPLOAD_IMAGE_PAGE','uploads/page-');
 define('UPLOAD_IMAGE_PAGE1','uploads/page1-');
@@ -108,60 +108,9 @@ if(!function_exists('showpost')){
   function showpost($id){
 
     $catePost = CatePost::find($id);
-    if($catePost)
-    {
-    if($catePost->parent_id == 0){
-                    $sub = CatePost::where('parent_id', $id)->get();
-                    if(count($sub) > 0){
-                        $array = '';
-                        foreach ($sub as $term){
-                            $array .= $term->id . ',';
-                        }
-                        $array = rtrim($array, ',');
-                        
-                        $array = explode(',', $array);
-                        //dd($array);
-                        $ctposts = CTPost::whereIn('category_id', $array)->get();
-                        //dd($product);
-                    }else{
-                        $ctposts = CTPost::where('category_id', $id)->get();
-                    }
-                }else{
-                    $ctposts = CTPost::where('category_id', $id)->get();
-                }
-    return $ctposts;
-  }
-  else
-  {
-    $ctposts = array();
-    return  $ctposts;
+    
+    return  $catePost;
   }
   }
-}
-if(!function_exists('showproduct')){
-  function showproduct($id){
-    $catePost = Category::find($id);
-    if($catePost->parent_id == 0){
-                    $sub = Category::where('parent_id', $id)->get();
-                    if(count($sub) > 0){
-                        $array = '';
-                        foreach ($sub as $term){
-                            $array .= $term->id . ',';
-                        }
-                        $array = rtrim($array, ',');
-                        
-                        $array = explode(',', $array);
-                        //dd($array);
-                        $ctposts = Product::whereIn('cate_id', $array)->paginate(10);
-                        //dd($product);
-                    }else{
-                        $ctposts = Product::where('cate_id', $id)->paginate(10);
-                    }
-                }else{
-                    $ctposts = Product::where('cate_id', $id)->paginate(10);
-                }
-    return $ctposts;
-  }
-}
 
  ?>
