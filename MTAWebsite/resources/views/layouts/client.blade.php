@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Trang chủ</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>@yield('title')</title>
+	<meta name="description" content="@yield('description')"/>
+	@yield('opengraph')
+	<link rel="icon" type="text/css" href="{{ asset('client-assets/images/icon.ico') }}">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -56,8 +59,10 @@
 						<div class="row">
 							<div class="col-lg-12 col-md-12">
 								<div class="search">
-									<input type="search" id="search" name="Search">
-									<a href="#" id="tag-a-search" title="Tìm kiếm"><span class="glyphicon glyphicon-search"></span></a>
+									<form action="{{ route('search') }}" method="post">
+										<input type="search" id="search" name="keywords" >
+										<a href="#" id="tag-a-search" title="Tìm kiếm"><span class="glyphicon glyphicon-search"></span></a>
+									</form>
 								</div>
 							</div>
 						</div>
@@ -107,13 +112,13 @@
 												<p><a href="http://dangkyhoc.mta.edu.vn/dkmh/login.asp">Đăng kí tín chỉ</a></p>
 											</div>
 											<div class="col-md-3">
-												<a href="#"><img class="icon" src="{{ asset('client-assets/images/007-settings.png') }}" /></a>
-												<p><a href="#">Trung Tâm Công Nghệ</a></p>
+												<a href="http://atc.mta.edu.vn/"><img class="icon" src="{{ asset('client-assets/images/007-settings.png') }}" /></a>
+												<p><a href="http://atc.mta.edu.vn/">Trung Tâm Công Nghệ</a></p>
 											</div>
 
 											<div class="col-md-3">
-												<a href="#"><img class="icon" src="{{ asset('client-assets/images/002-hello-speech-bubble-handmade-chatting-symbol.png') }}" /></a>
-												<p><a href="#">Trung Tâm Ngoại Ngữ</a></p>
+												<a href="http://ttnn.mta.edu.vn/"><img class="icon" src="{{ asset('client-assets/images/002-hello-speech-bubble-handmade-chatting-symbol.png') }}" /></a>
+												<p><a href="http://ttnn.mta.edu.vn/">Trung Tâm Ngoại Ngữ</a></p>
 											</div>
 											<div class="col-md-3">
 												<a href="#"><img class="icon" src="{{ asset('client-assets/images/001-books-stack-of-three.png') }}" /></a>
@@ -123,7 +128,7 @@
 										<div class="row">
 											<div class="col-md-3">
 												<a href="http://fit.mta.edu.vn/"><img class="icon" src="{{ asset('client-assets/images/009-computer.png') }}" /></a>
-												<p><a href="#">Khoa Công Nghệ Thông Tin</a></p>
+												<p><a href="http://fit.mta.edu.vn/">Khoa Công Nghệ Thông Tin</a></p>
 											</div>
 											<div class="col-md-3">
 												<a href="#"><img class="icon" src="{{ asset('client-assets/images/005-flask.png') }}" /></a>
@@ -140,7 +145,7 @@
 										</div>
 										<div class="row">
 											<div class="col-md-3">
-												<a href="#"><img class="icon" src="{{ asset('client-assets/images/8036224_n.png') }}" /></a>
+												<a href="http://itse.mta.edu.vn/"><img class="icon" src="{{ asset('client-assets/images/8036224_n.png') }}" /></a>
 												<p><a href="http://itse.mta.edu.vn/">Viện Kĩ Thuật Công Trình Đặc Biệt</a></p>
 											</div>
 											<div class="col-md-3">
@@ -167,34 +172,34 @@
 	</div>
 	<footer>
 		<div class="container">
-			<section>
+			<section id="infomation-footer">
 				<div class="row">
-					<div class="col-md-4 sp-item">
+					<div class="col-lg-4 col-md-4 sp-item">
 						<div id="slides">
 							<div class="item ft-item text-center">
-								<strong>Học Viện Kĩ thuật quân sự</strong><br>
-								<p>Khu A - Hà Nội</p>
+								<strong>Học Viện Kĩ Thuật Quân Sự</strong><br>
+								<p class="branch-name">Khu A - Hà Nội</p>
 								<p>Địa chỉ :  236 Hoàng Quốc Việt, Bắc Từ Liêm, Hà Nội</p>
 								<p>Điện thoại : {{ setting()->phone }}</p>
 								<p>Email : {{ setting()->email }}</p>
 							</div>
 							<div class="item ft-item text-center">
-								<strong>Học Viện Kĩ thuật quân sự</strong><br>
-								<p>Cơ sở Xuân Phương - Hà Nội</p>
+								<strong>Học Viện Kĩ Thuật Quân Sự</strong><br>
+								<p class="branch-name">Cơ sở Xuân Phương - Hà Nội</p>
 								<p>Địa chỉ :  Hồng Mai, Phúc Diễn, Từ Liêm, Hà Nội</p>
 								<p>Điện thoại : {{ setting()->phone }}</p>
 								<p>Email : {{ setting()->email }}</p>
 							</div>
 							<div class="item ft-item text-center">
-								<strong>Học Viện Kĩ thuật quân sự</strong><br>
-								<p>Trung tâm 125 - Vĩnh Phúc</p>
+								<strong>Học Viện Kĩ Thuật Quân Sự</strong><br>
+								<p class="branch-name">Trung tâm 125 - Vĩnh Phúc</p>
 								<p>Địa chỉ :  Nguyễn Văn Linh, Liên Bảo, Vĩnh Yên, Vĩnh Phúc</p>
 								<p>Điện thoại : {{ setting()->phone }}</p>
 								<p>Email : {{ setting()->email }}</p>
 							</div>
 							<div class="item ft-item text-center">
-								<strong>Học Viện Kĩ thuật quân sự</strong><br>
-								<p>Cơ sở 2 - TP. Hồ Chí Minh</p>
+								<strong>Học Viện Kĩ Thuật Quân Sự</strong><br>
+								<p class="branch-name">Cơ sở 2 - TP. Hồ Chí Minh</p>
 								<p>Địa chỉ :  71 Cộng Hòa, Phường 4, Tân Bình, Hồ Chí Minh</p>
 								<p>Điện thoại : {{ setting()->phone }}</p>
 								<p>Email : {{ setting()->email }}</p>
@@ -203,27 +208,37 @@
 							<a href="#" class="slidesjs-next slidesjs-navigation"><i class="icon-chevron-right icon-large"></i></a>
 						</div>
 					</div>
-					<div class="col-md-8 sp-item">
+					<div class="col-lg-4 col-md-4">
 						<div class="row">
-							<div class="col-md-8">
-								<strong>Liên kết website</strong><br>
-								<div class="row">
-									<?php $k=1;?>
-									@foreach($faculty as $f)
-									@if($k<11)
-									<div class="col-md-6"><p><a href="{{ $f->url }}">{{ $f->title }}</a></p></div>
-									@endif
-									<?php $k++;?>
+							<p id="menu-footer">Menu</p>
+						</div>
+						<div class="row menu-footer">
+							
+							<ul>
+								<div class="col-lg-6 col-md-6"><li><a href="">Trang Chủ</a></li></div>
+									@if(isset($menu))
+									@foreach($menu as $k => $v)
+									
+								<div class="col-lg-6 col-md-6">	<li><a href="{{ $v['url'] }}">{{ $v['title'] }}</a></li></div>
+									
 									@endforeach
-								</div>
-								
-							</div>
-							<div class="col-md-4">
-								<strong>Facebook</strong><br>
-								<div class="fb-page" data-href="{{ setting()->facebook }}" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="{{ setting()->facebook }}" class="fb-xfbml-parse-ignore"><a href="{{ setting()->facebook }}">Học Viện Kĩ Thuật Quân Sự</a></blockquote></div>
+									@endif
+									<div class="col-lg-6 col-md-6"><li><a href='#' data-toggle="modal" data-target="#websiteLinkPopup">Liên Kết</a></li></div>
+								</ul>
 							</div>
 						</div>
+			
+										<div class="col-lg-4 col-md-4">
+						<div class="row fb-footer">
+							<p id="fb-footer">Mạng xã hội</p>
+						</div>
+												<div class="row">
+							<div class="fb-page" data-href="{{ setting()->facebook }}" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="{{ setting()->facebook }}" class="fb-xfbml-parse-ignore"><a href="{{ setting()->facebook }}">Học Viện Kĩ Thuật Quân Sự</a></blockquote></div>
+						</div>
 					</div>
+				</div>
+				<div class="row" id="license">
+					<p>Bản quyền thuộc về trường Học viện Kỹ Thuật Quân Sự</p>
 				</div>
 			</section>
 			<section>

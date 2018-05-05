@@ -18,37 +18,22 @@ class BannerController extends Controller
     }
     public function create(){
         Log::info("BEGIN " . get_class() . " => " . __FUNCTION__ ."()");
-
         // lấy ra model mẫu
         $model = new Banner();
-
-       
-        
-   
-
         Log::info("END " . get_class() . " => " . __FUNCTION__ ."()");
         return view('admin.banner.form', compact('model'));
     }
 
-    /**
-     * Form cập nhật danh mục
-     * @author ThienTH
-     * @return view
-     * @date 2017-07-28 - create new
-     */
+
     public function update($id){
         Log::info("BEGIN " . get_class() . " => " . __FUNCTION__ ."()");
 
-        // lấy ra model mẫu
         $model = Banner::find($id);
         if(!$model){
             Log::info('END ' 
             . get_class() . ' => ' . __FUNCTION__ . '()');
             return redirect()->route('404.error');
         }
-      
-     
-
         Log::info("END " . get_class() . " => " . __FUNCTION__ ."()");
         return view('admin.banner.form', compact('model'));
     }
@@ -94,7 +79,7 @@ class BannerController extends Controller
 			Log::error('END ' 
 			. get_class() . ' => ' . __FUNCTION__ . '() - ' . $ex->getMessage());
 			DB::rollback();
-			return 'Error';
+			return 'Lỗi vui lòng thử lại';
 		}	
     }
 
@@ -126,7 +111,7 @@ class BannerController extends Controller
 			Log::error('END ' 
 			. get_class() . ' => ' . __FUNCTION__ . '() - ' . $ex->getMessage());
 			DB::rollback();
-			return 'Error';
+			return 'Lỗi vui lòng thử lại';
 		}	
     }
 }

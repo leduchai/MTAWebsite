@@ -127,10 +127,9 @@ else
 return View($pages->view,compact('pages','contracts','view','date','listPage'));
 case ENTITY_TYPE_CATE_POSTS:
 $cate  = CatePost::find($model->entity_id);
-$catePost = CatePost::find($cate->id);
-if($catePost)
+if($cate)
 {
-    if($catePost->parent_id == 0){
+    if($cate->parent_id == 0){
         $sub = CatePost::where('parent_id', $cate->id)->get();
         if(count($sub) > 0){
             $array = $cate->id.',';
@@ -141,14 +140,14 @@ if($catePost)
 
             $array = explode(',', $array);
                         //dd($array);
-            $ctposts = Post::whereIn('category_id', $array)->paginate(10);
+            $ctposts = Post::whereIn('category_id', $array)->paginate(8);
                         //dd($product);
         }else{
-            $ctposts = Post::where('category_id', $cate->id)->paginate(10);
+            $ctposts = Post::where('category_id', $cate->id)->paginate(8);
 
         }
     }else{
-        $ctposts = Post::where('category_id',$cate->id)->paginate(10);
+        $ctposts = Post::where('category_id',$cate->id)->paginate(8);
     }
 }
 return View('client.post.category',compact('ctposts','cate'));
@@ -160,9 +159,8 @@ break;
 public function search(Request $rq)
 {   
     $keywords =$rq->keywords;
-    $product = Product::where('name','LIKE','%'.$keywords.'%')->get();
-    $post = Post::where('title','LIKE','%'.$keywords.'%')->get();
-    return View('client.search',compact('keywords','product','post'));
+    $ctposts = Post::where('title','LIKE','%'.$keywords.'%')->get();
+    return View('client.search',compact('keywords','ctposts'));
 }
 
 }

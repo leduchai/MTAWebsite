@@ -35,6 +35,8 @@ class PostRepository
                 $image = $request->file('upload_image');
                 $filename = 'image-' . uniqid() . '.' . $image->getClientOriginalExtension();
                     $path_1 = public_path(UPLOAD_IMAGE_POST . $filename);
+                    $path_2 = public_path(UPLOAD_IMAGE_POST1 . $filename);
+                    Image::make($image->getRealPath())->fit(1140, 428)->save($path_2);  
                     Image::make($image->getRealPath())->fit(555, 312)->save($path_1);
                     
                 $model->images =$filename;

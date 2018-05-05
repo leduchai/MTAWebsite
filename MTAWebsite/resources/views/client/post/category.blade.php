@@ -1,7 +1,4 @@
 @extends('layouts.client')
-@section('slider')
-  @include('layouts.slider')
-@endsection
 @section('content')
                            <section>
                 <div class="row">
@@ -14,31 +11,25 @@
                 <div class="row">
 
                     <div class="col-lg-9 col-md-9">
-                      @foreach($cate->getpost() as $p2)
-                        @if($p2->status != "on")
+                      @foreach($ctposts as $p2)
+                        
                         <div class="row post-item">
-                            <div class="col-lg-3 col-md-3 ">
-                                
-                             <a href="{{ $p2->getSlug() }}"><img src="{{ asset(UPLOAD_IMAGE_POST.$p2->images) }}" class="img-responsive figure-img img-fluid rounded" alt="{{ $p2->title }}"></a>
-                    
+                            <div class="col-lg-3 col-md-3 text-center">
+                            @if(!empty($p2->images))
+                             <a href="{{ $p2->link() }}"><img src="{{ asset(UPLOAD_IMAGE_POST.$p2->images) }}" class="img-responsive figure-img img-fluid rounded" alt="{{ $p2->title }}"></a>
+                            @else
+                            <a href="{{ $p2->link() }}"><span class="glyphicon glyphicon-bell bell"></span</a>
+                            @endif
                             </div>
                             <div class="col-lg-9 col-md-9 ">
                               <figure class="figure">
-                                    
-                                 <h3 class="post-title"><a href="{{ $p2->getSlug() }}">{{ $p2->title }}</a></h3>
+                                 <h3 class="post-title"><a href="{{ $p2->link() }}">{{ $p2->title }}</a></h3>
                                     <p class="note-category">{{ $p2->seo_content }}</p>
                                     <span class="date">{{ $p2->created_at }}</span>
                                 </figure>
                             </div>
                         </div>
-                        @else
-                        <div class="row post-item">
-                             <figure class="figure">
-                                    
-                                <h3 class="post-title"><a href="{{ $p2->link() }}">{{ $p2->title }}</a></h3>
-                                </figure>
-                        </div>
-                        @endif
+                       
                       @endforeach
                         <div class="row">
                             <div class="col-lg-12 col-md-12" id="paging">
@@ -53,4 +44,11 @@
                     </div>
                 </div>
             </section>
+@endsection
+@section('title')
+{{$cate->seo_title}}
+@endsection
+
+@section('description')
+{{$cate->seo_content}}
 @endsection

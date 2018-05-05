@@ -29,9 +29,10 @@ Route::get('/login', function(){
 	return view('admin.auth.login');
 })->name('login');
 Route::get('lien-he.html','ContactController@contact')->name('contact');
-Route::get('contact/list','ContactController@index')->name('contact.list');
+
 Route::post('contact/save','ContactController@save')->name('contact.save');
-Route::get('contact/remove/{id}','ContactController@remove')->name('contact.remove');
+
+Route::post('/search','client\HomeController@search')->name('search');
 Auth::routes();
 
 Route::get('{slug1}/{slug2?}', 'Client\HomeController@getContent');

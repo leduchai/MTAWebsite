@@ -1,6 +1,15 @@
 @extends('layouts.client')
 @section('slider')
-@include('layouts.slider')
+@if(count(banners('ts')) >0)
+                <section>
+                <div class="example-using-css">
+                    @foreach(banners('ts') as $banner)
+                    <img data-lazy-src="{{ asset('uploads/'.$banner->images) }}" />
+                    
+                    @endforeach
+                </div>
+            </section>
+            @endif
 @endsection
 @section('content')
 <section>
@@ -99,7 +108,7 @@
         @foreach($page->childss() as $pa)
         <div class="col-lg-3 col-md-3 col-sm-6">
             <figure class="figure">
-                <a href="{{ $pa->getSLug() }}"><img src="{{ asset(UPLOAD_IMAGE_PAGE1.$pa->images) }}" class="img-responsive figure-img img-fluid rounded" alt="{{ $pa->title }}"></a>
+                <a href="{{ $pa->getSLug() }}"><img src="{{ asset(UPLOAD_IMAGE_PAGE2.$pa->images) }}" class="img-responsive figure-img img-fluid rounded" alt="{{ $pa->title }}"></a>
                 <figcaption class="figure-caption-category"><a href="{{ $pa->getSLug() }}">{{ $pa->title }}</a></figcaption>
             </figure>
             <header>
@@ -143,4 +152,11 @@
             </section>
 @endif
 @endforeach
+@endsection
+@section('title')
+{{$pages->seo_title}}
+@endsection
+
+@section('description')
+{{$pages->seo_content}}
 @endsection

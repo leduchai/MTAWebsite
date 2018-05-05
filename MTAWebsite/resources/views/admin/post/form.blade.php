@@ -80,7 +80,7 @@
    <div class="panel-footer">
     @if(!empty($model->id))
     <div class="col-md-6">
-       <a href="{{route('post.remove', ['id' => $model->id])}}" >Bỏ vào thùng rác</a>
+       <a href="{{route('post.delete', ['id' => $model->id])}}" >Bỏ vào thùng rác</a>
    </div>
    @endif
    <div class="col-md-6 ">

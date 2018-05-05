@@ -691,11 +691,12 @@ div.modal-body {
 
     div.modal-body > div.row {
         padding: 5px;
+        margin-bottom: 10px;
     }
 
 a > img.icon {
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     margin-bottom: 10px;
 }
 
@@ -704,21 +705,32 @@ a > img.icon {
 
 /*.............footer..............*/
 footer {
-    background: #f2f2f2;
-    margin-top: 48px;
+    
+    margin-top: 20px;
 }
 
-.sp-item {
-    margin-top: 20px;
+footer section#infomation-footer{
+    background: #f2f2f2;
+}
+
+section#infomation-footer p {
+    text-align: left;
+}
+
+p.branch-name{
+    text-align: center !important;
+    margin-top: 10px;
+    margin-bottom: 25px;
 }
 
 .ft-item {
     padding: 20px 0;
-    background: #fff;
+  
 }
 
-#slides {
+div#slides {
     position: relative;
+        padding-left: 15px;
 }
 
 ul.slidesjs-pagination {
@@ -727,20 +739,55 @@ ul.slidesjs-pagination {
 
 .slidesjs-previous {
     position: absolute;
-    bottom: 24px;
+    bottom: 0px;
     right: 20px;
     z-index: 200;
-    color: black;
+    color: #005f37;
 }
 
 .slidesjs-next {
     position: absolute;
-    bottom: 24px;
+    bottom: 0px;
     right: 5px;
     z-index: 200;
-    color: black;
+    color: #005f37;
 }
 
+p#menu-footer{
+    margin-top: 20px;
+    font-weight: bold;
+
+}
+
+
+div.menu-footer li{
+        padding:    5px;
+}
+
+div.menu-footer li>a{
+        color:  #000;
+}
+
+div.fb-footer{
+        margin-top: -25px;
+}
+
+p#fb-footer{
+    margin-bottom: 0px;
+        margin-top: 20px;
+    font-weight: bold;
+}
+
+
+div#license{
+    padding-left: 30px;
+    border-top: 1px solid #fff;
+    margin-top: 20px;
+}
+
+div#license p{
+    padding-top: 10px;
+}
 
 
 
@@ -848,5 +895,11 @@ h3.post-title {
 
     h3.post-title a {
         color: #333;
+    }
+    .bell
+    {
+        padding-bottom: 15px;
+    font-size: 40px;
+    padding-top: 15px;
     }
 /*.......................*/

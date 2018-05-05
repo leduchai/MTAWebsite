@@ -1,6 +1,17 @@
 @extends('layouts.client')
 @section('slider')
-    @include('layouts.slider')
+     <section>
+                <figure>
+                    <?php $h =1 ?>
+                     @foreach(banners('dt') as $banner)
+                     @if($h==1)
+                        <img src="{{ asset('uploads/'.$banner->images) }}" class="img-responsive" alt="" />
+                    @endif
+                    @endforeach
+                </figure>
+                
+    </section>
+
 @endsection
 @section('content')
             
@@ -63,10 +74,10 @@
                 <div class="row">
                     <?php $j = 1;?> 
                     @foreach($page->childss() as $pa)
-                    @if($j>1)
+                    @if($j<5)
                     <div class="col-lg-6 col-md-6 col-sm-6">
                         <figure class="figure">
-                            <a href="{{ $pa->getSlug() }}"><img src="{{ asset(UPLOAD_IMAGE_PAGE1.$pa->images) }}" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure."></a>
+                            <a href="{{ $pa->getSlug() }}"><img src="{{ asset(UPLOAD_IMAGE_PAGE2.$pa->images) }}" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure."></a>
                             <figcaption class="figure-caption-category"><a href="{{ $pa->getSlug() }}">{{ $pa->title }}</a></figcaption>
                         </figure>
                         <header>
@@ -82,3 +93,10 @@
             @endif
              @endforeach
             @endsection
+            @section('title')
+{{$pages->seo_title}}
+@endsection
+
+@section('description')
+{{$pages->seo_content}}
+@endsection

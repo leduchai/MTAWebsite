@@ -55,8 +55,7 @@ class MenuController extends Controller
         $childs = Menu::where('parent_id',$menu->id)->get();
         foreach ($childs as $key => $value) {
            $child = Menu::find($value->id);
-           $child->parent_id = 0;
-           $child->save();
+           $child->delete();
         }
     	$menu->delete();
     	return redirect()->back();

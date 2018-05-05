@@ -40,19 +40,6 @@
                 @endforeach    
             </div>
             @endif
-            <script type="text/javascript">
-                function myfunction(id1,id2)
-                {
-
-                     $('#'+id1).addClass("active");
-
-                }
-            </script>
-            <style type="text/css">
-                .active{
-                    background: black
-                }
-            </style>
         </div>
         <div class="col-lg-9 col-md-9">
             <div class="row">
@@ -77,4 +64,11 @@
  </div>
 </section>
 
+@endsection
+@section('title')
+{{$pages->seo_title}}
+@endsection
+
+@section('description')
+{{$pages->seo_content}}
 @endsection

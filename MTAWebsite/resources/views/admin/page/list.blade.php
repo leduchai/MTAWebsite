@@ -12,7 +12,7 @@
             <!-- /.box-header -->
             <div class="box-body">
                <form action="{{ route('page.remove') }}" method="post">
-              <table class="table table-bordered table-striped table-hover" id="example2">
+              <table class="table table-bordered table-striped table-hover example2">
                 <thead>
                   <tr>
                     <th><input type="checkbox" class="checkall" />Tiêu đề</th>
@@ -55,6 +55,14 @@
   @endsection
   @section('js')
   <script>
+    $('.example2').DataTable({
+      'paging'      : true,
+      'lengthChange': true,
+      'searching'   : true,
+      'ordering'    : false,
+      'info'        : false,
+      'autoWidth'   : true,   
+    });
      $('.checkall').click(function () {
   if (this.checked) {
     var checkbox = $('.idcheck');

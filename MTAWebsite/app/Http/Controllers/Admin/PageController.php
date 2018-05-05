@@ -132,7 +132,7 @@ public function remove(Request $rq){
         return redirect()->route('page.list'); 
     }catch(\Exception $ex){
      DB::rollback();
-     return 'Error';
+     return 'Lỗi vui lòng thử lại';
  }	
 }
 
@@ -161,7 +161,7 @@ try{
 }catch(\Exception $ex){
 
     DB::rollback();
-    return 'Error';
+    return 'Lỗi vui lòng thử lại';
 }   
 
 

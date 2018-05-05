@@ -118,31 +118,38 @@
 		</div>
 	</div>
 </section>
+@if(count(showpost(10)->getpost()) > 0)
 <section>
 	<div class="row title-single">
 		<div class="col-lg-12 col-md-12">
 			<h2 class="title-single">Tuyển Sinh</h2>
 		</div>
 	</div>
+	<?php $l=1; ?>
+	@foreach(showpost(10)->getpost() as $ad)
+	@if($l==1)
 	<div class="row">
 		<div class="col-lg-12 col-md-12 background-over">
 			<header class="description-header">
 				<h3 class="title-description">
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+					{{ $ad->title }}
 				</h3>
 				<p class="detail-description">
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed dolore tenetur odio omnis optio hic ut repellat
+					{{ $ad->seo_content }}
 				</p>
-				<a href="" class="view-more">Xem thêm<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a>
+				<a href="{{ $ad->getSlug() }}" class="view-more">Xem thêm<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a>
 			</header>
 			<figure class="figure">
-				<img src="{{ asset('client-assets/images/big-image-9.jpg') }}" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+				<img src="{{ asset(UPLOAD_IMAGE_POST1.$ad->images) }}" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
 			</figure>
 		</div>
 	</div>
+	@endif
+	<?php $l++; ?>
+	@endforeach
 </section>
 
-<section class="background-gray">
+<section>
 	<div class="row title-single">
 		<div class="col-lg-12 col-md-12">
 			<h2 class="title-single"></h2>
@@ -151,38 +158,27 @@
 	<div class="row">
 		<div class="col-lg-9 col-md-9 col-sm-12">
 			<div class="row">
+				<?php $m=1; ?>
+				@foreach(showpost(10)->getpost() as $ad)
+				@if($m>1 && $m<5 )
 				<div class="col-lg-4 col-md-4 col-sm-4">
 					<figure class="figure">
-						<img src="{{ asset('client-assets/images/medium-image-10.jpg') }}" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
-						<figcaption class="figure-caption-category">Hình ảnh, video tiêu biểu</figcaption>
+						<img src="{{ asset(UPLOAD_IMAGE_POST.$ad->images) }}" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+						<figcaption class="figure-caption-category"><a href="{{ $ad->getSlug() }}">{{ $ad->title }}</a></figcaption>
 					</figure>
 					<header>
-						<p class="note-category">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo beatae sunt obcaecati, dolorum nisi, autem!</p>
+						<p class="note-category">{{ $ad->seo_content }}</p>
 					</header>
 				</div>
-				<div class="col-lg-4 col-md-4 col-sm-4">
-					<figure class="figure">
-						<img src="{{ asset('client-assets/images/medium-image-10.jpg') }}" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
-						<figcaption class="figure-caption-category">Hình ảnh, video tiêu biểu</figcaption>
-					</figure>
-					<header>
-						<p class="note-category">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo beatae sunt obcaecati, dolorum nisi, autem!</p>
-					</header>
-				</div>
-				<div class="col-lg-4 col-md-4 col-sm-4">
-					<figure class="figure">
-						<img src="{{ asset('client-assets/images/medium-image-10.jpg') }}" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
-						<figcaption class="figure-caption-category">Hình ảnh, video tiêu biểu</figcaption>
-					</figure>
-					<header>
-						<p class="note-category">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo beatae sunt obcaecati, dolorum nisi, autem!</p>
-					</header>
-				</div>
+
+				@endif
+				<?php $m++; ?>
+				@endforeach
 			</div>
 		</div>
 		<div class="col-lg-3 col-md-3 col-sm-12 btn-notification">
 			<div>
-				<a href="" class="view-more">Thông báo<span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span></a>
+				<a href="{{ showpost(9)->getSlug() }}" class="view-more">Thông báo<span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span></a>
 			</div>
 		</div>
 	</div>
@@ -191,8 +187,16 @@
 			<hr>
 		</div>
 		<div class="col-lg-1 col-md-1 view-more">
-			<a href="" class="view-more">Xem thêm<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a>
+			<a href="{{ showpost(10)->getSlug() }}" class="view-more">Xem thêm<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a>
 		</div>
 	</div>
 </section>
+@endif
+@endsection
+            @section('title')
+{{setting()->slogan}}
+@endsection
+
+@section('description')
+{{setting()->description}}
 @endsection

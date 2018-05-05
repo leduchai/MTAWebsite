@@ -106,3 +106,10 @@
             </section>
 
 @endsection
+@section('title')
+{{$post->seo_title}}
+@endsection
+
+@section('description')
+{{$post->seo_content}}
+@endsection

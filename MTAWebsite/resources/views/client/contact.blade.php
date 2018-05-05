@@ -65,3 +65,10 @@
                 </div>
             </section>
 @endsection
+@section('title')
+    Liên hệ
+@endsection
+
+@section('description')
+
+@endsection

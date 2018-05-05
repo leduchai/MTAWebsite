@@ -21,13 +21,6 @@ class SettingController extends Controller
         Log::info("END " . get_class() . " => " . __FUNCTION__ ."()");
         return view('admin.setting.form', compact('model'));
     }
-
-    /**
-     * Save category
-     * @author ThienTH
-     * @return view
-     * @date 2017-07-21 - create new
-     */
     public function save(SaveSettingRequest $request){
        Log::info('BEGIN ' 
 			. get_class() . ' => ' . __FUNCTION__ . '()');

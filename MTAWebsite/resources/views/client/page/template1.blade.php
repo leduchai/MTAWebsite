@@ -1,6 +1,15 @@
 @extends('layouts.client')
 @section('slider')
-    @include('layouts.slider')
+@if(count(banners('gt')) >0)
+                <section>
+                <div class="example-using-css">
+                    @foreach(banners('gt') as $banner)
+                    <img data-lazy-src="{{ asset('uploads/'.$banner->images) }}" />
+                    
+                    @endforeach
+                </div>
+            </section>
+            @endif
 @endsection
 @section('content')
             <section>
@@ -116,3 +125,10 @@
                 </div>
             </section>
             @endsection
+            @section('title')
+{{$pages->seo_title}}
+@endsection
+
+@section('description')
+{{$pages->seo_content}}
+@endsection

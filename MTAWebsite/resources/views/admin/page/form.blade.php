@@ -125,6 +125,7 @@
     'client.page.template4' =>array('view' => 'Ngiên cứu','images' =>asset('client-assets/images/ngiencuu.png') ),
     'client.page.template5' => array('view' => 'Hợp tác','images' =>asset('client-assets/images/hoptac.png') ),
     'client.page.template6' =>array('view' => 'Sinh Viên','images' =>  asset('client-assets/images/student.png')),
+    'client.page.template7' =>array('view' => 'list Page','images' =>  '#'),
   );
   @endphp
   @foreach($data as $key=>$value)

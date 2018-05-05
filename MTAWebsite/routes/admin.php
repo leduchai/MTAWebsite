@@ -81,8 +81,10 @@ Route::group(['middleware' => 'auth'], function(){
 		Route::group(['prefix'=>'post'],function(){
 			Route::get('list', 
 				'Admin\PostController@index')->name('post.list');
-			Route::get('/remove', 
+			Route::post('/remove', 
 				'Admin\PostController@remove')->name('post.remove');
+			Route::get('/delete/{id}', 
+				'Admin\PostController@delete')->name('post.delete');
 			Route::get('post/create', 
 				'Admin\PostController@create')->name('post.create');
 			
@@ -104,7 +106,7 @@ Route::group(['middleware' => 'auth'], function(){
 			Route::get('/delete/{id}','Admin\PageController@delete')->name('page.delete');	
 		});
 
-		Route::group(['prefix'=>'banner'],function(){
+		Route::group(['prefix'=>'banner','middleware'=>'check-admin'],function(){
 			Route::get('list', 
 				'Admin\BannerController@index')->name('banner.list');
 			Route::get('/create', 
@@ -114,7 +116,12 @@ Route::group(['middleware' => 'auth'], function(){
 			Route::post('/save','Admin\BannerController@save')->name('banner.save');
 			Route::get('/remove/{id}','Admin\BannerController@remove')->name('banner.remove');	
 		});
-		Route::group(['prefix'=>'faculty'],function(){
+
+		Route::group(['prefix'=>'contact','middleware'=>'check-admin'],function(){
+			Route::get('/list','ContactController@index')->name('contact.list');
+			Route::get('/remove/{id}','ContactController@remove')->name('contact.remove');
+		});
+		Route::group(['prefix'=>'faculty','middleware'=>'check-admin'],function(){
 			Route::get('list', 
 				'Admin\FacultyController@index')->name('faculty.list');
 			Route::get('/create', 
@@ -124,7 +131,7 @@ Route::group(['middleware' => 'auth'], function(){
 			Route::post('/save','Admin\FacultyController@save')->name('faculty.save');
 			Route::get('/remove/{id}','Admin\FacultyController@remove')->name('faculty.remove');	
 		});
-			Route::group(['prefix'=>'contract'],function(){
+			Route::group(['prefix'=>'contract','middleware'=>'check-admin'],function(){
 			Route::get('list', 
 				'Admin\ContractController@index')->name('contract.list');
 			Route::get('/create', 
@@ -134,7 +141,7 @@ Route::group(['middleware' => 'auth'], function(){
 			Route::post('/save','Admin\ContractController@save')->name('contract.save');
 			Route::get('/remove/{id}','Admin\ContractController@remove')->name('contract.remove');	
 		});
-		Route::group(['prefix'=>'setting'],function(){
+		Route::group(['prefix'=>'setting','middleware'=>'check-admin'],function(){
 
 			Route::get('/', 
 				'Admin\SettingController@update')->name('setting');
@@ -142,7 +149,7 @@ Route::group(['middleware' => 'auth'], function(){
 			
 		});
 
-		Route::group(['prefix'=>'menu'],function(){
+		Route::group(['prefix'=>'menu','middleware'=>'check-admin'],function(){
 			Route::get('list', 
 				'Admin\MenuController@index')->name('menu');
 			Route::post('/create-page', 

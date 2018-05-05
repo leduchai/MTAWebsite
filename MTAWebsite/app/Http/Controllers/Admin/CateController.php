@@ -59,7 +59,7 @@ class CateController extends Controller
         if($result){
             return redirect(route('cate.post.list'));
         }else{
-            return 'Error';
+            return 'Lỗi vui lòng thử lại';
         }
     }
     public function remove(Request $rq){
@@ -78,7 +78,7 @@ class CateController extends Controller
     if($result){
         return redirect(route('cate.post.list'));
     }else{
-        return 'Error';
+        return 'Lỗi vui lòng thử lại';
     }
 }
 }

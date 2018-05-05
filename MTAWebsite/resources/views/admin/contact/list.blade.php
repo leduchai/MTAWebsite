@@ -1,17 +1,17 @@
     @extends('layouts.admin')
 
-    @section('title','Quản lí danh mục')
+    @section('title','Liên hệ')
     @section('section')
     <section class="content">
       <div class="row">
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Danh mục sản phẩm </h3>
+              <h3 class="box-title">Danh sách các phản hồi </h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <table id="example2" class="table table-bordered table-hover">
+              <table class="table table-bordered table-hover example2">
               <thead>
                 <tr>
                   <th>STT</th>
@@ -53,7 +53,7 @@
     @endsection
     @section('js')
     <script>
-    $('#example2').DataTable({
+    $('.example2').DataTable({
       'paging'      : true,
       'lengthChange': true,
       'searching'   : true,

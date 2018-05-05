@@ -4,8 +4,8 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title></title>
-	<link rel="stylesheet" href="{{asset('plugins/bootstrap/css/bootstrap.min.css')}}">
-  	<link rel="stylesheet" href="{{asset('plugins/font-awesome/css/font-awesome.min.css')}}">
+	<link rel="stylesheet" href="{{asset('admin-assets/bower_components/bootstrap/dist/css/bootstrap.min.css')}}">
+  	<link rel="stylesheet" href="{{asset('admin-assets/bower_components/font-awesome/css/font-awesome.min.css')}}">
   	<style type="text/css" media="screen">
   		
   	</style>

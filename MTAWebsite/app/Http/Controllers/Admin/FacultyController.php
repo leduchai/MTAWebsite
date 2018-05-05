@@ -30,12 +30,7 @@ class FacultyController extends Controller
         return view('admin.faculty.form', compact('model'));
     }
 
-    /**
-     * Form cập nhật danh mục
-     * @author ThienTH
-     * @return view
-     * @date 2017-07-28 - create new
-     */
+
     public function update($id){
         Log::info("BEGIN " . get_class() . " => " . __FUNCTION__ ."()");
 
@@ -50,12 +45,6 @@ class FacultyController extends Controller
         return view('admin.faculty.form', compact('model'));
     }
 
-    /**
-     * Save category
-     * @author ThienTH
-     * @return view
-     * @date 2017-07-21 - create new
-     */
     public function save(Request $request){
         Log::info('BEGIN ' 
 			. get_class() . ' => ' . __FUNCTION__ . '()');
@@ -88,7 +77,7 @@ class FacultyController extends Controller
 			Log::error('END ' 
 			. get_class() . ' => ' . __FUNCTION__ . '() - ' . $ex->getMessage());
 			DB::rollback();
-			return 'Error';
+			return 'Lỗi vui lòng thử lại';
 		}	
     }
 
@@ -119,7 +108,7 @@ class FacultyController extends Controller
 			Log::error('END ' 
 			. get_class() . ' => ' . __FUNCTION__ . '() - ' . $ex->getMessage());
 			DB::rollback();
-			return 'Error';
+			return 'Lỗi vui lòng thử lại';
 		}	
     }
 }

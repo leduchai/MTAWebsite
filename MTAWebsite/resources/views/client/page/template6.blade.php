@@ -1,6 +1,18 @@
 @extends('layouts.client')
 @section('slider')
-    @include('layouts.slider')
+    @if(count(banners('sv')) >0)
+     <section>
+                <figure>
+                    <?php $h =1 ?>
+                     @foreach(banners('sv') as $banner)
+                     @if($h==1)
+                        <img src="{{ asset('uploads/'.$banner->images) }}" class="img-responsive" alt="" />
+                    @endif
+                    @endforeach
+                </figure>
+                
+    </section>
+@endif
 @endsection
 @section('content')
             <section>
@@ -115,3 +127,10 @@
             @endif
             @endforeach
             @endsection
+            @section('title')
+{{$pages->seo_title}}
+@endsection
+
+@section('description')
+{{$pages->seo_content}}
+@endsection

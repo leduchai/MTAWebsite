@@ -29,13 +29,13 @@
                 <div class="col-md-9 col-sm-9 col-xs-12">
                   <select name="location" class="form-control">
                         <option value="0">Chọn vị trí</option>
-                        <option value="logo">logo</option>
-                        <option value="top-banner">top-banner</option>
-                        <option value="home bottom">home bottom</option>
-                        
-                       
-                        <option value="left-banner">left-banner</option>
                         <option value="slider">slider</option>
+                        <option value="gt">slider giới thiệu</option>
+                        <option value="ts">Tuyển Sinh</option>
+                        <option value="sv">Sinh Viên</option>
+                        <option value="dt">Đào tạo</option>
+                        <option value="nc">Nghiên cứu</option>
+                        <option value="ht">Hợp tác</option>
                    </select>
                     @if (count($errors) > 0)
                     <span class="text-danger">{{$errors->first('location')}}</span>

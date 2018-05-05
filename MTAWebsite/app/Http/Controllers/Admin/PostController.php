@@ -105,36 +105,32 @@ Log::info("END " . get_class() . " => " . __FUNCTION__ ."()");
 if($result){
     return redirect(route('post.list'));
 }else{
-    return 'Error';
+    return 'Lỗi vui lòng thử lại';
 }
 }
-public function delete($id){
+    public function delete($id){
+        Log::info('BEGIN ' 
+            . get_class() . ' => ' . __FUNCTION__ . '()');
 
-
- $model = Post::find($id);
- if(!$model){
-    Log::info('END ' 
-        . get_class() . ' => ' . __FUNCTION__ . '()');
-    return redirect()->route('404.error');
-}
-DB::beginTransaction();
+        $model = Post::find($id);
+        // begin transaction
+        DB::beginTransaction();
         // try
-try{
-    DB::table('slugs')->where([
-        ['entity_id', '=', $model->id],
-        ['entity_type', '=', $model->entityType]
-    ])->delete();
-    $model->delete();
-    DB::commit();
-    return redirect()->route('post.list');
+        try{
+            $model->delete();
+            DB::commit();
+            // neu k co loi thi tien hanh return true
+            Log::info('END ' 
+            . get_class() . ' => ' . __FUNCTION__ . '()');
+           return redirect()->route('post.list');
 
         // catch     
-}catch(\Exception $ex){
-
-    DB::rollback();
-    return 'Error';
-}   
-
-
-}
+        }catch(\Exception $ex){
+            // neu xay ra loi thi return false
+            Log::error('END ' 
+            . get_class() . ' => ' . __FUNCTION__ . '() - ' . $ex->getMessage());
+            DB::rollback();
+            return 'Lỗi vui lòng thử lại';
+        }   
+    }
 }

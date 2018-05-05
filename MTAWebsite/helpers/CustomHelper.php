@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\Post;
 define('UPLOAD_IMAGE_POST','uploads/post-');
+define('UPLOAD_IMAGE_POST1','uploads/post1-');
 define('UPLOAD_IMAGE_PAGE','uploads/page-');
 define('UPLOAD_IMAGE_PAGE1','uploads/page1-');
 define('UPLOAD_IMAGE_PAGE2','uploads/page2-');

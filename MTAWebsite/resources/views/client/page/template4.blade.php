@@ -1,6 +1,18 @@
 @extends('layouts.client')
 @section('slider')
-    @include('layouts.slider')
+    @if(count(banners('nc')) >0)
+     <section>
+                <figure>
+                    <?php $h =1 ?>
+                     @foreach(banners('nc') as $banner)
+                     @if($h==1)
+                        <img src="{{ asset('uploads/'.$banner->images) }}" class="img-responsive" alt="" />
+                    @endif
+                    @endforeach
+                </figure>
+                
+    </section>
+@endif
 @endsection
 @section('content')
             
@@ -20,7 +32,7 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-12 col-md-12">
-                        <p class="text-description">{{ $pages->content }}</p>
+                        <p class="text-description">{!! $pages->content !!}</p>
                     </div>
                 </div>
             </section>
@@ -120,3 +132,10 @@
             @endif
             @endforeach
             @endsection
+            @section('title')
+{{$pages->seo_title}}
+@endsection
+
+@section('description')
+{{$pages->seo_content}}
+@endsection
