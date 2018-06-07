@@ -66,27 +66,23 @@
 								</div>
 							</div>
 						</div>
-
 					</div>
 				</div>
-
 			</section>
-
-			
 			<section>
 				<div id='cssmenu'>
-					<ul>
+					<ul class="menu-pr">
 						<li><a href="{{ route('home.page') }}">Trang Chủ</a></li>
 						@if(isset($menu))
 						@foreach($menu as $k => $v)
 						<li class='active'>
-							<a href="{{ $v['url'] }}">{{ $v['title'] }}</a>
+							<a href="{{  url($v['url']) }}">{{ $v['title'] }}</a>
 							@if(isset($v['lstCat']))
 							<ul class="has-children">
 
 								@foreach($v['lstCat'] as $k1 => $v1)
 								<li>
-									<a href="{{ $v1['url'] }}">{{ $v1['title'] }}</a>
+									<a href="{{  url($v1['url']) }}">{{ $v1['title'] }}</a>
 								</li>
 								@endforeach
 								
@@ -229,10 +225,10 @@
 						</div>
 			
 										<div class="col-lg-4 col-md-4">
-						<div class="row fb-footer">
-							<p id="fb-footer">Mạng xã hội</p>
+						<div class="row ">
+							<p id="menu-footer">Mạng xã hội</p>
 						</div>
-												<div class="row">
+												<div class="row menu-footer">
 							<div class="fb-page" data-href="{{ setting()->facebook }}" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="{{ setting()->facebook }}" class="fb-xfbml-parse-ignore"><a href="{{ setting()->facebook }}">Học Viện Kĩ Thuật Quân Sự</a></blockquote></div>
 						</div>
 					</div>

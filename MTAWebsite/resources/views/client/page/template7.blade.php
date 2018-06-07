@@ -15,13 +15,13 @@
                     @if(count($p1->childss()) > 0)
                     <a href="#{{ $p1->id }}" class="list-group-item collapsed first-item" data-toggle="collapse" aria-expanded="false"><span>{{ $p1->title }}</span> </a>
                     @else
-                    <a href="{{ $p1->getSlug() }}" class="list-group-item  first-item"><span>{{ $p1->title }}</span> </a>
+                    <a href="{{  url($p1->getSlug()) }}" class="list-group-item  first-item"><span>{{ $p1->title }}</span> </a>
                     @endif
                 @else
                     @if(count($p1->childss()) > 0)
                     <a href="#{{ $p1->id }}" class="list-group-item collapsed" data-toggle="collapse" aria-expanded="false"><span>{{ $p1->title }}</span> </a>
                     @else
-                    <a href="{{ $p1->getSlug() }}" class="list-group-item "><span>{{ $p1->title }}</span> </a>
+                    <a href="{{  url($p1->getSlug()) }}" class="list-group-item "><span>{{ $p1->title }}</span> </a>
                     @endif
                 @endif
                 <!-- menu con -->
@@ -30,7 +30,7 @@
                     @foreach($p1->childss() as $p2)
                     
                     
-                    <a id="{{ $p2->id }}" onclick="myfunction({{ $p2->id }},{{ $p1->id }})" href="{{ $p2->getSlug() }}" class="list-group-item" >{{ $p2->title }}</a>
+                    <a id="{{ $p2->id }}" onclick="myfunction({{ $p2->id }},{{ $p1->id }})" href="{{  url($p2->getSlug()) }}" class="list-group-item" >{{ $p2->title }}</a>
                   
                     @endforeach
                     
@@ -64,12 +64,12 @@
                             @if(!empty($p2->images))
                              <a href="{{ $p2->getSlug() }}"><img src="{{ asset(UPLOAD_IMAGE_PAGE2.$p2->images) }}" class="img-responsive figure-img img-fluid rounded" alt="{{ $p2->title }}"></a>
                             @else
-                            <a href="{{ $p2->getSlug() }}"><span class="glyphicon glyphicon-bell bell"></span</a>
+                            <a href="{{  url($p2->getSlug()) }}"><span class="glyphicon glyphicon-bell bell"></span</a>
                             @endif
                             </div>
                             <div class="col-lg-9 col-md-9 ">
                               <figure class="figure">
-                                 <h3 class="post-title"><a href="{{ $p2->getSlug() }}">{{ $p2->title }}</a></h3>
+                                 <h3 class="post-title"><a href="{{  url($p2->getSlug()) }}">{{ $p2->title }}</a></h3>
                                     <p class="note-category">{{ $p2->seo_content }}</p>
                                     <span class="date">{{ $p2->created_at }}</span>
                                 </figure>
@@ -87,7 +87,6 @@
 @section('title')
 {{$pages->seo_title}}
 @endsection
-
 @section('description')
 {{$pages->seo_content}}
 @endsection

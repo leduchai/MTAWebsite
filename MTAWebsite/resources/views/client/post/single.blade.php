@@ -12,19 +12,19 @@
                     @if(count($p1->childss()) > 0)
                     <a href="#{{ $p1->id }}" class="list-group-item collapsed first-item" data-toggle="collapse" aria-expanded="false"><span>{{ $p1->title }}</span> </a>
                     @else
-                    <a href="{{ $p1->getSlug() }}" class="list-group-item  first-item"><span>{{ $p1->title }}</span> </a>
+                    <a href="{{  url($p1->getSlug()) }}" class="list-group-item  first-item"><span>{{ $p1->title }}</span> </a>
                     @endif
                 @else
                     @if(count($p1->childss()) > 0)
                     <a href="#{{ $p1->id }}" class="list-group-item collapsed" data-toggle="collapse" aria-expanded="false"><span>{{ $p1->title }}</span> </a>
                     @else
-                    <a href="{{ $p1->getSlug() }}" class="list-group-item "><span>{{ $p1->title }}</span> </a>
+                    <a href="{{  url($p1->getSlug()) }}" class="list-group-item "><span>{{ $p1->title }}</span> </a>
                     @endif
                 @endif
                 @if(count($p1->childss()) > 0)
                 <div class="collapse" id="{{ $p1->id }}" data-parent="#sidebar">
                     @foreach($p1->childss() as $p2)
-                    <a id="{{ $p2->id }}" onclick="myfunction({{ $p2->id }},{{ $p1->id }})" href="{{ $p2->getSlug() }}" class="list-group-item" >{{ $p2->title }}</a>
+                    <a id="{{ $p2->id }}" onclick="myfunction({{ $p2->id }},{{ $p1->id }})" href="{{  url($p2->getSlug()) }}" class="list-group-item" >{{ $p2->title }}</a>
                     @endforeach
                 </div>
                 @endif
@@ -70,7 +70,7 @@
                     <div class="col-lg-3 col-md-3 col-sm-6">
                         <figure class="figure">
                             <img src="{{ asset(UPLOAD_IMAGE_POST.$rl->images) }}" class="img-responsive figure-img img-fluid rounded" alt="{{ $rl->title }}">
-                            <figcaption class="figure-caption"><a href="{{ $rl->getSlug() }}">{{ $rl->title }}</a></figcaption>
+                            <figcaption class="figure-caption"><a href="{{  url($rl->getSlug()) }}">{{ $rl->title }}</a></figcaption>
                         </figure>
                         <header>
                             <p class="note">{{ $rl->seo_content }}</p>
@@ -95,7 +95,7 @@
                           <?php $i=1; ?>
                   @foreach($postrl as $rl)
                   @if($i>4)
-                            <li><a href="{{ $rl->getSlug() }}">{{ $rl->title }}</a></li>
+                            <li><a href="{{  url($rl->getSlug()) }}">{{ $rl->title }}</a></li>
                             @endif
                      <?php $i++; ?>
                     @endforeach

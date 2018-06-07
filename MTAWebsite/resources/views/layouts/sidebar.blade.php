@@ -4,7 +4,7 @@
                                 <div class="category">
                                     <ul>
                                       @foreach($category as $c)
-                                        <li class="sub-category" id="category-name-1"><a class="category-link" href="{{ $c->getSlug() }}">{{ $c->title }}<span class="count">({{ count(showpost($c->id)->getpost()) }})</span></a></li>
+                                        <li class="sub-category" id="category-name-1"><a class="category-link" href="{{ url($c->getSlug()) }}">{{ $c->title }}<span class="count">({{ count(showpost($c->id)->getpost()) }})</span></a></li>
                                       @endforeach
                                     </ul>
                                 </div>

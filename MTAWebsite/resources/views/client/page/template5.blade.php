@@ -59,7 +59,7 @@
                     {{ $page->seo_content }}
                 </p>
             </header>
-            <a href="{{ $page->getSlug() }}" class="view-more">Xem thêm<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a>
+            <a href="{{  url($page->getSlug()) }}" class="view-more">Xem thêm<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a>
         </div>
     </div>
 </section>
@@ -81,7 +81,7 @@
                     {{ $page->seo_content }}
                 </p>
             </header>
-            <a href="{{ $page->getSlug() }}" class="view-more">Xem thêm<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a>
+            <a href="{{  url($page->getSlug()) }}" class="view-more">Xem thêm<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a>
         </div>
         <div class="col-lg-6 col-md-6">
             <a href=""><img alt="" src="{{ asset(UPLOAD_IMAGE_PAGE1.$page->images) }}" class="img-responsive"> </a>
@@ -98,7 +98,7 @@
         </div>
     </div>
     <div class="row" id="slide-contract">
-        <div class="owl-carousel owl-theme">
+        <div class="owl-carousel owl-theme" id="research-link">
             @foreach($contracts as $contract)
             <div class="item">
                 <a href="{{ $contract->url }}"><img src="{{ asset('uploads/'.$contract->images) }}" class="img-responsive" title="{{ $contract->title }}" /></a>

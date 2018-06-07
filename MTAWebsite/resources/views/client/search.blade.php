@@ -16,9 +16,9 @@
                         <div class="row post-item">
                             <div class="col-lg-3 col-md-3 text-center">
                             @if(!empty($p2->images))
-                             <a href="{{ $p2->link() }}"><img src="{{ asset(UPLOAD_IMAGE_POST.$p2->images) }}" class="img-responsive figure-img img-fluid rounded" alt="{{ $p2->title }}"></a>
+                             <a href="{{ url($p2->link()) }}"><img src="{{ asset(UPLOAD_IMAGE_POST.$p2->images) }}" class="img-responsive figure-img img-fluid rounded" alt="{{ $p2->title }}"></a>
                             @else
-                            <a href="{{ $p2->link() }}"><span class="glyphicon glyphicon-bell bell"></span</a>
+                            <a href="{{ url($p2->link()) }}"><span class="glyphicon glyphicon-bell bell"></span</a>
                             @endif
                             </div>
                             <div class="col-lg-9 col-md-9 ">

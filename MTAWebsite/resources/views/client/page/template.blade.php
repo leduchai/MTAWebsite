@@ -15,23 +15,20 @@
                     @if(count($p1->childss()) > 0)
                     <a href="#{{ $p1->id }}" class="list-group-item collapsed first-item" data-toggle="collapse" aria-expanded="false"><span>{{ $p1->title }}</span> </a>
                     @else
-                    <a href="{{ $p1->getSlug() }}" class="list-group-item  first-item"><span>{{ $p1->title }}</span> </a>
+                    <a href="{{  url($p1->getSlug()) }}" class="list-group-item  first-item"><span>{{ $p1->title }}</span> </a>
                     @endif
                 @else
                     @if(count($p1->childss()) > 0)
                     <a href="#{{ $p1->id }}" class="list-group-item collapsed" data-toggle="collapse" aria-expanded="false"><span>{{ $p1->title }}</span> </a>
                     @else
-                    <a href="{{ $p1->getSlug() }}" class="list-group-item "><span>{{ $p1->title }}</span> </a>
+                    <a href="{{  url($p1->getSlug()) }}" class="list-group-item "><span>{{ $p1->title }}</span> </a>
                     @endif
                 @endif
                 <!-- menu con -->
                 @if(count($p1->childss()) > 0)
                 <div class="collapse" id="{{ $p1->id }}" data-parent="#sidebar">
                     @foreach($p1->childss() as $p2)
-                    
-                    
-                    <a id="{{ $p2->id }}" onclick="myfunction({{ $p2->id }},{{ $p1->id }})" href="{{ $p2->getSlug() }}" class="list-group-item" >{{ $p2->title }}</a>
-                  
+                    <a id="{{ $p2->id }}" onclick="myfunction({{ $p2->id }},{{ $p1->id }})" href="{{  url($p2->getSlug()) }}" class="list-group-item" >{{ $p2->title }}</a>
                     @endforeach
                     
                 </div>

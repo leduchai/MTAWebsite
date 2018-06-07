@@ -5,7 +5,7 @@
         <div class="col-md-12 wrap">
            @if(empty($model->id))
            <h2 class="entry-title text-left">
-              Thêm mới bài viết 		
+              Thêm mới bài viết     
           </h2>
           @else
           <h2 class="entry-title text-left">
@@ -216,55 +216,55 @@
 @endsection
 @section('js')
 <script type="text/javascript">
-	$(document).ready(function(){
-		$('#title').on('change', function(){
-			title = $(this).val();
-			if(title == ""){
-				$('#slug-url').val('');
-				return false;
-			}
-			$.ajax({
-				url: "{{ route('slug.generate.post') }}", 
-				type: 'GET',
-				data: {title: title},
-				dataType: 'JSON',
-				success: function(rp){
+  $(document).ready(function(){
+    $('#title').on('change', function(){
+      title = $(this).val();
+      if(title == ""){
+        $('#slug-url').val('');
+        return false;
+      }
+      $.ajax({
+        url: "{{ route('slug.generate.post') }}", 
+        type: 'GET',
+        data: {title: title},
+        dataType: 'JSON',
+        success: function(rp){
 
-					$('#slug-url').val(rp.data);
-				}
-			});
-			$('#seo_title').val(title);
-		});
-		$('#prd_group_name').on('change', function(){
-			title = $(this).val();
-			if(title == ""){
-				$('#prd_group_url').val('');
-				return false;
-			}
-			$.ajax({
-				url: "{{ route('slug.generate.category') }}", 
-				type: 'GET',
-				data: {title: title},
-				dataType: 'JSON',
-				success: function(rp){
-					$('#prd_group_url').val(rp.data);
-				}
-			});
-		});
-	});
-	function cms_create_group($cont) {
-		var prd_group_name = $.trim($('#prd_group_name').val());
-		var parentid = $('#parentid').val();
-		var slug = $('#prd_group_url').val();
-		if (prd_group_name.length == 0) {
-			alert('Nhập tên danh mục');
-		} else {
-			$.ajax({
-				url: "{{ route('category.create') }}", 
-				type: 'POST',
-				data: {title:prd_group_name,parent_id:parentid,slug:slug},
-				dataType: 'JSON',
-				success: function(rp){
+          $('#slug-url').val(rp.data);
+        }
+      });
+      $('#seo_title').val(title);
+    });
+    $('#prd_group_name').on('change', function(){
+      title = $(this).val();
+      if(title == ""){
+        $('#prd_group_url').val('');
+        return false;
+      }
+      $.ajax({
+        url: "{{ route('slug.generate.category') }}", 
+        type: 'GET',
+        data: {title: title},
+        dataType: 'JSON',
+        success: function(rp){
+          $('#prd_group_url').val(rp.data);
+        }
+      });
+    });
+  });
+  function cms_create_group($cont) {
+    var prd_group_name = $.trim($('#prd_group_name').val());
+    var parentid = $('#parentid').val();
+    var slug = $('#prd_group_url').val();
+    if (prd_group_name.length == 0) {
+      alert('Nhập tên danh mục');
+    } else {
+      $.ajax({
+        url: "{{ route('category.create') }}", 
+        type: 'POST',
+        data: {title:prd_group_name,parent_id:parentid,slug:slug},
+        dataType: 'JSON',
+        success: function(rp){
           if(rp.data != '1')
           {
             $('#prd_group_id').append('<input type="radio" name="category_id" value="'+rp.data.id+'">'+rp.data.title+'<br>');
@@ -278,9 +278,9 @@
           {
             $('.ajax-error-ct').html('Tạo danh mục không thành công vui lòng thử lại').parent().fadeIn().delay(1000).fadeOut('slow');
           }
-				}
-			});
-		}
-	}
+        }
+      });
+    }
+  }
 </script>
 @endsection

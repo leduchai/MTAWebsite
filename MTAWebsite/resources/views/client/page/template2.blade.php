@@ -1,5 +1,6 @@
 @extends('layouts.client')
 @section('slider')
+@if(count(banners('dt')) >0)
      <section>
                 <figure>
                     <?php $h =1 ?>
@@ -11,7 +12,7 @@
                 </figure>
                 
     </section>
-
+@endif
 @endsection
 @section('content')
             
@@ -59,7 +60,7 @@
                                 {{ $page->seo_content }}
                             </p>
                         </header>
-                        <a href="{{ $page->getSlug() }}" class="view-more">Xem thêm<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a>
+                        <a href="{{  url($page->getSlug()) }}" class="view-more">Xem thêm<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a>
                     </div>
                 </div>
             </section>
@@ -77,13 +78,13 @@
                     @if($j<5)
                     <div class="col-lg-6 col-md-6 col-sm-6">
                         <figure class="figure">
-                            <a href="{{ $pa->getSlug() }}"><img src="{{ asset(UPLOAD_IMAGE_PAGE2.$pa->images) }}" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure."></a>
-                            <figcaption class="figure-caption-category"><a href="{{ $pa->getSlug() }}">{{ $pa->title }}</a></figcaption>
+                            <a href="{{  url($pa->getSlug()) }}"><img src="{{ asset(UPLOAD_IMAGE_PAGE2.$pa->images) }}" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure."></a>
+                            <figcaption class="figure-caption-category"><a href="{{  url($pa->getSlug()) }}">{{ $pa->title }}</a></figcaption>
                         </figure>
                         <header>
                             <p class="note-category">{{ $pa->seo_content }}</p>
                         </header>
-                        <a href="{{ $pa->getSlug() }}" class="view-more">Xem thêm<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a>
+                        <a href="{{  url($pa->getSlug()) }}" class="view-more">Xem thêm<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a>
                     </div>
                      @endif
             <?php $j++; ?>

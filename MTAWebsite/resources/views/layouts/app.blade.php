@@ -8,10 +8,10 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Mta | Học việc kĩ thuật quân sự</title>
-    <link rel="icon" type="text/css" href="{{ asset('client-assets/images/favicon.png') }}">
+    <title>Quản lí luận văn</title>
+    <link rel="icon" type="text/css" href="{{ asset('public/client-assets/images/favicon.png') }}">
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('public/css/app.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">

@@ -140,7 +140,7 @@ $( document ).ready(function() {
     // start js icon go to top page
     // ===== Scroll to Top ==== 
     $(window).scroll(function () {
-        if ($(this).scrollTop() >= 50) {        // If page is scrolled more than 50px
+        if ($(this).scrollTop() >= 500) {        // If page is scrolled more than 50px
             $('#return-to-top').fadeIn(200);    // Fade in the arrow
         } else {
             $('#return-to-top').fadeOut(200);   // Else fade out the arrow
@@ -153,6 +153,8 @@ $( document ).ready(function() {
     });
 
     //end js icon go to top page
+
+
 });
 
 //paste this code under head tag or in a seperate js file.

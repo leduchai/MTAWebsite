@@ -22,8 +22,8 @@
 		<div class="col-lg-6 col-md-6">
 
 			<figure class="figure">
-				<a href="{{ $p->getSlug() }}"><img src="{{ asset(UPLOAD_IMAGE_POST.$p->images) }}" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure."></a>
-				<figcaption class="figure-caption-category"> <a href="{{ $p->getSlug() }}">{{ $p->title }} </a></figcaption>
+				<a href="{{ url($p->getSlug()) }}"><img src="{{ asset(UPLOAD_IMAGE_POST.$p->images) }}" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure."></a>
+				<figcaption class="figure-caption-category"> <a href="{{ url($p->getSlug()) }}">{{ $p->title }} </a></figcaption>
 			</figure>
 
 			<header>
@@ -38,12 +38,12 @@
 				<?php $j = 1; ?>
 				@foreach($new->getTopPost(8) as $p1)
 				@if($j >= 2 )
-				<li><a href="{{ $p1->getSlug() }}">{{ $p1->title }}</a> </li>
+				<li><a href="{{  url($p1->getSlug()) }}">{{ $p1->title }}</a> </li>
 				@endif
 				<?php $j++; ?>
 				@endforeach
 			</ul>
-			<a href="{{ $new->getSlug() }}" class="view-more-right">Xem thêm<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a>
+			<a href="{{  url($new->getSlug()) }}" class="view-more-right">Xem thêm<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a>
 		</div>
 	</div>
 </section>
@@ -60,8 +60,8 @@
 		@if($k<5)
 		<div class="col-lg-3 col-md-3 col-sm-6">
 			<figure class="figure">
-				<a href="{{ $p2->getSlug() }}"><img src="{{ asset(UPLOAD_IMAGE_POST.$p2->images) }}" class="img-responsive figure-img img-fluid rounded" alt="{{ $p2->title }}"></a>
-				<figcaption class="figure-caption-category"><a href="{{ $p2->getSlug() }}">{{ $p2->title }}</a></figcaption>
+				<a href="{{  url($p2->getSlug()) }}"><img src="{{ asset(UPLOAD_IMAGE_POST.$p2->images) }}" class="img-responsive figure-img img-fluid rounded" alt="{{ $p2->title }}"></a>
+				<figcaption class="figure-caption-category"><a href="{{  url($p2->getSlug()) }}">{{ $p2->title }}</a></figcaption>
 			</figure>
 			<header>
 				<p class="note-category">{{ $p2->seo_content }}</p>
@@ -109,12 +109,12 @@
 				<?php $j = 1; ?>
 				@foreach($noti->getTopPost(8) as $p1)
 				@if($j >= 2)
-				<li><a href="{{ $p->link() }}">{{ $p1->title }}</a> </li>
+				<li><a href="{{  url($p->link()) }}">{{ $p1->title }}</a> </li>
 				@endif
 				<?php $j++; ?>
 				@endforeach
 			</ul>
-			<a href="{{ $noti->getSlug() }}" class="view-more-right">Xem thêm<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a>
+			<a href="{{  url($noti->getSlug()) }}" class="view-more-right">Xem thêm<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a>
 		</div>
 	</div>
 </section>
@@ -137,7 +137,7 @@
 				<p class="detail-description">
 					{{ $ad->seo_content }}
 				</p>
-				<a href="{{ $ad->getSlug() }}" class="view-more">Xem thêm<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a>
+				<a href="{{  url($ad->getSlug()) }}" class="view-more">Xem thêm<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a>
 			</header>
 			<figure class="figure">
 				<img src="{{ asset(UPLOAD_IMAGE_POST1.$ad->images) }}" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
@@ -164,7 +164,7 @@
 				<div class="col-lg-4 col-md-4 col-sm-4">
 					<figure class="figure">
 						<img src="{{ asset(UPLOAD_IMAGE_POST.$ad->images) }}" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
-						<figcaption class="figure-caption-category"><a href="{{ $ad->getSlug() }}">{{ $ad->title }}</a></figcaption>
+						<figcaption class="figure-caption-category"><a href="{{  url($ad->getSlug()) }}">{{ $ad->title }}</a></figcaption>
 					</figure>
 					<header>
 						<p class="note-category">{{ $ad->seo_content }}</p>
@@ -178,7 +178,7 @@
 		</div>
 		<div class="col-lg-3 col-md-3 col-sm-12 btn-notification">
 			<div>
-				<a href="{{ showpost(9)->getSlug() }}" class="view-more">Thông báo<span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span></a>
+				<a href="{{  url(showpost(9)->getSlug()) }}" class="view-more">Thông báo<span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span></a>
 			</div>
 		</div>
 	</div>
@@ -187,7 +187,7 @@
 			<hr>
 		</div>
 		<div class="col-lg-1 col-md-1 view-more">
-			<a href="{{ showpost(10)->getSlug() }}" class="view-more">Xem thêm<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a>
+			<a href="{{  url(showpost(10)->getSlug()) }}" class="view-more">Xem thêm<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a>
 		</div>
 	</div>
 </section>

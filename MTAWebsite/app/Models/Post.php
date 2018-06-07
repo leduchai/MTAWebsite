@@ -9,7 +9,7 @@ class Post extends Model
 	use HasPageViewCounter;
     protected $table = 'post';
     public $entityType = ENTITY_TYPE_POST;
-    public $fillable = ['title', 'content','seo_title','seo_content','category_id'];
+    public $fillable = ['title', 'content','category_id','seo_title','seo_content'];
 
     public function category()
 	{

@@ -35,7 +35,7 @@
                             <p class="detail-description">
                                {{ $page->seo_content }}
                             </p>
-                            <a href="{{ $page->getSlug() }}" class="view-more">Xem thêm<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a>
+                            <a href="{{  url($page->getSlug()) }}" class="view-more">Xem thêm<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a>
                         </header>
                         <figure class="figure">
                             <img src="{{ asset(UPLOAD_IMAGE_PAGE.$page->images) }}" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
@@ -57,7 +57,7 @@
                                 {{ $page->seo_content }}
                             </p>
                         </header>
-                        <a href="{{ $page->getSlug() }}" class="view-more">Xem thêm<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a>
+                        <a href="{{  url($page->getSlug()) }}" class="view-more">Xem thêm<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a>
                     </div>
                     <div class="col-lg-6 col-md-6">
                         <a href=""><img alt="" src="{{ asset(UPLOAD_IMAGE_PAGE1.$page->images) }}" class="img-responsive"> </a>
@@ -76,8 +76,8 @@
                     @foreach($page->childss() as $pa)
                     <div class="col-lg-3 col-md-3 col-sm-6">
                         <figure class="figure">
-                            <a href="{{ $pa->getSlug() }}"><img src="{{ asset(UPLOAD_IMAGE_PAGE2.$pa->images) }}" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure."></a>
-                            <figcaption class="figure-caption-category"><a href="{{ $pa->getSlug() }}">{{ $pa->title }}</a></figcaption>
+                            <a href="{{  url($pa->getSlug()) }}"><img src="{{ asset(UPLOAD_IMAGE_PAGE2.$pa->images) }}" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure."></a>
+                            <figcaption class="figure-caption-category"><a href="{{  url($pa->getSlug()) }}">{{ $pa->title }}</a></figcaption>
                         </figure>
                         <header>
                             <p class="note">{{ $pa->seo_content }}</p>
@@ -90,7 +90,7 @@
                         <hr>
                     </div>
                     <div class="col-lg-1 col-md-1 view-more">
-                        <a href="{{ $page->getSlug() }}" class="view-more">Xem thêm<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a>
+                        <a href="{{  url($page->getSlug()) }}" class="view-more">Xem thêm<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a>
                     </div>
                 </div>
             </section>
@@ -109,13 +109,13 @@
                         <div class="row">
                             <div class="col-lg-12 col-md-12">
                                 <figure class="figure">
-                                    <a href="{{ $p1->getSlug() }}"><img src="{{ asset(UPLOAD_IMAGE_PAGE2.$p1->images) }}" class="img-responsive figure-img img-fluid rounded" alt="{{ $p1->title }}"></a>
-                                    <figcaption class="figure-caption-category"><a href="{{ $p1->getSlug() }}">{{ $p1->title }}</a></figcaption>
+                                    <a href="{{  url($p1->getSlug()) }}"><img src="{{ asset(UPLOAD_IMAGE_PAGE2.$p1->images) }}" class="img-responsive figure-img img-fluid rounded" alt="{{ $p1->title }}"></a>
+                                    <figcaption class="figure-caption-category"><a href="{{  url($p1->getSlug()) }}">{{ $p1->title }}</a></figcaption>
                                 </figure>
                                 <header>
                                     <p class="note-category">{{ $p1->seo_content }}</p>
                                 </header>
-                                <a href="{{ $p1->getSlug() }}" class="view-more">Xem thêm<span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span></a>
+                                <a href="{{  url($p1->getSlug()) }}" class="view-more">Xem thêm<span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span></a>
                             </div>
                         </div>
                     </div>

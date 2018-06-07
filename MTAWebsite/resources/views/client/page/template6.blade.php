@@ -1,18 +1,15 @@
 @extends('layouts.client')
 @section('slider')
-    @if(count(banners('sv')) >0)
-     <section>
-                <figure>
-                    <?php $h =1 ?>
-                     @foreach(banners('sv') as $banner)
-                     @if($h==1)
-                        <img src="{{ asset('uploads/'.$banner->images) }}" class="img-responsive" alt="" />
-                    @endif
+   @if(count(banners('sv')) >0)
+                <section>
+                <div class="example-using-css">
+                    @foreach(banners('sv') as $banner)
+                    <img data-lazy-src="{{ asset('uploads/'.$banner->images) }}" />
+                    
                     @endforeach
-                </figure>
-                
-    </section>
-@endif
+                </div>
+            </section>
+            @endif
 @endsection
 @section('content')
             <section>
@@ -43,7 +40,7 @@
                                 {{ $page->seo_content }}
                             </p>
                         </header>
-                        <a href="{{ $page->getSlug() }}" class="view-more">Xem thêm<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a>
+                        <a href="{{  url($page->getSlug()) }}" class="view-more">Xem thêm<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a>
                     </div>
                 </div>
             </section>
@@ -84,7 +81,7 @@
                     <div class="col-lg-3 col-md-3 col-sm-6">
                         <figure class="figure">
                             <img src="{{ asset(UPLOAD_IMAGE_PAGE2.$pa->images) }}" class="img-responsive figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
-                            <figcaption class="figure-caption-category"><a href="{{ $pa->getSlug() }}">{{ $pa->title }}</a></figcaption>
+                            <figcaption class="figure-caption-category"><a href="{{  url($pa->getSlug()) }}">{{ $pa->title }}</a></figcaption>
                         </figure>
                         <header>
                             <p class="note">{{ $pa->seo_content }}</p>
@@ -98,7 +95,7 @@
                         <hr>
                     </div>
                     <div class="col-lg-1 col-md-1 view-more">
-                        <a href="{{ $page->getSlug() }}" class="view-more">Xem thêm<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a>
+                        <a href="{{  url($page->getSlug()) }}" class="view-more">Xem thêm<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a>
                     </div>
                 </div>
             </section>
@@ -114,12 +111,12 @@
                     <div class="col-lg-4 col-md-4">
                         <figure class="figure">
                             <img src="{{ asset(UPLOAD_IMAGE_PAGE2.$pa->images) }}" class="img-responsive figure-img img-fluid rounded" alt="{{ $pa->title }}">
-                            <figcaption class="figure-caption-category"><a href="{{ $pa->getSlug() }}">{{ $pa->title }}</a></figcaption>
+                            <figcaption class="figure-caption-category"><a href="{{  url($pa->getSlug()) }}">{{ $pa->title }}</a></figcaption>
                         </figure>
                         <header>
                             <p class="note-category">{{ $pa->seo_content }}</p>
                         </header>
-                        <a href="{{ $pa->getSlug() }}" class="view-more">Xem thêm<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a>
+                        <a href="{{  url($pa->getSlug()) }}" class="view-more">Xem thêm<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a>
                     </div>
                     @endforeach
                 </div>
