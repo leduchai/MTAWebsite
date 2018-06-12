@@ -11,27 +11,22 @@ use App\Http\Requests\SaveBannerRequest;
 class FacultyController extends Controller
 {
     //
-     public function index()
+     public function index($type)
     {
-    	$model = Faculty::all();
-    	return View('admin.faculty.list',compact('model'));
+    	$model = Faculty::where('type',$type)->get();
+    	return View('admin.'.$type.'.list',compact('model'));
     }
-    public function create(){
+    public function create($type){
         Log::info("BEGIN " . get_class() . " => " . __FUNCTION__ ."()");
 
         // lấy ra model mẫu
         $model = new Faculty();
-
-       
-        
-   
-
         Log::info("END " . get_class() . " => " . __FUNCTION__ ."()");
-        return view('admin.faculty.form', compact('model'));
+        return view('admin.'.$type.'.form', compact('model'));
     }
 
 
-    public function update($id){
+    public function update($type,$id){
         Log::info("BEGIN " . get_class() . " => " . __FUNCTION__ ."()");
 
         // lấy ra model mẫu
@@ -42,7 +37,7 @@ class FacultyController extends Controller
             return redirect()->route('404.error');
         }
         Log::info("END " . get_class() . " => " . __FUNCTION__ ."()");
-        return view('admin.faculty.form', compact('model'));
+        return view('admin.'.$type.'.form', compact('model'));
     }
 
     public function save(Request $request){
@@ -69,7 +64,7 @@ class FacultyController extends Controller
 	        // neu k co loi thi tien hanh return true
 	        Log::info('END ' 
 			. get_class() . ' => ' . __FUNCTION__ . '()');
-	        return redirect()->route('faculty.list');
+	        return redirect()->route('faculty.list',['type'=>$request->type]);
 
 	    // catch     
 		}catch(\Exception $ex){
@@ -87,7 +82,7 @@ class FacultyController extends Controller
 	 * @return view
 	 * @date 2017-07-21 - create new
 	 */
-    public function remove($id){
+    public function remove($type,$id){
     	Log::info('BEGIN ' 
 			. get_class() . ' => ' . __FUNCTION__ . '()');
 
@@ -101,7 +96,7 @@ class FacultyController extends Controller
 	        // neu k co loi thi tien hanh return true
 	        Log::info('END ' 
 			. get_class() . ' => ' . __FUNCTION__ . '()');
-	       return redirect()->route('faculty.list');
+	       return redirect()->route('faculty.list',['type'=>$type]);
 	    // catch     
 		}catch(\Exception $ex){
 			// neu xay ra loi thi return false

@@ -3,11 +3,11 @@ use Illuminate\Http\Request;
 Route::get('/generate-slug-category', function(Request $request){
 	$slug = str_slug(trim($request->title), '-');
 	$date = date('i');
-	$slug1 ="/chuyen-muc/".$slug.".html";
+	$slug1 ="chuyen-muc/".$slug.".html";
 	$result = App\Models\Slug::checkSlugExisted($slug1);
 	if($result)
 	{
-		$slug ="/chuyen-muc/".$slug.'-'.$date.".html";
+		$slug ="chuyen-muc/".$slug.'-'.$date.".html";
 	}
 	else
 	{
@@ -18,7 +18,7 @@ Route::get('/generate-slug-category', function(Request $request){
 Route::get('/page-generate-slug', function(Request $request){
 	$slug = str_slug(trim($request->title), '-');
 	$date = date('i');
-	$slug1 ='/'.$slug.".html";
+	$slug1 =$slug.".html";
 	$result = App\Models\Slug::checkSlugExisted($slug1);
 	if($result)
 	{
@@ -33,11 +33,11 @@ Route::get('/page-generate-slug', function(Request $request){
 Route::get('/generate-post-slug', function(Request $request){
 	$slug = str_slug(trim($request->title), '-');
 	$date = date('i');
-	$slug1 ="/bai-viet/".$slug.".html";
+	$slug1 ="bai-viet/".$slug.".html";
 	$result = App\Models\Slug::checkSlugExisted($slug1);
 	if($result)
 	{
-		$slug ="/bai-viet/".$slug.'-'.$date.".html";
+		$slug ="bai-viet/".$slug.'-'.$date.".html";
 	}
 	else
 	{
@@ -121,15 +121,15 @@ Route::group(['middleware' => 'auth'], function(){
 			Route::get('/list','ContactController@index')->name('contact.list');
 			Route::get('/remove/{id}','ContactController@remove')->name('contact.remove');
 		});
-		Route::group(['prefix'=>'faculty','middleware'=>'check-admin'],function(){
-			Route::get('list', 
+		Route::group(['middleware'=>'check-admin'],function(){
+			Route::get('/{type}/list', 
 				'Admin\FacultyController@index')->name('faculty.list');
-			Route::get('/create', 
+			Route::get('/{type}/create', 
 				'Admin\FacultyController@create')->name('faculty.create');
 			Route::get('/edit/{id}', 
 				'Admin\FacultyController@update')->name('faculty.update');
 			Route::post('/save','Admin\FacultyController@save')->name('faculty.save');
-			Route::get('/remove/{id}','Admin\FacultyController@remove')->name('faculty.remove');	
+			Route::get('{type}/remove/{id}','Admin\FacultyController@remove')->name('faculty.remove');	
 		});
 			Route::group(['prefix'=>'contract','middleware'=>'check-admin'],function(){
 			Route::get('list', 

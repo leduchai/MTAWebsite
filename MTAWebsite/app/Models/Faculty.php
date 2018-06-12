@@ -8,6 +8,6 @@ class Faculty extends Model
 {
     //
     protected $table = 'faculty';
-    protected $fillable = ['title','phone','address','email','url'];
-        public $timestamps = false;
+    protected $fillable = ['title','phone','address','email','url','type'];
+    public $timestamps = false;
 }

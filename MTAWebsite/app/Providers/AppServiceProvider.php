@@ -22,8 +22,11 @@ class AppServiceProvider extends ServiceProvider
         View::share('menu',$menu);
         $category = CatePost::all();
         View::share('category',$category);
-        $faculty = Faculty::all();
+        $faculty = Faculty::where('type','room')->get();
         View::share('faculty',$faculty);
+
+        $khoa = Faculty::where('type','faculty')->get();
+        View::share('khoa',$khoa);
         // $customer = Customer::all();
         // View::share('customer',$customer);
 

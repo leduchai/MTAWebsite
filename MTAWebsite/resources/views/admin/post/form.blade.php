@@ -171,6 +171,14 @@
 </div>
 </div>
 </div>
+  <div class="panel panel-default">
+     <div class="panel-heading">Tag</div>
+     <div class="panel-body">
+        <div class="form-group">
+          <input type="text" name="tag" class="form-control" placeholder="tag1,tag2,tag3" value="{{ $model->tag }}">
+        </div>
+   </div>
+</div>
 <div class="panel panel-default">
     <div class="panel-heading" >
         <div class="row">

@@ -188,7 +188,8 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="{{ route('setting') }}"><i ></i>Xem</a></li>
-            <li><a href="{{ route('faculty.list') }}"><i ></i>Phòng</a></li>
+            <li><a href="{{ route('faculty.list',['type'=>'room']) }}"><i ></i>Phòng</a></li>
+            <li><a href="{{ route('faculty.list',['type'=>'faculty']) }}"><i ></i>Khoa</a></li>
             <li><a href="{{ route('contract.list') }}"><i ></i>Hợp tác</a></li>
           </ul>
         </li>

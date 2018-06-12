@@ -26,11 +26,11 @@ class HomeController extends Controller
     {   
         if($slug2 == '')
         {
-            $slug = '/'.$slug1;
+            $slug = $slug1;
         }
         else
         {
-            $slug = '/'.$slug1.'/'.$slug2;
+            $slug = $slug1.'/'.$slug2;
         }
         $model = Slug::where('slug', $slug)->first();
         if(!$model){
@@ -159,7 +159,7 @@ break;
 public function search(Request $rq)
 {   
     $keywords =$rq->keywords;
-    $ctposts = Post::where('title','LIKE','%'.$keywords.'%')->get();
+    $ctposts = Post::where('title','LIKE','%'.$keywords.'%')->paginate(6);
     return View('client.search',compact('keywords','ctposts'));
 }
 

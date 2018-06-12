@@ -4,8 +4,8 @@
     @section('section')
     <section class="content">
     	
-        <div class="col-md-2"></div>
-      <div class="col-md-8 thumbnail">
+        
+      <div class="col-md-8 col-md-offset-2 thumbnail">
             <form action="{{route('setting.save')}}" method="post" novalidate enctype="multipart/form-data">
 				{{csrf_field()}}
 				<input type="hidden" name="id" value="{{old('id', $model->id)}}">

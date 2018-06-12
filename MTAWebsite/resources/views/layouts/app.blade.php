@@ -9,16 +9,15 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Quản lí luận văn</title>
-    <link rel="icon" type="text/css" href="{{ asset('public/client-assets/images/favicon.png') }}">
+    <link rel="icon" type="text/css" href="{{ asset('client-assets/images/favicon.png') }}">
     <!-- Styles -->
-    <link href="{{ asset('public/css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
                 <div class="navbar-header">
-
                     <!-- Collapsed Hamburger -->
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
                         <span class="sr-only">Toggle Navigation</span>
