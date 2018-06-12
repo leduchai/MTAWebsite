@@ -63,7 +63,7 @@ figcaption.figure-caption-category {
     font-weight: bold;
     font-size: 20px;
     margin-top: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     height: 60px;
     overflow-y: hidden;
 }
@@ -154,6 +154,18 @@ ul.highlight-news li a {
 }
 
 ul.highlight-news > li {
+    padding-bottom: 20px;
+}
+
+ul.highlight-notification {
+    text-align: justify;
+}
+
+ul.highlight-notification li a {
+    color: #333;
+}
+
+ul.highlight-notification > li {
     padding-bottom: 20px;
 }
 
@@ -685,19 +697,40 @@ div.modal-header {
 
 div.modal-body {
     text-align: center;
-    max-height: 310px;
+    max-height: 380px;
     overflow-y: scroll;
+    padding-left:15px;
+    padding-right:15px;
+    padding-top: 15px;
+    padding-bottom: 5px;
 }
 
 div.modal-body > div.row {
     padding: 5px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 a > img.icon {
     width: 30px;
     height: 30px;
     margin-bottom: 10px;
+}
+
+div#khoa-item{
+    padding-top: 10px;
+}
+
+div#khoa-item:hover{
+    background: #f2f2f2;
+    
+}
+
+div#khoa-item:hover a{
+    color:#337ab7;
+}
+
+div#khoa-item a{
+    line-height: 1.4;
 }
 
 /*.....................*/
@@ -801,6 +834,46 @@ div#research-link{
     padding-left: 45px;
     padding-top: 10px;
 }
+
+/*..........scroll bar notification area..................*/
+
+/* width */
+.highlight-notification::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Handle on hover */
+.highlight-notification-div::-webkit-scrollbar-thumb:hover {
+    background-color: #000 !important;
+}
+
+.highlight-notification {
+    max-height: 370px;
+    height: 370px;
+    overflow-y: auto;
+    padding-left: 15px;
+    padding-right: 5px;
+    margin-bottom: 20px;
+}
+
+.highlight-notification::-webkit-scrollbar-thumb {
+    display: none;
+}
+
+.highlight-notification:hover::-webkit-scrollbar-thumb {
+    background-color: #005E3B;
+    display: block;
+}
+
+.highlight-news {
+    max-height: 370px;
+    height: 370px;
+    overflow-y: hidden;
+    padding-left: 15px;
+    margin-bottom: 20px;
+}
+
+
 
 
 /*.....................*/

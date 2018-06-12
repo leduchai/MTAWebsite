@@ -1,4 +1,4 @@
-@extends('layouts.client')
+﻿@extends('layouts.client')
 @section('slider')
 @include('layouts.slider')
 @endsection
@@ -105,7 +105,7 @@
 		<?php $i++; ?>
 		@endforeach
 		<div class="col-lg-6 col-md-6">
-			<ul class="highlight-news">
+			<ul class="highlight-notification">
 				<?php $j = 1; ?>
 				@foreach($noti->getTopPost(8) as $p1)
 				@if($j >= 2)
