@@ -91,10 +91,10 @@
                     @endforeach
                 </div>
                 <div class="row">
-                    <div class="col-lg-11 col-md-11 a-line">
+                    <div class="col-lg-10 col-md-10 col-sm-10 a-line">
                         <hr>
                     </div>
-                    <div class="col-lg-1 col-md-1 view-more">
+                    <div class="col-lg-2 col-md-2 col-sm-2 view-more">
                         <a href="{{  url($page->getSlug()) }}" class="view-more">Xem thêm<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a>
                     </div>
                 </div>
