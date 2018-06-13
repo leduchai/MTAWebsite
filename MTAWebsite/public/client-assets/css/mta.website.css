@@ -1,3 +1,8 @@
+body{
+    font-family: Segoe UI,SegoeUI,"Helvetica Neue",Helvetica,Arial,sans-serif  !important;
+        font-size: 15px;
+}
+
 a {
     text-decoration: none !important;
     cursor: pointer;
@@ -13,7 +18,7 @@ h2 {
 
 div.path > a {
     cursor: pointer;
-    font-weight: bold;
+    font-weight: 600;
     font-size: 15px;
 }
 
@@ -33,7 +38,7 @@ div.path {
 
 h2.title-single {
     font-size: 25px;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 div.title-single {
@@ -42,30 +47,58 @@ div.title-single {
 
 a.view-more {
     color: #005F37;
-    font-weight: bold;
+    font-weight: 600;
     font-size: 16px;
     margin-bottom: 10px;
 }
 
 figcaption.figure-caption {
-    font-weight: bold;
+    font-weight: 600;
     font-size: 16px;
     margin-top: 10px;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
+    text-align: justify;
+    width: 100%;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    max-width: 100%;
 }
 
+figcaption.figure-caption > a{
+    color: #333 !important;
+}
+
+
 p.note {
-    padding-bottom: 30px;
+    margin-bottom: 40px;
     text-align: justify;
+    width: 100%;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    max-width: 100%;
 }
 
 figcaption.figure-caption-category {
-    font-weight: bold;
+    font-weight: 600;
     font-size: 20px;
     margin-top: 10px;
-    margin-bottom: 5px;
-    height: 60px;
-    overflow-y: hidden;
+    margin-bottom: 10px;
+        width: 100%;
+        overflow-y: hidden;
+        overflow-x: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        max-width: 100%;
 }
 
 figcaption.figure-caption-category a {
@@ -73,8 +106,16 @@ figcaption.figure-caption-category a {
 }
 
 p.note-category {
-    padding-bottom: 10px;
+    margin-bottom: 20px;
     text-align: justify;
+    width: 100%;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    max-width: 100%;
 }
 
 
@@ -179,7 +220,7 @@ div.view-more-area {
 
 a.view-more-right {
     color: #005F37;
-    font-weight: bold;
+    font-weight: 600;
     font-size: 16px;
     margin-bottom: 10px;
     float: right;
@@ -197,6 +238,11 @@ div.btn-notification > div > a {
     padding-right: 30px;
     padding-top: 12px;
     padding-bottom: 13px;
+    border: 2px solid #005f37;
+}
+
+div.btn-notification > div > a > span {
+    margin-left: 5px;
 }
 
 div.btn-notification > div > a:hover {
@@ -224,7 +270,7 @@ button#btn-contact {
     padding-top: 8px;
     padding-bottom: 8px;
     color: #005F37;
-    font-weight: bold;
+    font-weight: 600;
     border-color: #005F37;
 }
 
@@ -235,7 +281,7 @@ button#btn-contact:hover {
     padding-top: 8px;
     padding-bottom: 8px;
     color: #fff;
-    font-weight: bold;
+    font-weight: 600;
     border-color: 1px soild #fff;
 }
 
@@ -265,6 +311,12 @@ input#search {
     width: 300px;
     display: none;
 }
+
+
+a#tag-a-search > span{
+    color: #005F37;
+}
+
 
 /*.........contract.........*/
 p.text-description {
@@ -329,7 +381,7 @@ form.form-message > button {
     background-color: #fff;
     border: 2px solid #005F37;
     color: #005F37;
-    font-weight: bold;
+    font-weight: 600;
 }
 
 
@@ -393,9 +445,9 @@ div.category > ul {
 }
 
 p.category {
-    font-size: 20px;
-    font-weight: bold;
-    margin-top: 30px;
+    font-size: 25px;
+    font-weight: 600;
+    margin-top: -5px;
     margin-bottom: 20px;
 }
 
@@ -408,6 +460,12 @@ li.sub-category {
 li.sub-category > a {
     color: #000;
 }
+
+li.sub-category > a:hover {
+    color: #005F37 !important;
+    font-weight: 600;
+}
+
 
 span.count {
     float: right;
@@ -442,7 +500,7 @@ img.img-vertical-new:hover, p.title-for-new:hover {
 
 
 p.title-for-new {
-    font-weight: bold;
+    font-weight: 600;
     position: absolute;
     bottom: 20px;
     left: 30px;
@@ -452,7 +510,7 @@ p.title-for-new {
 }
 
 span.date-for-new {
-    font-weight: bold;
+    font-weight: 600;
     position: absolute;
     bottom: 10px;
     left: 20px;
@@ -621,9 +679,18 @@ div#sidebar {
 }
 
 p#category-name {
-    font-size: 20px;
-    font-weight: bold;
+    font-size: 25px;
+    font-weight: 600;
     margin-bottom: 20px;
+}
+
+div.area-same-category >h3{
+    font-size: 25px;
+    font-weight: 600;
+}
+
+h3#title-post{
+        margin-top: 23px;
 }
 
 
@@ -788,7 +855,7 @@ ul.slidesjs-pagination {
 
 p#menu-footer{
     margin-top: 20px;
-    font-weight: bold;
+    font-weight: 600;
 
 }
 
@@ -808,7 +875,7 @@ div.fb-footer{
 p#fb-footer{
     margin-bottom: 0px;
     margin-top: 20px;
-    font-weight: bold;
+    font-weight: 600;
 }
 
 
@@ -851,9 +918,14 @@ div#research-link{
     max-height: 370px;
     height: 370px;
     overflow-y: auto;
-    padding-left: 15px;
+    padding-left: 17px;
     padding-right: 5px;
     margin-bottom: 20px;
+}
+
+.highlight-notification >li>a:hover{
+    font-weight: 600;
+    color: #005F37 !important;
 }
 
 .highlight-notification::-webkit-scrollbar-thumb {
@@ -869,11 +941,35 @@ div#research-link{
     max-height: 370px;
     height: 370px;
     overflow-y: hidden;
-    padding-left: 15px;
+    padding-left: 17px;
     margin-bottom: 20px;
 }
 
+.highlight-news >li>a:hover{
+    font-weight: 600;
+    color: #005F37 !important;
+}
 
+/*...........thong bao tim kiem....................*/
+p#sum-result{
+    font-style: italic;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+p#search-notification{
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 20px;
+}
+
+
+
+/*...................trang tin tuc............*/
+div.path-news{
+    margin-top: 10px;
+    margin-bottom: 40px;
+}
 
 
 /*.....................*/
@@ -893,7 +989,7 @@ div#text-content {
     height: 100%;
     text-align: center;
     color: #fff;
-    font-weight: bold;
+    font-weight: 600;
     display: table-cell;
     vertical-align: middle;
     background-color: #56aaff;
@@ -926,7 +1022,7 @@ div.content-col2 > #text-content-above {
     height: 100%;
     text-align: center;
     color: #fff;
-    font-weight: bold;
+    font-weight: 600;
     display: table-cell;
     vertical-align: middle;
 }
@@ -936,7 +1032,7 @@ div.content-col2 > #text-content-below {
     height: 100%;
     text-align: center;
     color: #fff;
-    font-weight: bold;
+    font-weight: 600;
     display: table-cell;
     vertical-align: middle;
 }
@@ -955,7 +1051,7 @@ div.description {
 }
 
 p.title-description {
-    font-weight: bold;
+    font-weight: 600;
     color: #000;
     font-size: 20px;
 }
@@ -965,7 +1061,7 @@ p.detail-description {
 }
 
 .post-item {
-    margin-bottom: 25px;
+    margin-bottom: 30px;
 }
 
 .post-item .note-category {
@@ -976,6 +1072,12 @@ p.detail-description {
 h3.post-title {
     margin-top: 0px;
     font-size: 17px;
+    font-weight: 600;
+}
+
+span.date{
+    font-size: 12px;
+    opacity: 0.8;
 }
 
 h3.post-title a {

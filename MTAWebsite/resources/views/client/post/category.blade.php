@@ -2,7 +2,7 @@
 @section('content')
                            <section>
                 <div class="row">
-                    <div class="col-lg-12 col-md-12 path">
+                    <div class="col-lg-12 col-md-12 path path-news">
                         <a href="{{ route('home.page') }}">Trang Chủ</a><span> / </span><a>{{ $cate->title }}</a>
                     </div>
                 </div>
@@ -21,7 +21,7 @@
                             <a href="{{  url($p2->link()) }}"><span class="glyphicon glyphicon-bell bell"></span</a>
                             @endif
                             </div>
-                            <div class="col-lg-9 col-md-9 ">
+                            <div class="col-lg-9 col-md-9">
                               <figure class="figure">
                                  <h3 class="post-title"><a href="{{  url($p2->link()) }}">{{ $p2->title }}</a></h3>
                                     <p class="note-category">{{ $p2->seo_content }}</p>

@@ -72,10 +72,10 @@
 		@endforeach
 	</div>
 	<div class="row view-more-area">
-		<div class="col-lg-11 col-md-11 a-line">
+		<div class="col-lg-11 col-md-10 a-line">
 			<hr>
 		</div>
-		<div class="col-lg-1 col-md-1 view-more">
+		<div class="col-lg-1 col-md-2 view-more">
 			<a href="" class="view-more">Xem thêm<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a>
 		</div>
 	</div>
@@ -83,7 +83,7 @@
 <section>
 	<div class="row title-single">
 		<div class="col-lg-12 col-md-12">
-			<h2 class="title-single">Thông báo</h2>
+			<h2 class="title-single">Thông Báo</h2>
 		</div>
 	</div>
 	<div class="row">

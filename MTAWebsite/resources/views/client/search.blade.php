@@ -3,15 +3,17 @@
                            <section>
                 <div class="row">
                     <div class="col-lg-12 col-md-12 path">
-                        Tìm kiếm với từ khóa "{{ $keywords }}"
-                        <p id="sum-result">{{ count($ctposts) }}</p>
+                        <p id="search-notification">Kết quả tìm kiếm cho "{{ $keywords }}"</p>
+                        <p id="sum-result">Tổng số: 123 kết quả</p>
                     </div>
                 </div>
             </section>
             <section>
                 <div class="row">
+
                     <div class="col-lg-9 col-md-9">
                       @foreach($ctposts as $p2)
+                        
                         <div class="row post-item">
                             <div class="col-lg-3 col-md-3 text-center">
                             @if(!empty($p2->images))
@@ -28,8 +30,8 @@
                                 </figure>
                             </div>
                         </div>
+                       
                       @endforeach
-                      {{ $ctposts->links() }}
                     </div>
                     <div class="col-lg-3 col-md-3">
                         @include('layouts.sidebar')
