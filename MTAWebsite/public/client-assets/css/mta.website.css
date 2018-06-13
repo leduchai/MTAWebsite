@@ -50,7 +50,26 @@ a.view-more {
     font-weight: 600;
     font-size: 16px;
     margin-bottom: 10px;
+
 }
+
+a.view-more-line {
+    color: #005F37;
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 10px;
+    float:right;
+}
+
+@media (max-width: 768px)
+{
+    a.view-more-line{
+            float: left;
+    margin-top: 10px;
+    }
+}
+
+
 
 figcaption.figure-caption {
     font-weight: 600;
@@ -131,7 +150,7 @@ div.description-area {
 }
 
 div.view-more {
-    padding: 0px;
+  
     margin-top: -20px;
 }
 
@@ -157,6 +176,23 @@ div.background-over > header {
     margin-left: 40px;
     margin-top: 50px;
 }
+
+@media(max-width: 992px){
+    header.description-header{
+            position: relative !important;
+    background-color: #f2f2f2 !important;
+    width: 100% !important;
+    margin-left: 0px !important;
+    padding-top: 10px !important;
+    margin-top: 0px !important;
+    text-align: center !important;
+    padding-bottom: 40px !important;
+    color: #333 !important;
+    }
+}
+
+
+
 
 div.background-over > figure {
     z-index: 0;
@@ -855,10 +891,15 @@ ul.slidesjs-pagination {
 
 p#menu-footer{
     margin-top: 20px;
-    font-weight: 600;
+    font-weight: 700;
 
 }
 
+p#fb-footer{
+        margin-top: 0px;
+    font-weight: 700;
+    margin-bottom: 0px;
+}
 
 div.menu-footer li{
     padding:    5px;
@@ -872,13 +913,6 @@ div.fb-footer{
     margin-top: -25px;
 }
 
-p#fb-footer{
-    margin-bottom: 0px;
-    margin-top: 20px;
-    font-weight: 600;
-}
-
-
 div#license{
     padding-left: 30px;
     border-top: 1px solid #fff;
@@ -887,6 +921,35 @@ div#license{
 
 div#license p{
     padding-top: 10px;
+}
+
+
+div.slidesjs-container{
+    padding-bottom: 20px;
+}
+
+
+@media(max-width: 1200px){
+    div.slidesjs-container{
+        height: 230px !important;
+    }
+
+
+}
+
+@media(max-width: 992px){
+
+    p#menu-footer{
+        margin-left: 35px !important;
+    }
+
+    p#fb-footer{
+        margin-left: 35px !important;
+    }
+
+    div.menu-footer{
+            margin-left: 20px !important;
+    }
 }
 
 

@@ -90,7 +90,7 @@
                         <hr>
                     </div>
                     <div class="col-lg-2 col-md-2 col-sm-2 view-more">
-                        <a href="{{  url($page->getSlug()) }}" class="view-more">Xem thêm<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a>
+                        <a href="{{  url($page->getSlug()) }}" class="view-more-line">Xem thêm<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a>
                     </div>
                 </div>
             </section>

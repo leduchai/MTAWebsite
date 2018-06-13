@@ -103,20 +103,56 @@
 									</div>
 									<div class="modal-body">
 										<div class="row">
-											<div class="col-md-3" id="khoa-item"  style="height: 120px">
+											<div class="col-md-3" id="khoa-item">
 												<a href="#"><img class="icon" src="{{ asset('client-assets/images/68867072_n.png') }}" /></a>
 												<p><a href="http://dangkyhoc.mta.edu.vn/dkmh/login.asp">Đăng Kí Học</a></p>
 											</div>
-											@foreach($khoa as $k)
-											<div class="col-md-3" id="khoa-item" style="height: 120px">
-												<a href="http://atc.mta.edu.vn/"><img class="icon" src="{{ asset('
-												uploads/'.$k->images) }}" /></a>
-												<p><a href="{{ url($k->url) }}">{{ $k->title }}</a></p>
+											<div class="col-md-3" id="khoa-item">
+												<a href="http://atc.mta.edu.vn/"><img class="icon" src="{{ asset('client-assets/images/007-settings.png') }}" /></a>
+												<p><a href="http://atc.mta.edu.vn/">Trung Tâm Công Nghệ</a></p>
 											</div>
-											@endforeach
 
+											<div class="col-md-3" id="khoa-item">
+												<a href="http://ttnn.mta.edu.vn/"><img class="icon" src="{{ asset('client-assets/images/002-hello-speech-bubble-handmade-chatting-symbol.png') }}" /></a>
+												<p><a href="http://ttnn.mta.edu.vn/">Trung Tâm Ngoại Ngữ</a></p>
+											</div>
+											<div class="col-md-3" id="khoa-item">
+												<a href="#"><img class="icon" src="{{ asset('client-assets/images/001-books-stack-of-three.png') }}" /></a>
+												<p><a href="#">Thư Viện</a></p>
+											</div>
 										</div>
-
+										<div class="row">
+											<div class="col-md-3" id="khoa-item">
+												<a href="http://fit.mta.edu.vn/"><img class="icon" src="{{ asset('client-assets/images/009-computer.png') }}" /></a>
+												<p><a href="http://fit.mta.edu.vn/">Khoa Công Nghệ Thông Tin</a></p>
+											</div>
+											<div class="col-md-3" id="khoa-item">
+												<a href="#"><img class="icon" src="{{ asset('client-assets/images/005-flask.png') }}" /></a>
+												<p><a href="http://hoalykythuat.mta.edu.vn/">Khoa Hóa Lí Kĩ Thuật</a></p>
+											</div>
+											<div class="col-md-3" id="khoa-item">
+												<a href="http://sdh.mta.edu.vn/"><img class="icon" src="{{ asset('client-assets/images/004-sprout.png') }}" /></a>
+												<p><a href="#">Phòng Sau Đại Học</a></p>
+											</div>
+											<div class="col-md-3" id="khoa-item">
+												<a href="#"><img class="icon" src="{{ asset('client-assets/images/008-conveyor.png') }}" /></a>
+												<p><a href="#">Khoa Cơ Khí</a></p>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-3" id="khoa-item">
+												<a href="http://itse.mta.edu.vn/"><img class="icon" src="{{ asset('client-assets/images/8036224_n.png') }}" /></a>
+												<p><a href="http://itse.mta.edu.vn/">Viện Kĩ Thuật Công Trình Đặc Biệt</a></p>
+											</div>
+											<div class="col-md-3" id="khoa-item">
+												<a href="#"><img class="icon" src="{{ asset('client-assets/images/003-television.png') }}" /></a>
+												<p><a href="http://fre.mta.edu.vn/">Khoa Vô Tuyến Điện Tử</a></p>
+											</div>
+											<div class="col-md-3" id="khoa-item">
+												<a href="#"><img class="icon" src="{{ asset('client-assets/images/aeroplane32.png') }}" /></a>
+												<p><a href="#">Khoa Động Lực</a></p>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -188,7 +224,7 @@
 			
 										<div class="col-lg-4 col-md-4">
 						<div class="row ">
-							<p id="menu-footer">Mạng xã hội</p>
+							<p id="fb-footer">Mạng xã hội</p>
 						</div>
 												<div class="row menu-footer">
 							<div class="fb-page" data-href="{{ setting()->facebook }}" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="{{ setting()->facebook }}" class="fb-xfbml-parse-ignore"><a href="{{ setting()->facebook }}">Học Viện Kĩ Thuật Quân Sự</a></blockquote></div>
